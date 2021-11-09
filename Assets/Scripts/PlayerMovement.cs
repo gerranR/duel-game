@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft;
     public int jumpsMax;
-    public GameObject groundCheckObj;
+    public GameObject groundCheckObj, wallCheckObj;
     public bool hasKnockback;
     public LayerMask groundLayer;
 
@@ -51,10 +51,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(Physics2D.OverlapCircle(groundCheckObj.transform.position, groundCheckRadius, groundLayer).tag );
-
-
         if (Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius, groundLayer))
+        {
+            jumpsLeft = jumpsMax; 
+        }
+        if (Physics2D.OverlapCircle(wallCheckObj.transform.position , groundCheckRadius, groundLayer))
         {
             jumpsLeft = jumpsMax; 
         }
