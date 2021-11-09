@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetButtonUp("Jump") && hasKnockback == false)
         {
-            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0);
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, -1);
         }
     }
 
