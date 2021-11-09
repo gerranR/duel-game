@@ -42,6 +42,10 @@ public class PlayerMovement : MonoBehaviour
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
             jumpsLeft -= 1;
         }
+        if(Input.GetButtonUp("Jump") && hasKnockback == false)
+        {
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
