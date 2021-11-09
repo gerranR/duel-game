@@ -11,13 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsMax;
     public GameObject groundCheckObj;
     public bool hasKnockback;
+    public LayerMask groundLayer;
 
     private void Awake()
     {
         jumpsLeft = jumpsMax;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         movement();
     }
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
             jumpsLeft -= 1;
         }
-        if(Input.GetButtonUp("Jump") && hasKnockback == false)
+        if (Input.GetButtonUp("Jump") && hasKnockback == false)
         {
             rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, -1);
         }
@@ -50,7 +51,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius).tag == "Ground")
+        print(Physics2D.OverlapCircle(groundCheckObj.transform.position, groundCheckRadius, groundLayer).tag );
+
+
+        if (Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius, groundLayer))
         {
             jumpsLeft = jumpsMax; 
         }
