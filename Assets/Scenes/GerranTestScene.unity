@@ -272,11 +272,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckRadius: 1
-  speed: 200
+  speed: 300
   jumpForce: 15
+  resistance: 0
   rigidbody2d: {fileID: 222388967}
+  jumpsLeft: 0
   jumpsMax: 99
   groundCheckObj: {fileID: 1470049806}
+  hasKnockback: 0
 --- !u!50 &222388967
 Rigidbody2D:
   serializedVersion: 4

@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float groundCheckRadius;
-    public float speed, jumpForce;
+    public float speed, jumpForce, resistance;
     public Rigidbody2D rigidbody2d;
-    private int jumpsLeft;
+    public int jumpsLeft;
     public int jumpsMax;
     public GameObject groundCheckObj;
+    public bool hasKnockback;
 
     private void Awake()
     {
@@ -23,8 +24,18 @@ public class PlayerMovement : MonoBehaviour
 
     void movement()
     {
-        float mH = Input.GetAxis("Horizontal");
-        rigidbody2d.velocity = new Vector2(mH * speed * Time.deltaTime, rigidbody2d.velocity.y);
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            rigidbody2d.velocity = new Vector2(speed * Time.deltaTime, rigidbody2d.velocity.y);
+        }
+        else if(Input.GetAxisRaw("Horizontal") != 0)
+        {
+            rigidbody2d.velocity = new Vector2(-speed * Time.deltaTime, rigidbody2d.velocity.y);
+        }
+        else
+        {
+            turnMovement(false);
+        }
 
         if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
         {
@@ -38,6 +49,21 @@ public class PlayerMovement : MonoBehaviour
         if(Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius).tag == "Ground")
         {
             jumpsLeft = jumpsMax; 
+        }
+    }
+
+    public void turnMovement(bool canMovement)
+    {
+        if(!hasKnockback)
+        {
+            if(canMovement)
+            {
+
+            }
+            else
+            {
+                rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+            }
         }
     }
 }
