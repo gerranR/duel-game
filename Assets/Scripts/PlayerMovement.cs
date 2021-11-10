@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float groundCheckRadius;
+    public float groundCheckRadius, bulletSpeed, fireRate,raycastDist;
     public float speed, jumpForce, resistance, wallResistance;
     public Rigidbody2D rigidbody2d;
-    private int jumpsLeft, lorRWall;
-    public int jumpsMax;
-    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL;
+    public int jumpsLeft, lorRWall, ammo;
+    public int jumpsMax, maxAmmo;
+    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, gun, bullet;
     public bool hasKnockback, wallJumpCheck;
     public LayerMask groundLayer;
     public PhysicsMaterial2D playerMat;
-    private bool canMove = true;
+    private bool canMove = true, canShoot = true, jumped;
 
     private void Awake()
     {
@@ -23,6 +23,24 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         movement();
+        Combat();
+        GroundCheck();
+    }
+
+    void Combat()
+    {
+        if(Input.GetButtonDown("Fire1") && canShoot)
+        {
+            GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+            bulletInstance.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.forward * bulletSpeed);
+            canShoot = false;
+            StartCoroutine(ShootTimer());
+        }
+    }
+    IEnumerator ShootTimer()
+    {
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
     void movement()
@@ -42,10 +60,11 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
             }
         }
-        if (Input.GetButtonDown("Jump") && jumpsLeft > 0)
+        if (Input.GetButtonDown("Jump") && jumpsLeft != 0 && jumped == false)
         {
             if (wallJumpCheck)
             {
+                jumpsLeft--;
                 TurnMovement(false);
                 if(lorRWall == 0)
                 {
@@ -56,13 +75,16 @@ public class PlayerMovement : MonoBehaviour
                     rigidbody2d.velocity = new Vector2(-5, jumpForce);
                 }
                 StartCoroutine(WallJumpTimer());
-                jumpsLeft -= 1;
+                
                 wallJumpCheck = false;
             }
-            else
+            else 
             {
+                jumped = false;
+                jumpsLeft--;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
-                jumpsLeft -= 1;
+                print(jumpsLeft);
+                StartCoroutine(JumpTimer());
             }
         }
         if (Input.GetButtonUp("Jump") && hasKnockback == false)
@@ -77,15 +99,37 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         TurnMovement(true);
     }
+    IEnumerator JumpTimer()
+    {
+        yield return new WaitForSeconds(0.3f);
+        jumped = false;
+    }
+
+    void GroundCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, raycastDist, groundLayer);
+        Debug.DrawRay(transform.position, -Vector2.up, Color.green, raycastDist);
+        if (hit.transform != null)
+        {
+            if (hit.transform.tag == "Ground" && jumped == false)
+            {
+                wallJumpCheck = false;
+                jumpsLeft = jumpsMax;
+            }
+            if (jumped == true)
+                hit = new RaycastHit2D();
+        }
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius, groundLayer))
-        {
-            wallJumpCheck = false;
-            jumpsLeft = jumpsMax;
-        }
-        else if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, groundLayer))
+        //if (Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius, groundLayer))
+        //{
+        //    wallJumpCheck = false;
+        //    jumpsLeft = jumpsMax;
+        //}
+        if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, groundLayer))
         {
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
@@ -101,10 +145,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.transform.tag == "Wall")
+        if (collision.transform.tag == "Wall")
         {
             if(rigidbody2d.velocity.y <= 0 && Input.GetAxisRaw("Horizontal") != 0)
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Wall")
+        {
+            wallJumpCheck = false;
         }
     }
 
