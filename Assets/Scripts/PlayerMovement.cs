@@ -68,11 +68,11 @@ public class PlayerMovement : MonoBehaviour
                 TurnMovement(false);
                 if(lorRWall == 0)
                 {
-                    rigidbody2d.velocity = new Vector2(5, jumpForce);
+                    rigidbody2d.velocity = new Vector2(2.5f, jumpForce);
                 }
                 else if(lorRWall == 1)
                 {
-                    rigidbody2d.velocity = new Vector2(-5, jumpForce);
+                    rigidbody2d.velocity = new Vector2(-2.5f, jumpForce);
                 }
                 StartCoroutine(WallJumpTimer());
                 
@@ -89,8 +89,16 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetButtonUp("Jump") && hasKnockback == false)
         {
-            if(rigidbody2d.velocity.y >= -1)
+            if (rigidbody2d.velocity.y >= -1)
+            {
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, -1);
+            }
+        }
+
+        if(wallJumpCheck)
+        {
+            if (rigidbody2d.velocity.y <= 0 && Input.GetAxisRaw("Horizontal") != 0)
+                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
         }
     }
 
@@ -108,27 +116,21 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up, raycastDist, groundLayer);
-        Debug.DrawRay(transform.position, -Vector2.up, Color.green, raycastDist);
+        Debug.DrawRay(transform.position, -Vector2.up, Color.green);
         if (hit.transform != null)
         {
             if (hit.transform.tag == "Ground" && jumped == false)
             {
                 wallJumpCheck = false;
                 jumpsLeft = jumpsMax;
-            }
-            if (jumped == true)
                 hit = new RaycastHit2D();
+            }
         }
 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (Physics2D.OverlapCircle(groundCheckObj.transform.position , groundCheckRadius, groundLayer))
-        //{
-        //    wallJumpCheck = false;
-        //    jumpsLeft = jumpsMax;
-        //}
         if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, groundLayer))
         {
             jumpsLeft = jumpsMax;
@@ -143,16 +145,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.transform.tag == "Wall")
-        {
-            if(rigidbody2d.velocity.y <= 0 && Input.GetAxisRaw("Horizontal") != 0)
-                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
-        }
-    }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.tag == "Wall")
         {

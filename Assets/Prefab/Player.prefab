@@ -284,7 +284,7 @@ MonoBehaviour:
   bulletSpeed: 500
   fireRate: 0.2
   raycastDist: 1.1
-  speed: 700
+  speed: 300
   jumpForce: 15
   resistance: 1
   wallResistance: 5
