@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    private bool canShoot = true, reloading;
-    public float fireRate, reloadTime;
-    public GameObject gun, bullet;
+    private bool canShoot = true, reloading, swordUsed;
+    public float fireRate, reloadTime, SwordDur;
+    public GameObject gun, bullet, swordCol;
     public int ammo, maxAmmo;
 
     // Update is called once per frame
@@ -17,6 +17,12 @@ public class PlayerCombat : MonoBehaviour
 
     void Combat()
     {
+        if(Input.GetButtonDown("Fire2") && swordUsed == false)
+        {
+            swordCol.GetComponent<Collider2D>().enabled = true;
+            swordUsed = true;
+            StartCoroutine(SwordTimer());
+        }
         if (Input.GetButtonDown("Fire1") && canShoot & ammo > 0 && reloading == false)
         {
             ammo--;
@@ -43,5 +49,11 @@ public class PlayerCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
+    }
+    IEnumerator SwordTimer()
+    {
+        yield return new WaitForSeconds(fireRate);
+        swordCol.GetComponent<Collider2D>().enabled = false;
+        swordUsed = false;
     }
 }

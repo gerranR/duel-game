@@ -12,4 +12,17 @@ public class Bullet : MonoBehaviour
     {
          rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
     }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.transform.tag =="Sword")
+        {
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.layer == 3 || collision.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
