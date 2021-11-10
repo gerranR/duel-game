@@ -45,14 +45,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(lorRWall == 0)
                 {
-                    rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x + (jumpForce * 5), jumpForce);
+                    rigidbody2d.velocity = new Vector2(50, jumpForce);
                 }
                 else if(lorRWall == 1)
                 {
-                    rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x + (-jumpForce * 5), jumpForce);
+                    rigidbody2d.velocity = new Vector2(-50, jumpForce);
                 }
                 jumpsLeft -= 1;
-                //playerMat.friction = 0;
                 wallJumpCheck = false;
             }
             else
@@ -80,14 +79,22 @@ public class PlayerMovement : MonoBehaviour
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
             lorRWall = 0;
-            //playerMat.friction = wallResistance;
         }
         else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, groundLayer))
         {
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
             lorRWall = 1;
-            //playerMat.friction = wallResistance;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+
+        if(collision.transform.tag == "Wall")
+        {
+            if(rigidbody2d.velocity.y <= 0 && Input.GetAxisRaw("Horizontal") != 0)
+                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
         }
     }
 

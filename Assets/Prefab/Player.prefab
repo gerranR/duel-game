@@ -132,6 +132,7 @@ MonoBehaviour:
   wallCheckObjR: {fileID: 8158659326681326739}
   wallCheckObjL: {fileID: 8158659327073893596}
   hasKnockback: 0
+  wallJumpCheck: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
