@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 8158659325111626687}
   - component: {fileID: 8158659325111626672}
   - component: {fileID: 8158659325111626673}
+  - component: {fileID: 7648513523987580004}
   - component: {fileID: 2243354704031253348}
   m_Layer: 0
   m_Name: Player
@@ -282,23 +283,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheckRadius: 0.3
   bulletSpeed: 500
-  fireRate: 0.2
   raycastDist: 1.1
   speed: 300
   jumpForce: 15
   resistance: 1
   wallResistance: 5
   rigidbody2d: {fileID: 8158659325111626672}
-  jumpsLeft: 0
-  lorRWall: 0
-  ammo: 0
   jumpsMax: 1
   maxAmmo: 0
   groundCheckObj: {fileID: 8158659326616708953}
   wallCheckObjR: {fileID: 8158659326681326739}
   wallCheckObjL: {fileID: 8158659327073893596}
-  gun: {fileID: 2782793807638392246}
-  bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   hasKnockback: 0
   wallJumpCheck: 0
   groundLayer:
@@ -308,6 +303,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerMat: {fileID: 6200000, guid: 53443ca045dc85846be845813668e75f, type: 2}
+--- !u!114 &7648513523987580004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158659325111626674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bcf3f1384069f49becf56781dbfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.5
+  reloadTime: 2
+  gun: {fileID: 2782793807638392246}
+  bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
+  ammo: 3
+  maxAmmo: 5
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float groundCheckRadius, bulletSpeed, fireRate,raycastDist;
+    public float groundCheckRadius, bulletSpeed, raycastDist;
     public float speed, jumpForce, resistance, wallResistance;
     public Rigidbody2D rigidbody2d;
-    public int jumpsLeft, lorRWall, ammo;
+    private int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
-    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, gun, bullet;
+    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL;
     public bool hasKnockback, wallJumpCheck;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
-    private bool canMove = true, canShoot = true, jumped;
+    private bool canMove = true, jumped;
 
     private void Awake()
     {
@@ -23,24 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         movement();
-        Combat();
         GroundCheck();
-    }
-
-    void Combat()
-    {
-        if(Input.GetButtonDown("Fire1") && canShoot)
-        {
-            GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
-            bulletInstance.GetComponent<Rigidbody2D>().AddRelativeForce(Vector3.forward * bulletSpeed);
-            canShoot = false;
-            StartCoroutine(ShootTimer());
-        }
-    }
-    IEnumerator ShootTimer()
-    {
-        yield return new WaitForSeconds(fireRate);
-        canShoot = true;
     }
 
     void movement()

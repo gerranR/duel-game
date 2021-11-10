@@ -1228,6 +1228,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &358212249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2782793807638392246, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+  m_PrefabInstance: {fileID: 8158659325199747415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &543665317
 GameObject:
   m_ObjectHideFlags: 0
@@ -4054,6 +4059,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8158659325111626673, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 358212249}
     - target: {fileID: 8158659325111626674, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
       propertyPath: m_Name
       value: Player
