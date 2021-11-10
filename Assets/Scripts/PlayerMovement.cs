@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, gun, bullet;
     public bool hasKnockback, wallJumpCheck;
-    public LayerMask groundLayer;
+    public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = true, canShoot = true, jumped;
 
@@ -131,13 +131,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, groundLayer))
+        if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, wallLayer))
         {
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
             lorRWall = 0;
         }
-        else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, groundLayer))
+        else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, wallLayer))
         {
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;

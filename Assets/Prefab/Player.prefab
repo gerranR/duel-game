@@ -304,6 +304,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
   playerMat: {fileID: 6200000, guid: 53443ca045dc85846be845813668e75f, type: 2}
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
