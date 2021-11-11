@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     public Rigidbody2D rigidbody2d;
-    public float bulletSpeed;
+    public float bulletSpeed, dmg;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag =="Sword")
+        if(collision.transform.tag == "Player")
+        {
+            collision.GetComponent<PlayerHealth>().DoDmg(dmg);
+            Destroy(gameObject);
+        }
+
+        if (collision.transform.tag =="Sword")
         {
             Destroy(gameObject);
         }

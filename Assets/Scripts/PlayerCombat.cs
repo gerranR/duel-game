@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     private bool canShoot = true, reloading, swordUsed;
-    public float fireRate, reloadTime, SwordDur;
+    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg;
     public GameObject gun, bullet, swordCol;
     public int ammo, maxAmmo;
 
@@ -26,7 +26,8 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && canShoot & ammo > 0 && reloading == false)
         {
             ammo--;
-            Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+            GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+            bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
             canShoot = false;
             StartCoroutine(ShootTimer());
         }
