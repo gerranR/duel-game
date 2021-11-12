@@ -14,7 +14,7 @@ public class GameManeger : MonoBehaviour
     {
         curLvl = levels[Random.Range(0, levels.Length)];
 
-        curLvl.transform.position = playPos.position;
+        Instantiate(curLvl, playPos.position, playPos.rotation);
     }
 
     public void ResetLevel(int playerWin)

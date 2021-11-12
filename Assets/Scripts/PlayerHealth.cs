@@ -10,10 +10,9 @@ public class PlayerHealth : MonoBehaviour
     public Slider hpSlider;
     public GameObject cardScreen;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        cardScreen = FindObjectOfType<GameManeger>().cardScreen;
     }
 
     // Update is called once per frame
