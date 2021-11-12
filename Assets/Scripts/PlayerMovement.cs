@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = true, jumped;
+    private float inputX;
 
     private void Awake()
     {
@@ -26,24 +28,35 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
     }
 
+    public void move(InputAction.CallbackContext context)
+    {
+        inputX = context.ReadValue<Vector2>().x;
+    }
+
     void movement()
     {
         if (canMove)
         {
-            if (Input.GetAxisRaw("Horizontal") > 0)
+            if (inputX != 0)
             {
-                rigidbody2d.velocity = new Vector2((speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
+                rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
             }
-            else if (Input.GetAxisRaw("Horizontal") != 0)
-            {
-                rigidbody2d.velocity = new Vector2((-speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
-            }
-            else if(!hasKnockback)
+            else if (!hasKnockback)
             {
                 rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
             }
         }
-        if (Input.GetButtonDown("Jump") && jumpsLeft != 0 && jumped == false)
+        
+
+        if(wallJumpCheck)
+        {
+            if (rigidbody2d.velocity.y <= 0 && inputX != 0)
+                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
+        }
+    }
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.performed && jumpsLeft != 0 && jumped == false)
         {
             if (wallJumpCheck)
             {
@@ -70,18 +83,12 @@ public class PlayerMovement : MonoBehaviour
                 StartCoroutine(JumpTimer());
             }
         }
-        if (Input.GetButtonUp("Jump") && hasKnockback == false)
+        if (context.canceled && hasKnockback == false)
         {
             if (rigidbody2d.velocity.y >= -1)
             {
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, -1);
             }
-        }
-
-        if(wallJumpCheck)
-        {
-            if (rigidbody2d.velocity.y <= 0 && Input.GetAxisRaw("Horizontal") != 0)
-                rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, rigidbody2d.velocity.y / 5);
         }
     }
 

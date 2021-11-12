@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PointToMouse : MonoBehaviour
 {
     public GameObject player;
+    private Vector2 mousePos;
 
     private void FixedUpdate()
     {
-        Vector3 diffrence = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 diffrence = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
         diffrence.Normalize();
 
         float rotationZ = Mathf.Atan2(diffrence.y, diffrence.x) * Mathf.Rad2Deg;
@@ -26,5 +28,10 @@ public class PointToMouse : MonoBehaviour
         //        transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
         //    }
         //}
+    }
+
+    public void MousePos(InputAction.CallbackContext context)
+    {
+        mousePos = context.ReadValue<Vector2>();
     }
 }

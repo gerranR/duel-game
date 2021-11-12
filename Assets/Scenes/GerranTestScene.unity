@@ -230,6 +230,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 830256187}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777656451}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &21008613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,6 +577,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 830256187}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777656451}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &176623420
 MonoBehaviour:
@@ -1741,6 +1789,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 830256187}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777656451}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &324279118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,7 +2227,7 @@ GameObject:
   - component: {fileID: 543665319}
   - component: {fileID: 543665318}
   - component: {fileID: 543665320}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Square (2)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -3749,6 +3821,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8158659325111626674, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
   m_PrefabInstance: {fileID: 358367166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &777656451 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7648513523987580004, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+  m_PrefabInstance: {fileID: 358367166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777656448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bcf3f1384069f49becf56781dbfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789887896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,6 +3906,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8158659325111626674, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
   m_PrefabInstance: {fileID: 8158659325199747415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &830256187 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7648513523987580004, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+  m_PrefabInstance: {fileID: 8158659325199747415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830256184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2bcf3f1384069f49becf56781dbfa97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &862282763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5041,7 +5135,7 @@ GameObject:
   - component: {fileID: 1268709089}
   - component: {fileID: 1268709088}
   - component: {fileID: 1268709090}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -5835,6 +5929,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 830256187}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777656451}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1612575569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6555,6 +6673,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 830256187}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 777656451}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CanAttack
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2009053733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6683,6 +6825,14 @@ PrefabInstance:
     - target: {fileID: 8158659325111626686, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521412781510009258, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6905626
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521412781510009258, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.7565
       objectReference: {fileID: 0}
     - target: {fileID: 8936637824214051375, guid: 46aa2ccbba1f7f7499c8e0e2e9c26e4d, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
