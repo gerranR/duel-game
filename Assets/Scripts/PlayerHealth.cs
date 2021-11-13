@@ -6,13 +6,23 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health;
+    public float health, maxHealth;
     public Slider hpSlider;
     public GameObject cardScreen;
 
     private void Awake()
     {
         cardScreen = FindObjectOfType<GameManeger>().cardScreen;
+        if (playerInt == 0)
+        {
+            FindObjectOfType<GameManeger>().player1 = gameObject;
+            FindObjectOfType<CardSelect>().player1 = gameObject;
+        }
+        else
+        {
+            FindObjectOfType<GameManeger>().player2 = gameObject;
+            FindObjectOfType<CardSelect>().player2 = gameObject;
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
         health -= dmg;
         if(health <= 0.00001)
         {
+            FindObjectOfType<CardSelect>().playerLost = this.gameObject;
             cardScreen.SetActive(true);
             if (playerInt == 0)
                 FindObjectOfType<GameManeger>().ResetLevel(1);

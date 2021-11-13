@@ -208,12 +208,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 789887899}
         m_TargetAssemblyTypeName: CardSelect, Assembly-CSharp
-        m_MethodName: SelectCard
+        m_MethodName: changeStats
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -499,12 +499,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 789887899}
         m_TargetAssemblyTypeName: CardSelect, Assembly-CSharp
-        m_MethodName: SelectCard
+        m_MethodName: changeStats
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -644,12 +644,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 789887899}
         m_TargetAssemblyTypeName: CardSelect, Assembly-CSharp
-        m_MethodName: SelectCard
+        m_MethodName: changeStats
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -980,9 +980,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082d2fd0ec0b94b4c9417e5feedd24af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardSelected: 0
   player1: {fileID: 0}
   player2: {fileID: 0}
+  playerLost: {fileID: 0}
+  cardRarety1:
+  - {fileID: 11400000, guid: 7823a6119fcc07a49a39917728b71e02, type: 2}
+  - {fileID: 11400000, guid: dcb75fcec4dcd514eb924990f023e9bf, type: 2}
+  - {fileID: 11400000, guid: af764dbfb9cbba942be6ab0fb2bb2931, type: 2}
+  - {fileID: 11400000, guid: 98fed32dacfd3ef4e8bf7473060b732f, type: 2}
+  - {fileID: 11400000, guid: 6776a7d5f31c944439ea4a49314db58b, type: 2}
+  cardRarety2:
+  - {fileID: 11400000, guid: 2110ff20660bd40458ccfc384898e123, type: 2}
+  - {fileID: 11400000, guid: d9de3e63fc1d4aa47bdca76b3d8adc44, type: 2}
+  - {fileID: 11400000, guid: 785f07e0e06e3a4439a36efa6d739d43, type: 2}
+  - {fileID: 11400000, guid: f82cae6e4e33b1443a8276f21a210128, type: 2}
+  - {fileID: 11400000, guid: 80b5370dd17d26e48be17f8c57640fd7, type: 2}
+  cardRarety3:
+  - {fileID: 11400000, guid: 721c2abbe3f42c3498349ba6af58adb1, type: 2}
+  - {fileID: 11400000, guid: da800b5c2d724904795b8f24579a124e, type: 2}
+  - {fileID: 11400000, guid: 43a67d174f2e8cd47983f3d2b8de0db8, type: 2}
+  - {fileID: 11400000, guid: c901a3153d1412c47a47f9d4dd3fdf0d, type: 2}
+  - {fileID: 11400000, guid: 063b3f4dae8ffaf4a9aa26d99d04a898, type: 2}
+  cardButton1: {fileID: 176623419}
+  cardButton2: {fileID: 1612575568}
+  cardButton3: {fileID: 324279117}
+  cardButton4: {fileID: 21008612}
+  cardButton5: {fileID: 2009053732}
 --- !u!1 &914882823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,12 +2090,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 789887899}
         m_TargetAssemblyTypeName: CardSelect, Assembly-CSharp
-        m_MethodName: SelectCard
+        m_MethodName: changeStats
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2482,12 +2505,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 789887899}
         m_TargetAssemblyTypeName: CardSelect, Assembly-CSharp
-        m_MethodName: SelectCard
+        m_MethodName: changeStats
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
