@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BG
+  m_Name: BG2
   m_Shader: {fileID: -6465566751694194690, guid: f2b2020bae2c7314b871a11e1edbe8aa, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -38,5 +38,5 @@ Material:
     m_Floats:
     - Vector1_2005d1e9477d4d769b82a89cf459aeb5: 0.05
     m_Colors:
-    - Color_699a4e1b517c43f683685b64ac5dfe5c: {r: 0.26072443, g: 0.36661652, b: 0.5943396, a: 0}
+    - Color_699a4e1b517c43f683685b64ac5dfe5c: {r: 0.07832467, g: 0, b: 0.2735849, a: 0}
   m_BuildTextureStacks: []
