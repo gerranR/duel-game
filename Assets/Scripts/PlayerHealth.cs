@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
     public float health, maxHealth;
     public Slider hpSlider;
-    public GameObject cardScreen;
+    private GameObject cardScreen, firstButton;
 
     private void Awake()
     {
         cardScreen = FindObjectOfType<GameManeger>().cardScreen;
+        firstButton = FindObjectOfType<GameManeger>().firstButton;
         if (playerInt == 0)
         {
             FindObjectOfType<GameManeger>().player1 = gameObject;
@@ -37,7 +39,9 @@ public class PlayerHealth : MonoBehaviour
         if(health <= 0.00001)
         {
             FindObjectOfType<CardSelect>().playerLost = this.gameObject;
+            FindObjectOfType<CardSelect>().ChangeCards();
             cardScreen.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(firstButton);
             if (playerInt == 0)
                 FindObjectOfType<GameManeger>().ResetLevel(1);
             else
