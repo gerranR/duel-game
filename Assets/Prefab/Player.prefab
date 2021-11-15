@@ -757,6 +757,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bcf3f1384069f49becf56781dbfa97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canShoot: 1
+  reloading: 0
+  swordUsed: 0
+  canAttack: 0
   fireRate: 0.5
   reloadTime: 2
   SwordDur: 0.5
@@ -765,7 +769,7 @@ MonoBehaviour:
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
-  ammo: 3
+  ammo: 5
   maxAmmo: 5
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
@@ -799,7 +803,6 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   hpSlider: {fileID: 2679557470016982729}
-  cardScreen: {fileID: 0}
 --- !u!114 &830256192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -887,26 +890,6 @@ MonoBehaviour:
     m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 79745ea2-cb77-4da8-bdfa-a0214136d61f
-    m_ActionName: UI/Point[/Mouse/position]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 950b007c-9856-417f-ad5a-932e8863ef9a
-    m_ActionName: UI/Click[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f574989a-0add-408b-81b2-ff0824324c8d
-    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e05aa3fc-a384-4eb7-98a1-6736706d873e
-    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 85e995da-ced8-426e-a64c-a245ef4e784b
-    m_ActionName: UI/RightClick[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 8def59b5-ffc1-45e5-861a-f9f3492aa55f
     m_ActionName: UI/TrackedDevicePosition
   - m_PersistentCalls:
@@ -961,6 +944,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 864ce190-4028-43ed-9f7a-106002927663
     m_ActionName: Player/MousePosistion[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8158659325111626673}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: leave
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9d5bb116-05ae-4c7c-ae18-755bf539c1ab
+    m_ActionName: Player/Leave[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

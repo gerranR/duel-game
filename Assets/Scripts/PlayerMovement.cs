@@ -79,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
                 jumped = false;
                 jumpsLeft--;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
-                print(jumpsLeft);
                 StartCoroutine(JumpTimer());
             }
         }
@@ -158,5 +157,11 @@ public class PlayerMovement : MonoBehaviour
                 canMove = canMovement;
             }
         }
+    }
+
+    public void leave(InputAction.CallbackContext context)
+    {
+        FindObjectOfType<PlayerInputManager>().EnableJoining();
+        Destroy(gameObject);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManeger : MonoBehaviour
 {
@@ -55,11 +56,13 @@ public class GameManeger : MonoBehaviour
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player1.GetComponent<PlayerCombat>().CanAttack(true);
+            player1.GetComponent<PlayerCombat>().canShoot = true;
             player1.GetComponent<PlayerMovement>().TurnMovement(true);
             player2.transform.position = spawnPos2.position;
             player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
             player2.GetComponent<PlayerCombat>().ammo = player2.GetComponent<PlayerCombat>().maxAmmo;
             player2.GetComponent<PlayerCombat>().CanAttack(true);
+            player2.GetComponent<PlayerCombat>().canShoot = true;
             player2.GetComponent<PlayerMovement>().TurnMovement(true);
             playerSelectScreen.SetActive(false);
             gameStarted = true;

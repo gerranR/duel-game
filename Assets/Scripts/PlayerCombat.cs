@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    private bool canShoot = false, reloading, swordUsed, canAttack = true;
+    public bool canShoot = true, reloading, swordUsed, canAttack = false;
     public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg;
     public GameObject gun, bullet, swordCol;
     public int ammo, maxAmmo;
