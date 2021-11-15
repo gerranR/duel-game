@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public bool hasKnockback, wallJumpCheck;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
-    private bool canMove = true, jumped;
+    private bool canMove = false, jumped;
     private float inputX;
 
     private void Awake()
