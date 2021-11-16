@@ -33,10 +33,13 @@ public class PointToMouse : MonoBehaviour
         }
         else
         {
-            Vector2 aim = mousePos;
-            aim.Normalize();
-            float direction = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, direction);
+            if (mousePos.sqrMagnitude > 0.1f)
+            {
+                Vector2 aim = mousePos;
+                float heading = Mathf.Atan2(aim.x, aim.y);
+
+                transform.rotation = Quaternion.Euler(0f, 0f, (-heading + 90) * Mathf.Rad2Deg );
+            }
         }
     } 
 
