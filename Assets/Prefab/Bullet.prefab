@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody2d: {fileID: 1474449327593698221}
-  bulletSpeed: 500
+  bulletSpeed: 1000
   dmg: 20

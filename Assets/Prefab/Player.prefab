@@ -726,7 +726,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   bulletSpeed: 500
   raycastDist: 1.1
-  speed: 300
+  speed: 500
   jumpForce: 15
   resistance: 1
   wallResistance: 5
