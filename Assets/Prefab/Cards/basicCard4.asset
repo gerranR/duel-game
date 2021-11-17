@@ -15,8 +15,9 @@ MonoBehaviour:
   cardImage: {fileID: 0}
   fireRate: 0
   maxHP: 0
-  meleeDmg: 0
+  meleeDmg: 20
   rangeDmg: 0
   speed: 0
   meleeRange: 0
   maxAmmo: 0
+  maxJump: 0

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health, maxHealth;
+    public float health, maxHealth, rangeResist, meleeResist;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
 
@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(collision.transform.tag == "Sword")
         {
-            DoDmg(collision.transform.GetComponentInParent<PlayerCombat>().swordDmg);
+            DoDmg(collision.transform.GetComponentInParent<PlayerCombat>().swordDmg - meleeResist);
         }
     }
 
