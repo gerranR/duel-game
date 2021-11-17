@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius, bulletSpeed, raycastDist;
     public float speed, jumpForce, resistance, wallResistance;
     public Rigidbody2D rigidbody2d;
-    public int jumpsLeft, lorRWall;
+    private int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL;
     public bool hasKnockback, wallJumpCheck;

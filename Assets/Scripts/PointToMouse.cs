@@ -10,7 +10,7 @@ public class PointToMouse : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GetComponentInParent<PlayerInput>().currentControlScheme == "Keyboard Mouse")
+        if (GetComponentInParent<PlayerInput>().currentControlScheme == "Keyboard & mouse")
         {
             Vector3 diffrence = Camera.main.ScreenToWorldPoint(mousePos) - transform.position;
             diffrence.Normalize();
