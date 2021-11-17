@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float groundCheckRadius, bulletSpeed, raycastDist;
     public float speed, jumpForce, resistance, wallResistance;
     public Rigidbody2D rigidbody2d;
-    private int jumpsLeft, lorRWall;
+    public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL;
     public bool hasKnockback, wallJumpCheck;
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpsLeft != 0 && jumped == false)
+        if (context.performed && jumpsLeft > 0 && jumped == false)
         {
             if (wallJumpCheck)
             {
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else 
             {
-                jumped = false;
+                jumped = true;
                 jumpsLeft--;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
                 StartCoroutine(JumpTimer());
