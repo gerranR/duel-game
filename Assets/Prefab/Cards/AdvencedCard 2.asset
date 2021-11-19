@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: AdvencedCard 2
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 0}
+  cardImage: {fileID: 3878784665472385860, guid: c8959f53d5181ba42b7398b857d9be1d, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
   rangeDmg: 0
   speed: 0
   meleeRange: 0
+  meleeResistance: 0
+  rangeResistance: 0
   maxAmmo: 0
+  maxJump: 0
+  halfHPDubbelDmg: 0
+  titel: 
+  discription: 

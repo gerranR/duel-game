@@ -727,7 +727,7 @@ MonoBehaviour:
   bulletSpeed: 500
   raycastDist: 1.1
   speed: 500
-  jumpForce: 15
+  jumpForce: 17
   resistance: 1
   wallResistance: 5
   rigidbody2d: {fileID: 8158659325111626672}
@@ -802,6 +802,8 @@ MonoBehaviour:
   playerInt: 0
   health: 100
   maxHealth: 100
+  rangeResist: 0
+  meleeResist: 0
   hpSlider: {fileID: 2679557470016982729}
 --- !u!114 &830256192
 MonoBehaviour:

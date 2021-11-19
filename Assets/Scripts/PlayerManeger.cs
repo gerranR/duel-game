@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -13,6 +14,7 @@ public class PlayerManeger : MonoBehaviour
     private GameObject player1, player2;
     public PlayerInputManager playerInputManager;
     public TextMeshProUGUI player1ReadyText, player2ReadyText, player1JoinText, player2JoinText;
+    public InputSystemUIInputModule multiplayerPlayer1, multiplayerPlayer2;
 
     private void Update()
     {
@@ -47,13 +49,18 @@ public class PlayerManeger : MonoBehaviour
     public void playerJoin(PlayerInput player)
     {
         player.gameObject.GetComponent<PlayerHealth>().playerInt = nextPlayerNum;
+        
         if (player.playerIndex == 0)
         {
+            player.uiInputModule = multiplayerPlayer1;
             player1 = player.gameObject;
         }
         else
+        {
+            player.uiInputModule = multiplayerPlayer2;
             player2 = player.gameObject;
-        if(nextPlayerNum == 0)
+        }
+        if (nextPlayerNum == 0)
         {
             player1JoinText.text = "player 1";
         }
@@ -115,9 +122,5 @@ public class PlayerManeger : MonoBehaviour
     public void FirstButton()
     {
         EventSystem.current.SetSelectedGameObject(firstButton);
-    }
-    
-    public void changePlyerDevice()
-    {
     }
 }

@@ -8,7 +8,7 @@ public class GameManeger : MonoBehaviour
     public int player1Wins, player2Wins;
     public GameObject[] levels;
     private GameObject curLvl, curLvlObj;
-    public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton;
+    public GameObject cardScreen, player1, player2, playerSelectScreen, playerSelectScreen1, playerSelectScreen2, firstButton, winScreen;
     public Transform lvlStorePos, playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
 
@@ -25,11 +25,19 @@ public class GameManeger : MonoBehaviour
             player2Wins++;
         if (playerWin == 1)
             player1Wins++;
-        Destroy(curLvlObj);
-        int newLvl = Random.Range(0, levels.Length);
-        curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
-        resetPlayers();
-        curLvl = levels[newLvl];
+
+        if (player1Wins == 5 || player2Wins == 5)
+        {
+            winScreen.SetActive(true);
+        }
+        else
+        {
+            Destroy(curLvlObj);
+            int newLvl = Random.Range(0, levels.Length);
+            curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
+            resetPlayers();
+            curLvl = levels[newLvl];
+        }
     }
 
     public void resetPlayers()
@@ -65,6 +73,8 @@ public class GameManeger : MonoBehaviour
             player2.GetComponent<PlayerCombat>().canShoot = true;
             player2.GetComponent<PlayerMovement>().TurnMovement(true);
             playerSelectScreen.SetActive(false);
+            playerSelectScreen1.SetActive(false);
+            playerSelectScreen2.SetActive(false);
             gameStarted = true;
         }
     }

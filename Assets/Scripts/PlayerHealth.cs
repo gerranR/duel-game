@@ -31,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         hpSlider.value = health;
+        hpSlider.maxValue = maxHealth;
     }
 
     public void DoDmg(float dmg)

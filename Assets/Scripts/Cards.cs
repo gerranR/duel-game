@@ -9,4 +9,5 @@ public class Cards : ScriptableObject
     public float fireRate, maxHP, meleeDmg, rangeDmg, speed, meleeRange, meleeResistance, rangeResistance;
     public int maxAmmo, maxJump;
     public bool halfHPDubbelDmg;
+    public string titel, discription;
 }
