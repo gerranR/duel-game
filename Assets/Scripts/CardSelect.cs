@@ -14,6 +14,7 @@ public class CardSelect : MonoBehaviour
     public Cards[] cardRarety1, cardRarety2, cardRarety3;
     public Button cardButton1, cardButton2, cardButton3, cardButton4, cardButton5;
     public Cards[] card;
+    public List<Cards> player1Cards, player2Cards;
     public GameObject cardScreen, canvasPlayer1, canvasPlayer2;
 
     public void ChangeCards()
@@ -24,7 +25,7 @@ public class CardSelect : MonoBehaviour
         }
         else
         {
-            eventSystemPlayer2.playerRoot = cardScreen;
+            eventSystemPlayer1.playerRoot = cardScreen;
         }
         for (int i = 0; i < card.Length; i++)
         {
@@ -84,11 +85,11 @@ public class CardSelect : MonoBehaviour
         }
         if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
         {
-            eventSystemPlayer1.playerRoot = canvasPlayer1;
+            player1Cards.Add(card[buttonPressed]);
         }
         else
         {
-            eventSystemPlayer2.playerRoot = canvasPlayer2;
+            player2Cards.Add(card[buttonPressed]);
         }
     }
 }

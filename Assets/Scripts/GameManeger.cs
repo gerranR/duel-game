@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameManeger : MonoBehaviour
 {
+    public float fireRate, maxHP, meleeDmg, rangeDmg, speed, meleeRange, meleeResistance, rangeResistance;
+    public int maxAmmo, maxJump;
     public int player1Wins, player2Wins;
     public GameObject[] levels;
     private GameObject curLvl, curLvlObj;
     public GameObject cardScreen, player1, player2, playerSelectScreen, playerSelectScreen1, playerSelectScreen2, firstButton, winScreen;
     public Transform lvlStorePos, playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
+    public GameObject firstSelectWinScreen;
 
     private void Awake()
     {
@@ -29,6 +34,7 @@ public class GameManeger : MonoBehaviour
         if (player1Wins == 5 || player2Wins == 5)
         {
             winScreen.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(firstSelectWinScreen);
         }
         else
         {
@@ -38,6 +44,40 @@ public class GameManeger : MonoBehaviour
             resetPlayers();
             curLvl = levels[newLvl];
         }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Rematch()
+    {
+        player1Wins = 0;
+        player2Wins = 0;
+        player1.GetComponent<PlayerCombat>().fireRate = fireRate;
+        player1.GetComponent<PlayerCombat>().maxAmmo = maxAmmo;
+        player1.GetComponent<PlayerHealth>().maxHealth = maxHP;
+        player1.GetComponent<PlayerHealth>().meleeResist = 0f;
+        player1.GetComponent<PlayerHealth>().rangeResist = 0f;
+        player1.GetComponent<PlayerCombat>().swordDmg = meleeDmg;
+        player1.GetComponent<PlayerCombat>().bulletDmg = rangeDmg;
+        player1.GetComponent<PlayerMovement>().speed = speed;
+        player1.GetComponent<PlayerMovement>().jumpsMax = maxJump;
+        player2.GetComponent<PlayerCombat>().fireRate = fireRate;
+        player2.GetComponent<PlayerCombat>().maxAmmo = maxAmmo;
+        player2.GetComponent<PlayerHealth>().maxHealth = maxHP;
+        player2.GetComponent<PlayerHealth>().meleeResist = meleeResistance;
+        player2.GetComponent<PlayerHealth>().rangeResist = rangeResistance;
+        player2.GetComponent<PlayerCombat>().swordDmg = meleeDmg;
+        player2.GetComponent<PlayerCombat>().bulletDmg = rangeDmg;
+        player2.GetComponent<PlayerMovement>().speed = speed;
+        player2.GetComponent<PlayerMovement>().jumpsMax = maxJump;
+        Destroy(curLvlObj);
+        int newLvl = Random.Range(0, levels.Length);
+        curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
+        resetPlayers();
+        curLvl = levels[newLvl];
     }
 
     public void resetPlayers()
@@ -58,7 +98,7 @@ public class GameManeger : MonoBehaviour
 
     public void startGame()
     {
-        if (!gameStarted)
+        if (!gameStarted && player2 != null)
         {
             player1.transform.position = spawnPos1.position;
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;

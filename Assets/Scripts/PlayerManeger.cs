@@ -14,7 +14,8 @@ public class PlayerManeger : MonoBehaviour
     private GameObject player1, player2;
     public PlayerInputManager playerInputManager;
     public TextMeshProUGUI player1ReadyText, player2ReadyText, player1JoinText, player2JoinText;
-    public InputSystemUIInputModule multiplayerPlayer1, multiplayerPlayer2;
+    public InputSystemUIInputModule multiplayerPlayer1;
+    public InputActionAsset inputActionPlayer1, inputActionPlayer2;
 
     private void Update()
     {
@@ -53,11 +54,14 @@ public class PlayerManeger : MonoBehaviour
         if (player.playerIndex == 0)
         {
             player.uiInputModule = multiplayerPlayer1;
+            multiplayerPlayer1.GetComponent<InputSystemUIInputModule>().actionsAsset = player.actions;
             player1 = player.gameObject;
         }
         else
         {
-            player.uiInputModule = multiplayerPlayer2;
+            player.uiInputModule = multiplayerPlayer1;
+            multiplayerPlayer1.GetComponent<InputSystemUIInputModule>().actionsAsset = player.actions;
+
             player2 = player.gameObject;
         }
         if (nextPlayerNum == 0)
