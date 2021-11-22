@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class GameManeger : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManeger : MonoBehaviour
     public Transform lvlStorePos, playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
     public GameObject firstSelectWinScreen;
+    public TextMeshProUGUI cardChooseText, winScreentext;
 
     private void Awake()
     {
@@ -27,14 +29,25 @@ public class GameManeger : MonoBehaviour
     public void ResetLevel(int playerWin)
     {
         if (playerWin == 0)
-            player2Wins++;
-        if (playerWin == 1)
+        {
             player1Wins++;
-
+            cardChooseText.text = "player 1 wins ";
+        }
+        if (playerWin == 1)
+        {
+            player2Wins++;
+            cardChooseText.text = "player 2 wins ";
+        }
         if (player1Wins == 5 || player2Wins == 5)
         {
             winScreen.SetActive(true);
             EventSystem.current.SetSelectedGameObject(firstSelectWinScreen);
+            if (player1Wins == 5)
+            {
+                winScreentext.text = "player 1 Won";
+            }
+            else
+                winScreentext.text = "player 2 won";
         }
         else
         {
@@ -78,6 +91,7 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
+        cardScreen.SetActive(false);
     }
 
     public void resetPlayers()
