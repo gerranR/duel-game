@@ -13,9 +13,7 @@ public class PlayerManeger : MonoBehaviour
     public GameObject firstButton;
     private GameObject player1, player2;
     public PlayerInputManager playerInputManager;
-    public TextMeshProUGUI player1ReadyText, player2ReadyText, player1JoinText, player2JoinText;
-    public InputSystemUIInputModule multiplayerPlayer1;
-    public InputActionAsset inputActionPlayer1, inputActionPlayer2;
+    public TextMeshProUGUI player1ReadyText, player2ReadyText;
 
     private void Update()
     {
@@ -37,14 +35,6 @@ public class PlayerManeger : MonoBehaviour
     public void playerleave(PlayerInput player)
     {
         nextPlayerNum--;
-        if (nextPlayerNum == 0)
-        {
-            player1JoinText.text = "empty";
-        }
-        else
-        {
-            player2JoinText.text = "empty";
-        }
         playerCountCheck();
     }
     public void playerJoin(PlayerInput player)
@@ -53,24 +43,11 @@ public class PlayerManeger : MonoBehaviour
         
         if (player.playerIndex == 0)
         {
-            player.uiInputModule = multiplayerPlayer1;
-            multiplayerPlayer1.GetComponent<InputSystemUIInputModule>().actionsAsset = player.actions;
             player1 = player.gameObject;
         }
         else
         {
-            player.uiInputModule = multiplayerPlayer1;
-            multiplayerPlayer1.GetComponent<InputSystemUIInputModule>().actionsAsset = player.actions;
-
             player2 = player.gameObject;
-        }
-        if (nextPlayerNum == 0)
-        {
-            player1JoinText.text = "player 1";
-        }
-        else
-        {
-            player2JoinText.text = "player 2";
         }
         playerCountCheck();
         nextPlayerNum++;

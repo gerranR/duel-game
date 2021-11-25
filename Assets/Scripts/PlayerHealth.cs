@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
 
 public class PlayerHealth : MonoBehaviour
@@ -10,6 +12,9 @@ public class PlayerHealth : MonoBehaviour
     public float health, maxHealth, rangeResist, meleeResist;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
+    public bool canTakeDmg = true;
+    public bool spawnedCard;
+    public GameObject CardPanelPrefab;
 
     private void Awake()
     {
@@ -36,17 +41,35 @@ public class PlayerHealth : MonoBehaviour
 
     public void DoDmg(float dmg)
     {
-        health -= dmg;
-        if(health <= 0.00001)
+        if (canTakeDmg)
         {
-            FindObjectOfType<CardSelect>().playerLost = this.gameObject;
-            FindObjectOfType<CardSelect>().ChangeCards();
-            cardScreen.SetActive(true);
-            EventSystem.current.SetSelectedGameObject(firstButton);
-            if (playerInt == 0)
-                FindObjectOfType<GameManeger>().ResetLevel(1);
-            else
-                FindObjectOfType<GameManeger>().ResetLevel(0);
+            health -= dmg;
+            if (health <= 0.00001)
+            {
+                if(GetComponent<PlayerInput>().playerIndex == 0)
+                {
+                    FindObjectOfType<GameManeger>().ResetLevel  (0);
+                }
+                else
+                { 
+                    FindObjectOfType<GameManeger>().ResetLevel(1);
+                }
+
+                if (GameObject.Find("WinScreen") == null)
+                {
+                    var rootMenu = GameObject.Find("CardPanel");
+                    if (rootMenu != null && spawnedCard == false)
+                    {
+                        rootMenu.SetActive(true);
+                        var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
+                        this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+
+                        FindObjectOfType<CardSelect>().playerLost = this.gameObject;
+                        FindObjectOfType<CardSelect>().ChangeCards();
+                        spawnedCard = true;
+                    }
+                }
+            }
         }
     }
 
@@ -63,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(collision.transform.tag == "WorldBorder")
         {
-            DoDmg(100);
+            DoDmg(maxHealth);
         }
     }
 }

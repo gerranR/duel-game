@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
@@ -13,11 +15,12 @@ public class GameManeger : MonoBehaviour
     public int player1Wins, player2Wins;
     public GameObject[] levels;
     private GameObject curLvl, curLvlObj;
-    public GameObject cardScreen, player1, player2, playerSelectScreen, playerSelectScreen1, playerSelectScreen2, firstButton, winScreen;
-    public Transform lvlStorePos, playPos, spawnPos1, spawnPos2;
+    public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton, winScreen;
+    public Transform playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
     public GameObject firstSelectWinScreen;
-    public TextMeshProUGUI cardChooseText, winScreentext;
+    public TextMeshProUGUI winScreentext, roundWinText;
+    public InputSystemUIInputModule baseEventSystem1, baseEventSystem2;
 
     private void Awake()
     {
@@ -31,23 +34,25 @@ public class GameManeger : MonoBehaviour
         if (playerWin == 0)
         {
             player1Wins++;
-            cardChooseText.text = "player 1 wins ";
+            roundWinText.text = "player 1 wins";
         }
         if (playerWin == 1)
         {
             player2Wins++;
-            cardChooseText.text = "player 2 wins ";
+            roundWinText.text = "player 2 wins";
         }
         if (player1Wins == 5 || player2Wins == 5)
         {
             winScreen.SetActive(true);
+            player1.GetComponent<PlayerInput>().uiInputModule = baseEventSystem1;
+            player2.GetComponent<PlayerInput>().uiInputModule = baseEventSystem2;
             EventSystem.current.SetSelectedGameObject(firstSelectWinScreen);
             if (player1Wins == 5)
             {
-                winScreentext.text = "player 1 Won";
+                winScreentext.text = "player 2 Won";
             }
             else
-                winScreentext.text = "player 2 won";
+                winScreentext.text = "player 1 won";
         }
         else
         {
@@ -91,7 +96,6 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
-        cardScreen.SetActive(false);
     }
 
     public void resetPlayers()
@@ -100,11 +104,13 @@ public class GameManeger : MonoBehaviour
         player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
         player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
         player1.GetComponent<PlayerCombat>().CanAttack(false);
+        player1.GetComponent<PlayerHealth>().canTakeDmg = false;
         player1.GetComponent<PlayerMovement>().TurnMovement(false);
         player2.transform.position = spawnPos2.position;
         player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
         player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
         player2.GetComponent<PlayerCombat>().CanAttack(false);
+        player1.GetComponent<PlayerHealth>().canTakeDmg = false;
         player2.GetComponent<PlayerMovement>().TurnMovement(false);
 
 
@@ -126,9 +132,13 @@ public class GameManeger : MonoBehaviour
             player2.GetComponent<PlayerCombat>().CanAttack(true);
             player2.GetComponent<PlayerCombat>().canShoot = true;
             player2.GetComponent<PlayerMovement>().TurnMovement(true);
+            GameObject[] playerJoinArray = GameObject.FindGameObjectsWithTag("PlayerJoin");
+            for (int i = 0; i < playerJoinArray.Length; i++)
+            {
+                Destroy(playerJoinArray[i]);
+            }
+            
             playerSelectScreen.SetActive(false);
-            playerSelectScreen1.SetActive(false);
-            playerSelectScreen2.SetActive(false);
             gameStarted = true;
         }
     }

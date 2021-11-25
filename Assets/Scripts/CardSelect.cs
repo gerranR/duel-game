@@ -10,23 +10,12 @@ public class CardSelect : MonoBehaviour
 {
     public GameObject player1, player2, playerLost, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5;
     public TextMeshProUGUI titel1, titel2, titel3, titel4, titel5, discription1, discription2, discription3, discription4, discription5;
-    public MultiplayerEventSystem eventSystemPlayer1, eventSystemPlayer2;
     public Cards[] cardRarety1, cardRarety2, cardRarety3;
-    public Button cardButton1, cardButton2, cardButton3, cardButton4, cardButton5;
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
-    public GameObject cardScreen, canvasPlayer1, canvasPlayer2;
 
     public void ChangeCards()
     {
-        if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
-        {
-            eventSystemPlayer1.playerRoot = cardScreen;
-        }
-        else
-        {
-            eventSystemPlayer1.playerRoot = cardScreen;
-        }
         for (int i = 0; i < card.Length; i++)
         {
             float r = Random.Range(0, 10);
@@ -86,10 +75,14 @@ public class CardSelect : MonoBehaviour
         if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
         {
             player1Cards.Add(card[buttonPressed]);
+            player1.GetComponent<PlayerHealth>().canTakeDmg = true;
         }
         else
         {
             player2Cards.Add(card[buttonPressed]);
+            player2.GetComponent<PlayerHealth>().canTakeDmg = true;
         }
+        playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
+        Destroy(FindObjectOfType<CardButtonAssign>().gameObject);
     }
 }

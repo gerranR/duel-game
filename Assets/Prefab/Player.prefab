@@ -614,6 +614,7 @@ GameObject:
   - component: {fileID: 109174189691401331}
   - component: {fileID: 830256192}
   - component: {fileID: 1769898636578601178}
+  - component: {fileID: 5512264947852816827}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -807,6 +808,8 @@ MonoBehaviour:
   rangeResist: 0
   meleeResist: 0
   hpSlider: {fileID: 2679557470016982729}
+  canTakeDmg: 1
+  CardPanelPrefab: {fileID: 7917358812272968815, guid: acbdd891521543943a36bd76cc7b59fb, type: 3}
 --- !u!114 &830256192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,6 +1011,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5512264947852816827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8158659325111626674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0805ef59434f240a674dd2c333badb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerJoinPrefab: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+  input: {fileID: 830256192}
 --- !u!1 &8158659326616708953
 GameObject:
   m_ObjectHideFlags: 0
