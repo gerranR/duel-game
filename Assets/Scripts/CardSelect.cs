@@ -13,6 +13,7 @@ public class CardSelect : MonoBehaviour
     public Cards[] cardRarety1, cardRarety2, cardRarety3;
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
+    private bool canPress = true;
 
     public void ChangeCards()
     {
@@ -33,6 +34,7 @@ public class CardSelect : MonoBehaviour
                 card[i] = cardRarety1[Random.Range(0, cardRarety1.Length)];
             }
         }
+
         Instantiate(card[0].cardImage, imagePos1.transform.position, imagePos1.transform.rotation, imagePos1.transform);
         Instantiate(card[1].cardImage, imagePos2.transform.position, imagePos2.transform.rotation, imagePos2.transform);
         Instantiate(card[2].cardImage, imagePos3.transform.position, imagePos3.transform.rotation, imagePos3.transform);
@@ -52,37 +54,48 @@ public class CardSelect : MonoBehaviour
     }
 
     public void changeStats(int buttonPressed)
-    { 
-        player1.GetComponent<PlayerCombat>().CanAttack(true);
-        player2.GetComponent<PlayerCombat>().CanAttack(true);
-        playerLost.GetComponent<PlayerCombat>().fireRate += card[buttonPressed].fireRate;
-        playerLost.GetComponent<PlayerCombat>().maxAmmo += card[buttonPressed].maxAmmo; 
-        playerLost.GetComponent<PlayerHealth>().maxHealth += card[buttonPressed].maxHP; 
-        playerLost.GetComponent<PlayerHealth>().meleeResist += card[buttonPressed].meleeResistance; 
-        playerLost.GetComponent<PlayerHealth>().rangeResist += card[buttonPressed].rangeResistance; 
-        playerLost.GetComponent<PlayerCombat>().swordDmg += card[buttonPressed].meleeDmg; 
-        playerLost.GetComponent<PlayerCombat>().bulletDmg += card[buttonPressed].rangeDmg; 
-        playerLost.GetComponent<PlayerMovement>().speed += card[buttonPressed].speed;
-        playerLost.GetComponent<PlayerMovement>().jumpsMax += card[buttonPressed].maxJump;
-        GetComponent<GameManeger>().gameStarted = false;
-        GetComponent<GameManeger>().startGame();
-        if(card[buttonPressed].halfHPDubbelDmg)
+    {
+        if (canPress)
         {
-            playerLost.GetComponent<PlayerHealth>().maxHealth = playerLost.GetComponent<PlayerHealth>().maxHealth / 2;
-            playerLost.GetComponent<PlayerCombat>().swordDmg += playerLost.GetComponent<PlayerCombat>().swordDmg;
-            playerLost.GetComponent<PlayerCombat>().bulletDmg += playerLost.GetComponent<PlayerCombat>().bulletDmg;
+            player1.GetComponent<PlayerCombat>().CanAttack(true);
+            player2.GetComponent<PlayerCombat>().CanAttack(true);
+            playerLost.GetComponent<PlayerCombat>().fireRate += card[buttonPressed].fireRate;
+            playerLost.GetComponent<PlayerCombat>().maxAmmo += card[buttonPressed].maxAmmo;
+            playerLost.GetComponent<PlayerHealth>().maxHealth += card[buttonPressed].maxHP;
+            playerLost.GetComponent<PlayerHealth>().meleeResist += card[buttonPressed].meleeResistance;
+            playerLost.GetComponent<PlayerHealth>().rangeResist += card[buttonPressed].rangeResistance;
+            playerLost.GetComponent<PlayerCombat>().swordDmg += card[buttonPressed].meleeDmg;
+            playerLost.GetComponent<PlayerCombat>().bulletDmg += card[buttonPressed].rangeDmg;
+            playerLost.GetComponent<PlayerMovement>().speed += card[buttonPressed].speed;
+            playerLost.GetComponent<PlayerMovement>().jumpsMax += card[buttonPressed].maxJump;
+            GetComponent<GameManeger>().gameStarted = false;
+            GetComponent<GameManeger>().startGame();
+            if (card[buttonPressed].halfHPDubbelDmg)
+            {
+                playerLost.GetComponent<PlayerHealth>().maxHealth = playerLost.GetComponent<PlayerHealth>().maxHealth / 2;
+                playerLost.GetComponent<PlayerCombat>().swordDmg += playerLost.GetComponent<PlayerCombat>().swordDmg;
+                playerLost.GetComponent<PlayerCombat>().bulletDmg += playerLost.GetComponent<PlayerCombat>().bulletDmg;
+            }
+            if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
+            {
+                player1Cards.Add(card[buttonPressed]);
+                player1.GetComponent<PlayerHealth>().canTakeDmg = true;
+            }
+            else
+            {
+                player2Cards.Add(card[buttonPressed]);
+                player2.GetComponent<PlayerHealth>().canTakeDmg = true;
+            }
+            playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
+
+            canPress = false;
+            Invoke("buttonDelay", 0.1f);
         }
-        if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
-        {
-            player1Cards.Add(card[buttonPressed]);
-            player1.GetComponent<PlayerHealth>().canTakeDmg = true;
-        }
-        else
-        {
-            player2Cards.Add(card[buttonPressed]);
-            player2.GetComponent<PlayerHealth>().canTakeDmg = true;
-        }
-        playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
+    }
+
+    private void buttonDelay()
+    {
         Destroy(FindObjectOfType<CardButtonAssign>().gameObject);
+        canPress = true;
     }
 }

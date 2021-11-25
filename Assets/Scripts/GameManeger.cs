@@ -96,6 +96,12 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
+        Invoke("winScreenActive", 0.1f);
+    }
+
+    private void winScreenActive()
+    {
+        winScreen.SetActive(false);
     }
 
     public void resetPlayers()

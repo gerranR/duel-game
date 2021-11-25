@@ -63,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
                         rootMenu.SetActive(true);
                         var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
                         this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
-
+                        EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
                         FindObjectOfType<CardSelect>().playerLost = this.gameObject;
                         FindObjectOfType<CardSelect>().ChangeCards();
                         spawnedCard = true;
