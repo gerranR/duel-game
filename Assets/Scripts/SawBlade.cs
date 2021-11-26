@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SawBlade : MonoBehaviour
 {
+    public float speed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,6 @@ public class SawBlade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, 20);
+        transform.Rotate(0, 0, speed);
     }
 }
