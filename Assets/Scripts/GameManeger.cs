@@ -14,7 +14,7 @@ public class GameManeger : MonoBehaviour
     public int maxAmmo, maxJump;
     public int player1Wins, player2Wins;
     public GameObject[] levels;
-    private GameObject curLvl, curLvlObj;
+    private GameObject curLvl, curLvlObj, menu;
     public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton, winScreen;
     public Transform playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
@@ -34,25 +34,32 @@ public class GameManeger : MonoBehaviour
         if (playerWin == 0)
         {
             player1Wins++;
-            roundWinText.text = "player 1 wins";
         }
         if (playerWin == 1)
         {
             player2Wins++;
-            roundWinText.text = "player 2 wins";
         }
         if (player1Wins == 5 || player2Wins == 5)
         {
-            winScreen.SetActive(true);
-            player1.GetComponent<PlayerInput>().uiInputModule = baseEventSystem1;
-            player2.GetComponent<PlayerInput>().uiInputModule = baseEventSystem2;
-            EventSystem.current.SetSelectedGameObject(firstSelectWinScreen);
-            if (player1Wins == 5)
+            var rootMenu = GameObject.Find("WinPanel");
+            if (rootMenu != null)
             {
-                winScreentext.text = "player 2 Won";
+                player1.GetComponent<PlayerHealth>().someoneWon = true;
+                player2.GetComponent<PlayerHealth>().someoneWon = true;
+                rootMenu.SetActive(true);
+                menu = Instantiate(winScreen, rootMenu.transform);
+                player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+                EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
+                print(menu.transform.Find("Rematch").name   );
+                menu.transform.Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
+                menu.transform.Find("MainMenu").GetComponent<Button>().onClick.AddListener(delegate { this.MainMenu(); });
             }
-            else
-                winScreentext.text = "player 1 won";
+            //if (player1Wins == 5)
+            //{
+            //    winScreentext.text = "player 2 Won";
+            //}
+            //else
+            //    winScreentext.text = "player 1 won";
         }
         else
         {
@@ -96,12 +103,20 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
+        player1.GetComponent<PlayerMovement>().TurnMovement(true);
+        player2.GetComponent<PlayerMovement>().TurnMovement(true);
+        player1.GetComponent<PlayerCombat>().canAttack = true;
+        player2.GetComponent<PlayerCombat>().canAttack = true;
+        player1.GetComponent<PlayerHealth>().someoneWon = false;
+        player2.GetComponent<PlayerHealth>().someoneWon = false;
+        player1.GetComponent<PlayerHealth>().canTakeDmg = true;
+        player2.GetComponent<PlayerHealth>().canTakeDmg = true;
         Invoke("winScreenActive", 0.1f);
     }
 
     private void winScreenActive()
     {
-        winScreen.SetActive(false);
+        Destroy(menu);
     }
 
     public void resetPlayers()

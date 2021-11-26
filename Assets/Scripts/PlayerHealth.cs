@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
-    public bool spawnedCard;
+    public bool spawnedCard, someoneWon;
     public GameObject CardPanelPrefab;
 
     private void Awake()
@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
                     FindObjectOfType<GameManeger>().ResetLevel(1);
                 }
 
-                if (GameObject.Find("WinScreen") == null)
+                if (someoneWon == false)
                 {
                     var rootMenu = GameObject.Find("CardPanel");
                     if (rootMenu != null && spawnedCard == false)

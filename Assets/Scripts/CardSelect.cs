@@ -51,14 +51,18 @@ public class CardSelect : MonoBehaviour
         discription3.text = card[2].discription;
         discription4.text = card[3].discription;
         discription5.text = card[4].discription;
+        if(titel1.text != card[0].titel)
+        {
+            Destroy(GameObject.Find("CardPannel"));
+            playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
+        }
     }
 
     public void changeStats(int buttonPressed)
     {
         if (canPress)
         {
-            player1.GetComponent<PlayerCombat>().CanAttack(true);
-            player2.GetComponent<PlayerCombat>().CanAttack(true);
+
             playerLost.GetComponent<PlayerCombat>().fireRate += card[buttonPressed].fireRate;
             playerLost.GetComponent<PlayerCombat>().maxAmmo += card[buttonPressed].maxAmmo;
             playerLost.GetComponent<PlayerHealth>().maxHealth += card[buttonPressed].maxHP;
@@ -96,6 +100,8 @@ public class CardSelect : MonoBehaviour
     private void buttonDelay()
     {
         Destroy(FindObjectOfType<CardButtonAssign>().gameObject);
+        player1.GetComponent<PlayerCombat>().CanAttack(true);
+        player2.GetComponent<PlayerCombat>().CanAttack(true);
         canPress = true;
     }
 }
