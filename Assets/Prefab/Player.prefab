@@ -748,6 +748,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerMat: {fileID: 6200000, guid: 53443ca045dc85846be845813668e75f, type: 2}
+  playerAnimator: {fileID: 1769898636578601178}
 --- !u!114 &7648513523987580004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +810,12 @@ MonoBehaviour:
   meleeResist: 0
   hpSlider: {fileID: 2679557470016982729}
   canTakeDmg: 1
+  spawnedCard: 0
+  someoneWon: 0
   CardPanelPrefab: {fileID: 7917358812272968815, guid: acbdd891521543943a36bd76cc7b59fb, type: 3}
+  knockbackForce: 0
+  knockbackCount: 0
+  knockBackLenght: 0
 --- !u!114 &830256192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,7 +1008,7 @@ Animator:
   m_GameObject: {fileID: 8158659325111626674}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 275712c062b1c8d4db4c7720bc17f5a4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 29e982e13e027694c97a9b5c453065a5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

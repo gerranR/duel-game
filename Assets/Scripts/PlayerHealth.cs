@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public bool canTakeDmg = true;
     public bool spawnedCard, someoneWon;
     public GameObject CardPanelPrefab;
+    public float knockbackForce, knockbackCount, knockBackLenght;
 
     private void Awake()
     {
@@ -82,11 +83,21 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Knockback(GameObject other, float knockbackForce)
+    {
+        //Vector2 direction = other.transform.up - transform.position;
+        //print(other.transform.up);
+        //print(direction);
+        //GetComponent<Rigidbody2D>().AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        //print(other.GetComponent<Rigidbody2D>().velocity * knockbackForce);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.transform.tag == "WorldBorder")
         {
             DoDmg(maxHealth);
+            //Knockback(collision.gameObject, 30000);
         }
     }
 }

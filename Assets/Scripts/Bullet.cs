@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
         if(collision.transform.tag == "Player")
         {
             collision.GetComponent<PlayerHealth>().DoDmg(dmg - collision.GetComponent<PlayerHealth>().rangeResist);
+            collision.GetComponent<PlayerHealth>().Knockback(this.gameObject, 10);
             Destroy(gameObject);
         }
 

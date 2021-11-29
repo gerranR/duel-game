@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public PhysicsMaterial2D playerMat;
     private bool canMove = false, jumped;
     private float inputX;
+
+    public Animator playerAnimator;
 
     private void Awake()
     {
@@ -40,10 +43,12 @@ public class PlayerMovement : MonoBehaviour
             if (inputX != 0)
             {
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
+                playerAnimator.SetFloat("Speed", rigidbody2d.velocity.x);
             }
             else if (!hasKnockback)
             {
                 rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+                playerAnimator.SetFloat("Speed", 0);
             }
         }
         
@@ -79,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
                 jumped = true;
                 jumpsLeft--;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
+                playerAnimator.SetBool("Jump", true);
+                playerAnimator.SetBool("Grounded", false);
                 StartCoroutine(JumpTimer());
             }
         }
@@ -100,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         jumped = false;
+        playerAnimator.SetBool("Jump", false);
     }
 
     void GroundCheck()
@@ -110,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.transform.tag == "Ground" && jumped == false)
             {
+                playerAnimator.SetBool("Grounded", true);
                 wallJumpCheck = false;
                 jumpsLeft = jumpsMax;
                 hit = new RaycastHit2D();
