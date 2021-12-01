@@ -9,7 +9,7 @@ using UnityEngine.EventSystems;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health, maxHealth, rangeResist, meleeResist;
+    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
@@ -92,6 +92,31 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(NoKnockback());
     }
 
+    public void BorderKnockback(float knockbackForce, int borderNum)
+    {
+        if(borderNum == 1)
+        {
+            this.GetComponent<PlayerMovement>().hasKnockback = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + knockbackForce, GetComponent<Rigidbody2D>().velocity.y);
+            StartCoroutine(NoKnockback());
+        }        if(borderNum == 0)
+        {
+            this.GetComponent<PlayerMovement>().hasKnockback = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + -knockbackForce, GetComponent<Rigidbody2D>().velocity.y);
+            StartCoroutine(NoKnockback());
+        }        if(borderNum == 3)
+        {
+            this.GetComponent<PlayerMovement>().hasKnockback = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y + knockbackForce);
+            StartCoroutine(NoKnockback());
+        }        if(borderNum == 2)
+        {
+            this.GetComponent<PlayerMovement>().hasKnockback = true;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y+ -knockbackForce);
+            StartCoroutine(NoKnockback());
+        }
+    }
+
 
     IEnumerator NoKnockback()
     {
@@ -101,11 +126,23 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        contactPoints = collision.contacts;
-        if(collision.transform.tag == "WorldBorder")
+        if (collision.gameObject.tag == "WorldBorderRight")
         {
             DoDmg(50);
-            Knockback(collision.gameObject, 15);
+            BorderKnockback(borderKnockbackForce, 0);
+        }        if (collision.gameObject.tag == "WorldBorderLeft")
+        {
+            DoDmg(50);
+            BorderKnockback(borderKnockbackForce, 1);
+        }        if (collision.gameObject.tag == "WorldBorderUp")
+        {
+            DoDmg(50);
+            BorderKnockback(borderKnockbackForce, 2);
+        }        if (collision.gameObject.tag == "WorldBorderDown")
+        {
+            DoDmg(50);
+            BorderKnockback(borderKnockbackForce, 3);
         }
+
     }
 }

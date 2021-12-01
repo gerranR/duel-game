@@ -7,8 +7,11 @@ TagManager:
   - Ground
   - Wall
   - Sword
-  - WorldBorder
   - PlayerJoin
+  - WorldBorderRight
+  - WorldBorderLeft
+  - WorldBorderUp
+  - WorldBorderDown
   layers:
   - Default
   - TransparentFX

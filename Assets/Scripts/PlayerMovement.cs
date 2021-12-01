@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     void movement()
     {
 
-        if (canMove)
+        if (canMove && !hasKnockback)
         {
             if (inputX != 0)
             {
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                     GetComponent<SpriteRenderer>().flipX = true;
                 }
             }
-            else if (!hasKnockback)
+            else
             {
                 rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
                 playerAnimator.SetFloat("Speed", 0);

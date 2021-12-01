@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 914882828}
   m_Layer: 0
   m_Name: WorldBorder
-  m_TagString: WorldBorder
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 1180540008}
   m_Layer: 0
   m_Name: Right
-  m_TagString: WorldBorder
+  m_TagString: WorldBorderRight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1392,7 +1392,7 @@ GameObject:
   - component: {fileID: 1363885262}
   m_Layer: 0
   m_Name: Top
-  m_TagString: WorldBorder
+  m_TagString: WorldBorderUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1449,7 +1449,7 @@ GameObject:
   - component: {fileID: 1415868237}
   m_Layer: 0
   m_Name: Left
-  m_TagString: WorldBorder
+  m_TagString: WorldBorderLeft
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2014,7 +2014,7 @@ GameObject:
   - component: {fileID: 2014991962}
   m_Layer: 0
   m_Name: Bottem
-  m_TagString: WorldBorder
+  m_TagString: WorldBorderDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
