@@ -23,6 +23,12 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(collision.gameObject.tag == "BreakableObj")
+        {
+            collision.gameObject.GetComponent<KnockbackObj>().GetKncokback(this.gameObject, knockbackForce);
+        }
+
+
         if (collision.transform.tag =="Sword")
         {
             Destroy(gameObject);

@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -Vector2.up, Color.green);
         if (hit.transform != null)
         {
-            if (hit.transform.tag == "Ground" && jumped == false)
+            if (hit.transform.tag == "Ground" || hit.transform.tag == "BreakableObj" && jumped == false)
             {
                 playerAnimator.SetBool("Grounded", true);
                 wallJumpCheck = false;

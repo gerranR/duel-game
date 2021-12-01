@@ -13,6 +13,7 @@ TagManager:
   - WorldBorderUp
   - WorldBorderDown
   - Saw
+  - BreakableObj
   layers:
   - Default
   - TransparentFX
