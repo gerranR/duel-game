@@ -24,5 +24,5 @@ MonoBehaviour:
   maxAmmo: 0
   maxJump: 0
   halfHPDubbelDmg: 0
-  titel: range resistance
+  titel: Resist The Bullets
   discription: +10 range resistance
