@@ -137,3 +137,4 @@ MonoBehaviour:
   rigidbody2d: {fileID: 1474449327593698221}
   bulletSpeed: 1000
   dmg: 20
+  knockbackForce: 25

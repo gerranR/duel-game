@@ -19,13 +19,13 @@ public class PointToMouse : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
 
-            //if(rotationZ < -90 || rotationZ > 90)
+            //if (rotationZ < -90 || rotationZ > 90)
             //{
-            //    if(player.transform.eulerAngles.y == 0)
+            //    if (player.transform.eulerAngles.y == 0)
             //    {
             //        transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
             //    }
-            //    else if(player.transform.eulerAngles.y == 180)
+            //    else if (player.transform.eulerAngles.y == 180)
             //    {
             //        transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
             //    }
@@ -38,9 +38,26 @@ public class PointToMouse : MonoBehaviour
                 Vector2 aim = mousePos;
                 float heading = Mathf.Atan2(aim.x, aim.y);
 
-                transform.rotation = Quaternion.Euler(0f, 0f, (-heading + 90) * Mathf.Rad2Deg );
+                transform.rotation = Quaternion.Euler(0f, 0f, (-heading + 90) * Mathf.Rad2Deg);
             }
         }
+
+        //if (transform.rotation.z < -90 || transform.rotation.z > 90)
+        //{
+
+        //    if (player.transform.eulerAngles.y == 0)
+        //    {
+        //        transform.localRotation = Quaternion.Euler(180, 0, -transform.localRotation.z);
+        //    }
+        //}
+        //else
+        //{
+
+        //    if (player.transform.eulerAngles.y == 180)
+        //    {
+        //        transform.localRotation = Quaternion.Euler(180, 180, -transform.localRotation.z);
+        //    }
+        //}
     } 
 
     public void MousePos(InputAction.CallbackContext context)

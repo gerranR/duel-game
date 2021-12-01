@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     private int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
-    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL;
+    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm;
     public bool hasKnockback, wallJumpCheck;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
@@ -38,12 +38,22 @@ public class PlayerMovement : MonoBehaviour
 
     void movement()
     {
+
         if (canMove)
         {
             if (inputX != 0)
             {
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
                 playerAnimator.SetFloat("Speed", rigidbody2d.velocity.x);
+
+                if(inputX > 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if(inputX < 0)
+                {
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
             else if (!hasKnockback)
             {

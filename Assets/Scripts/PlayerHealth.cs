@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public bool spawnedCard, someoneWon;
     public GameObject CardPanelPrefab;
     public float knockbackForce, knockbackCount, knockBackLenght;
+    ContactPoint2D[] contactPoints; 
 
     private void Awake()
     {
@@ -85,19 +86,26 @@ public class PlayerHealth : MonoBehaviour
 
     public void Knockback(GameObject other, float knockbackForce)
     {
-        //Vector2 direction = other.transform.up - transform.position;
-        //print(other.transform.up);
-        //print(direction);
-        //GetComponent<Rigidbody2D>().AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-        //print(other.GetComponent<Rigidbody2D>().velocity * knockbackForce);
+        this.GetComponent<PlayerMovement>().hasKnockback = true;
+        Vector2 direction = other.transform.position - transform.position;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + - direction.x * knockbackForce, GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
+        StartCoroutine(NoKnockback());
+    }
+
+
+    IEnumerator NoKnockback()
+    {
+        yield return new WaitForSeconds(.3f);
+        this.GetComponent<PlayerMovement>().hasKnockback = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        contactPoints = collision.contacts;
         if(collision.transform.tag == "WorldBorder")
         {
-            DoDmg(maxHealth);
-            //Knockback(collision.gameObject, 30000);
+            DoDmg(50);
+            Knockback(collision.gameObject, 15);
         }
     }
 }
