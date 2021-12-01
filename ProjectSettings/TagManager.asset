@@ -12,6 +12,7 @@ TagManager:
   - WorldBorderLeft
   - WorldBorderUp
   - WorldBorderDown
+  - Saw
   layers:
   - Default
   - TransparentFX
