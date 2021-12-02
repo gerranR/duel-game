@@ -7,13 +7,18 @@ public class PlayerCombat : MonoBehaviour
 {
     public bool canShoot = true, reloading, swordUsed, canAttack = false;
     public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg;
-    public GameObject gun, bullet, swordCol;
+    public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites;
     public int ammo, maxAmmo;
+
+    public List<GameObject> ammoList = new List<GameObject>();
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (ammoList.Count != maxAmmo)
+        {
+            ammoList.Add(Instantiate(ammoSprites, ammoPanels.transform));
+        }
     }
 
     public void Gun(InputAction.CallbackContext callback)
@@ -23,10 +28,18 @@ public class PlayerCombat : MonoBehaviour
             if (callback.performed && canShoot & ammo > 0 && reloading == false)
             {
                 ammo--;
+                ammoList[ammo].SetActive(false);
                 GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
                 bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
                 canShoot = false;
                 StartCoroutine(ShootTimer());
+            }
+
+            else if(callback.performed && canShoot && ammo == 0 && reloading == false)
+            {
+                print("Reload");
+                reloading = true;
+                StartCoroutine(ReloadTimer());
             }
 
         }
@@ -65,6 +78,10 @@ public class PlayerCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
+        for (int i = 0; i < ammoList.Count; i++)
+        {
+            ammoList[i].SetActive(true);
+        }
         reloading = false;
     }
 

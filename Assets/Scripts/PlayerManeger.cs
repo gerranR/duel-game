@@ -10,7 +10,7 @@ public class PlayerManeger : MonoBehaviour
 {
     public int nextPlayerNum;
     public bool playerFull, player1Ready, player2Ready;
-    public GameObject firstButton;
+    public GameObject firstButton, ammoPlayer1, ammoPlayer2;
     private GameObject player1, player2;
     public PlayerInputManager playerInputManager;
     public TextMeshProUGUI player1ReadyText, player2ReadyText;
@@ -44,10 +44,12 @@ public class PlayerManeger : MonoBehaviour
         if (player.playerIndex == 0)
         {
             player1 = player.gameObject;
+            player1.GetComponent<PlayerCombat>().ammoPanels = ammoPlayer1;
         }
         else
         {
             player2 = player.gameObject;
+            player2.GetComponent<PlayerCombat>().ammoPanels = ammoPlayer2;
         }
         playerCountCheck();
         nextPlayerNum++;

@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
     public bool spawnedCard, someoneWon;
-    public GameObject CardPanelPrefab;
+    public GameObject CardPanelPrefab, deathPart;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints; 
 
@@ -48,34 +48,35 @@ public class PlayerHealth : MonoBehaviour
             health -= dmg;
             if (health <= 0.00001)
             {
-                if(GetComponent<PlayerInput>().playerIndex == 0)
-                {
-                    FindObjectOfType<GameManeger>().ResetLevel  (0);
-                }
-                else
-                { 
-                    FindObjectOfType<GameManeger>().ResetLevel(1);
-                }
+
 
                 if (someoneWon == false)
                 {
-                    var rootMenu = GameObject.Find("CardPanel");
-                    if (rootMenu != null && spawnedCard == false)
-                    {
-                        rootMenu.SetActive(true);
-                        var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
-                        this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
-                        EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
-                        FindObjectOfType<CardSelect>().playerLost = this.gameObject;
-                        FindObjectOfType<CardSelect>().ChangeCards();
-                        spawnedCard = true;
-                    }
+                    GetComponent<SpriteRenderer>().enabled = false;
+                    GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
+
+                    StartCoroutine(deathTime());
                 }
             }
         }
     }
 
-
+    IEnumerator deathTime()
+    {
+        yield return new WaitForSeconds(.5f);
+        var rootMenu = GameObject.Find("CardPanel");
+        if (rootMenu != null && spawnedCard == false)
+        {
+            rootMenu.SetActive(true);
+            var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
+            this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+            EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
+            GetComponent<SpriteRenderer>().enabled = true;
+            FindObjectOfType<CardSelect>().playerLost = this.gameObject;
+            FindObjectOfType<CardSelect>().ChangeCards();
+            spawnedCard = true;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.transform.tag == "Sword")

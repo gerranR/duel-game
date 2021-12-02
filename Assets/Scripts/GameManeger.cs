@@ -121,20 +121,22 @@ public class GameManeger : MonoBehaviour
 
     public void resetPlayers()
     {
-        player1.transform.position = spawnPos1.position;
-        player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
-        player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
-        player1.GetComponent<PlayerCombat>().CanAttack(false);
-        player1.GetComponent<PlayerHealth>().canTakeDmg = false;
-        player1.GetComponent<PlayerMovement>().TurnMovement(false);
-        player2.transform.position = spawnPos2.position;
-        player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
-        player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
-        player2.GetComponent<PlayerCombat>().CanAttack(false);
-        player1.GetComponent<PlayerHealth>().canTakeDmg = false;
-        player2.GetComponent<PlayerMovement>().TurnMovement(false);
+        if (player2 != null)
+        {
+            player1.transform.position = spawnPos1.position;
+            player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
+            player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+            player1.GetComponent<PlayerCombat>().CanAttack(false);
+            player1.GetComponent<PlayerHealth>().canTakeDmg = false;
+            player1.GetComponent<PlayerMovement>().TurnMovement(false);
+            player2.transform.position = spawnPos2.position;
+            player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
+            player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+            player2.GetComponent<PlayerCombat>().CanAttack(false);
+            player1.GetComponent<PlayerHealth>().canTakeDmg = false;
+            player2.GetComponent<PlayerMovement>().TurnMovement(false);
 
-
+        }
     }
 
     public void startGame()

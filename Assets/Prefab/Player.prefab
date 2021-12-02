@@ -752,7 +752,7 @@ MonoBehaviour:
   speed: 500
   jumpForce: 17
   resistance: 1
-  wallResistance: 5
+  wallResistance: 10
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsMax: 1
   maxAmmo: 0
@@ -794,8 +794,11 @@ MonoBehaviour:
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
+  ammoPanels: {fileID: 0}
+  ammoSprites: {fileID: 770480810693167103, guid: 4db0fd676f7ad144da2a7528190829c4, type: 3}
   ammo: 5
   maxAmmo: 5
+  ammoList: []
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -835,6 +838,7 @@ MonoBehaviour:
   spawnedCard: 0
   someoneWon: 0
   CardPanelPrefab: {fileID: 7917358812272968815, guid: acbdd891521543943a36bd76cc7b59fb, type: 3}
+  deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
   knockbackForce: 0
   knockbackCount: 0
   knockBackLenght: 0
