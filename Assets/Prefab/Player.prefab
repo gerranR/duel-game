@@ -834,11 +834,12 @@ MonoBehaviour:
   meleeResist: 0
   borderKnockbackForce: 25
   hpSlider: {fileID: 2679557470016982729}
-  canTakeDmg: 1
+  canTakeDmg: 0
   spawnedCard: 0
   someoneWon: 0
   CardPanelPrefab: {fileID: 7917358812272968815, guid: acbdd891521543943a36bd76cc7b59fb, type: 3}
   deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
+  arm: {fileID: 5170228455174681603}
   knockbackForce: 0
   knockbackCount: 0
   knockBackLenght: 0

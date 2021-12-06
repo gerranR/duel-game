@@ -15,7 +15,7 @@ public class GameManeger : MonoBehaviour
     public int player1Wins, player2Wins;
     public GameObject[] levels;
     private GameObject curLvl, curLvlObj, menu;
-    public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton, winScreen;
+    public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton, winScreen, winText;
     public Transform playPos, spawnPos1, spawnPos2;
     public bool gameStarted;
     public GameObject firstSelectWinScreen;

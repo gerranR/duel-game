@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
     public bool spawnedCard, someoneWon;
-    public GameObject CardPanelPrefab, deathPart;
+    public GameObject CardPanelPrefab, deathPart, arm;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints; 
 
@@ -48,13 +49,18 @@ public class PlayerHealth : MonoBehaviour
             health -= dmg;
             if (health <= 0.00001)
             {
-
-
                 if (someoneWon == false)
                 {
+                    canTakeDmg = false;
+                    arm.SetActive(false);
                     GetComponent<SpriteRenderer>().enabled = false;
                     GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
                     GetComponent<PlayerMovement>().TurnMovement(false);
+                    FindObjectOfType<GameManeger>().winText.SetActive(true);
+                    if(playerInt == 1)
+                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 1 has wom";
+                    else
+                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 2 has wom";
                     StartCoroutine(deathTime());
                 }
             }
@@ -63,7 +69,7 @@ public class PlayerHealth : MonoBehaviour
 
     IEnumerator deathTime()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(3f);
         var rootMenu = GameObject.Find("CardPanel");
         if (rootMenu != null && spawnedCard == false)
         {
@@ -72,8 +78,10 @@ public class PlayerHealth : MonoBehaviour
             this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
             GetComponent<SpriteRenderer>().enabled = true;
+            arm.SetActive(true);
             FindObjectOfType<CardSelect>().playerLost = this.gameObject;
             FindObjectOfType<CardSelect>().ChangeCards();
+            FindObjectOfType<GameManeger>().winText.SetActive(false);
             spawnedCard = true;
         }
     }
