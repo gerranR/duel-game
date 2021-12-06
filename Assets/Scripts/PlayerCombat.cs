@@ -31,6 +31,7 @@ public class PlayerCombat : MonoBehaviour
                 ammoList[ammo].SetActive(false);
                 GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
                 bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
+                bulletInstance.GetComponent<Bullet>().player = this.gameObject;
                 canShoot = false;
                 StartCoroutine(ShootTimer());
             }

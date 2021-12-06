@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class KnockbackObj : MonoBehaviour
 {
-    public void GetKncokback(GameObject other, float knockbackForce)
+    private float hp;
+    public void GetKncokback(GameObject other, float knockbackForce, float dmg)
     {
         Vector2 direction = other.transform.position - transform.position;
         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + -direction.x * knockbackForce, GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
+        hp -= dmg;
+        if(hp < 0.00001)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

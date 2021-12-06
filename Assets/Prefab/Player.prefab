@@ -832,7 +832,7 @@ MonoBehaviour:
   maxHealth: 100
   rangeResist: 0
   meleeResist: 0
-  borderKnockbackForce: 50
+  borderKnockbackForce: 25
   hpSlider: {fileID: 2679557470016982729}
   canTakeDmg: 1
   spawnedCard: 0

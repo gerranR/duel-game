@@ -54,7 +54,7 @@ public class PlayerHealth : MonoBehaviour
                 {
                     GetComponent<SpriteRenderer>().enabled = false;
                     GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
-
+                    GetComponent<PlayerMovement>().TurnMovement(false);
                     StartCoroutine(deathTime());
                 }
             }
