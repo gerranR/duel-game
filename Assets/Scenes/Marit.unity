@@ -123,6 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &38204177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 364119648565745177, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+  m_PrefabInstance: {fileID: 1689932711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &38204180
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38204177}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bbbf8b812c85a214ebcfc806cb9748e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &58026946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +244,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd600a1d7ea5154c9e0601f02e98e86, type: 3}
+--- !u!1 &118929670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8641296416868516232, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+  m_PrefabInstance: {fileID: 1689932711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &118929672
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118929670}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4d5540561376f704b85b1022b3c14b9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &327518020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1060,6 +1108,22 @@ PrefabInstance:
     - target: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934852196811666617, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934852196811666617, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835691690644144127, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835691690644144127, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8193503650746417028, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
       propertyPath: m_Transition
