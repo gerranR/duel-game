@@ -1049,9 +1049,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 969487796692302004, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
       propertyPath: m_Name
       value: PlayerJoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193503650746417028, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8309217798522482254, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
+      propertyPath: m_Transition
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
@@ -1075,7 +1091,7 @@ Animator:
   m_GameObject: {fileID: 1689932713}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c08f9283912b0d44a9abe8fddb0cee1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
