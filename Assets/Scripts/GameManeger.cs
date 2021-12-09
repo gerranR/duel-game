@@ -13,7 +13,7 @@ public class GameManeger : MonoBehaviour
     public float fireRate, maxHP, meleeDmg, rangeDmg, speed, meleeRange, meleeResistance, rangeResistance;
     public int maxAmmo, maxJump;
     public int player1Wins, player2Wins;
-    public GameObject[] levels;
+    public GameObject[] levels, player1WinCounter, player2WinCounter;
     private GameObject curLvl, curLvlObj, menu;
     public GameObject cardScreen, player1, player2, playerSelectScreen, firstButton, winScreen, winText;
     public Transform playPos, spawnPos1, spawnPos2;
@@ -65,10 +65,12 @@ public class GameManeger : MonoBehaviour
         if (playerWin == 0)
         {
             player1Wins++;
+            player1WinCounter[player1Wins].SetActive(true);
         }
         if (playerWin == 1)
         {
             player2Wins++;
+            player2WinCounter[player2Wins].SetActive(true);
         }
     }
 
@@ -81,6 +83,14 @@ public class GameManeger : MonoBehaviour
     {
         player1Wins = 0;
         player2Wins = 0;
+        for (int i = 0; i < player1WinCounter.Length; i++)
+        {
+            player1WinCounter[i].SetActive(false);
+        }
+        for (int i = 0; i < player2WinCounter.Length; i++)
+        {
+            player2WinCounter[i].SetActive(false);
+        }
         player1.GetComponent<PlayerCombat>().fireRate = fireRate;
         player1.GetComponent<PlayerCombat>().maxAmmo = maxAmmo;
         player1.GetComponent<PlayerHealth>().maxHealth = maxHP;
