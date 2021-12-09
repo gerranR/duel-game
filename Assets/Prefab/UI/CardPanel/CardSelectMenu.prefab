@@ -1264,7 +1264,6 @@ GameObject:
   - component: {fileID: 864647149291479615}
   - component: {fileID: 864647149291479613}
   - component: {fileID: 864647149291479612}
-  - component: {fileID: 5720313572591975642}
   - component: {fileID: 7358815700706888298}
   m_Layer: 5
   m_Name: CardSelectMenu
@@ -1284,8 +1283,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 864647149454310491}
-  - {fileID: 864647149359028299}
   - {fileID: 9148303686163837036}
   - {fileID: 6048233859672344967}
   m_Father: {fileID: 0}
@@ -1334,38 +1331,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5720313572591975642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864647149291479614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2017a898548c4a648bd7870801222ac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imagePos1: {fileID: 864647148085698514}
-  imagePos2: {fileID: 864647150033138525}
-  imagePos3: {fileID: 864647148413273128}
-  imagePos4: {fileID: 864647148811401418}
-  imagePos5: {fileID: 864647149787127646}
-  titel1: {fileID: 864647148031478609}
-  titel2: {fileID: 864647149460938509}
-  titel3: {fileID: 864647148981079844}
-  titel4: {fileID: 864647149593031932}
-  titel5: {fileID: 864647150126249017}
-  discription1: {fileID: 864647149942009493}
-  discription2: {fileID: 864647148255857576}
-  discription3: {fileID: 864647149240008671}
-  discription4: {fileID: 864647149853309203}
-  discription5: {fileID: 864647148756447363}
-  button1: {fileID: 864647148136933409}
-  button2: {fileID: 864647149640176714}
-  button3: {fileID: 864647148276464727}
-  button4: {fileID: 864647148040763390}
-  button5: {fileID: 864647149969284414}
 --- !u!95 &7358815700706888298
 Animator:
   serializedVersion: 3
@@ -1397,7 +1362,7 @@ GameObject:
   - component: {fileID: 864647149359028298}
   - component: {fileID: 864647149359028309}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: PlayerChooseCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1414,12 +1379,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
-  m_Father: {fileID: 864647149291479615}
-  m_RootOrder: 1
+  m_Father: {fileID: 6048233859672344967}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 309}
+  m_AnchoredPosition: {x: -0.00021362289, y: 398}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &864647149359028298
@@ -1548,12 +1513,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 864647149291479615}
-  m_RootOrder: 0
+  m_Father: {fileID: 6048233859672344967}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 184}
+  m_AnchoredPosition: {x: 0, y: 292}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &864647149454310489
@@ -2712,6 +2677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6048233859672344967}
+  - component: {fileID: 6182756508412485558}
   m_Layer: 5
   m_Name: Cards
   m_TagString: Untagged
@@ -2728,21 +2694,56 @@ RectTransform:
   m_GameObject: {fileID: 3762894564149762171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 864647148136933408}
   - {fileID: 864647149640176725}
   - {fileID: 864647148276464726}
   - {fileID: 864647148040763385}
   - {fileID: 864647149969284409}
+  - {fileID: 864647149454310491}
+  - {fileID: 864647149359028299}
   m_Father: {fileID: 864647149291479615}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -28}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6182756508412485558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762894564149762171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2017a898548c4a648bd7870801222ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imagePos1: {fileID: 864647148085698514}
+  imagePos2: {fileID: 864647150033138525}
+  imagePos3: {fileID: 864647148413273128}
+  imagePos4: {fileID: 864647148811401418}
+  imagePos5: {fileID: 864647149787127646}
+  pannel: {fileID: 864647149291479614}
+  titel1: {fileID: 864647148031478609}
+  titel2: {fileID: 864647149460938509}
+  titel3: {fileID: 864647148981079844}
+  titel4: {fileID: 864647149593031932}
+  titel5: {fileID: 864647150126249017}
+  discription1: {fileID: 864647149942009493}
+  discription2: {fileID: 864647148255857576}
+  discription3: {fileID: 864647149240008671}
+  discription4: {fileID: 864647149853309203}
+  discription5: {fileID: 864647148756447363}
+  button1: {fileID: 864647148136933409}
+  button2: {fileID: 864647149640176714}
+  button3: {fileID: 864647148276464727}
+  button4: {fileID: 864647148040763390}
+  button5: {fileID: 864647149969284414}
 --- !u!1 &4591032161492559329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2774,7 @@ Transform:
   m_LocalScale: {x: 0.17361248, y: 0.17361248, z: 0.17361248}
   m_Children: []
   m_Father: {fileID: 864647149291479615}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7184611991322724793
 MonoBehaviour:

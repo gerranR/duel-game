@@ -6,7 +6,7 @@ using TMPro;
 
 public class CardButtonAssign : MonoBehaviour
 {
-    public GameObject imagePos1, imagePos2, imagePos3, imagePos4, imagePos5;
+    public GameObject imagePos1, imagePos2, imagePos3, imagePos4, imagePos5, pannel;
     public TextMeshProUGUI titel1, titel2, titel3, titel4, titel5, discription1, discription2, discription3, discription4, discription5;
     public Button button1, button2, button3, button4, button5;
     private CardSelect cardSelect;
@@ -38,6 +38,8 @@ public class CardButtonAssign : MonoBehaviour
         this.transform.Find("card3").GetComponent<Button>().onClick.AddListener(delegate { cardSelect.changeStats(2); });
         this.transform.Find("card4").GetComponent<Button>().onClick.AddListener(delegate { cardSelect.changeStats(3); });
         this.transform.Find("card5").GetComponent<Button>().onClick.AddListener(delegate { cardSelect.changeStats(4); });
+
+        cardSelect.curentPanel = pannel;
 
     }
 }

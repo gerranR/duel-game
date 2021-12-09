@@ -8,14 +8,14 @@ using TMPro;
 
 public class CardSelect : MonoBehaviour
 {
-    public GameObject player1, player2, playerLost, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5;
+    public GameObject player1, player2, playerLost, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5, curentPanel;
     public TextMeshProUGUI titel1, titel2, titel3, titel4, titel5, discription1, discription2, discription3, discription4, discription5;
     public Cards[] cardRarety1, cardRarety2, cardRarety3;
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
     private bool canPress = true;
 
-    public void ChangeCards()
+    public void ChangeCards(int playerWon)
     {
         for (int i = 0; i < card.Length; i++)
         {
@@ -53,8 +53,17 @@ public class CardSelect : MonoBehaviour
         discription5.text = card[4].discription;
         if(titel1.text != card[0].titel)
         {
-            Destroy(GameObject.Find("CardPannel"));
+            Destroy(GameObject.Find("CardSelectMenu"));
             playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
+        }
+
+        if (playerWon == 1)
+        {
+            GameObject.Find("PlayerChooseCard").GetComponent<TextMeshProUGUI>().text = "Player 1";
+        }
+        else
+        {
+            GameObject.Find("PlayerChooseCard").GetComponent<TextMeshProUGUI>().text = "Player 2";
         }
     }
 
@@ -93,13 +102,15 @@ public class CardSelect : MonoBehaviour
             playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
 
             canPress = false;
-            Invoke("buttonDelay", 0.1f);
+            curentPanel.GetComponent<Animator>().SetTrigger("leaveCard");
+            Invoke("buttonDelay", 2f);
         }
     }
 
     private void buttonDelay()
     {
-        Destroy(FindObjectOfType<CardButtonAssign>().gameObject);
+        print(curentPanel);
+        Destroy(curentPanel);
         player1.GetComponent<PlayerCombat>().CanAttack(true);
         player2.GetComponent<PlayerCombat>().CanAttack(true);
         canPress = true;

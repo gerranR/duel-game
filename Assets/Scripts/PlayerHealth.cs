@@ -52,7 +52,9 @@ public class PlayerHealth : MonoBehaviour
                 if (someoneWon == false)
                 {
                     canTakeDmg = false;
+                    FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
                     arm.SetActive(false);
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     GetComponent<SpriteRenderer>().enabled = false;
                     GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
                     GetComponent<PlayerMovement>().TurnMovement(false);
@@ -73,16 +75,18 @@ public class PlayerHealth : MonoBehaviour
         var rootMenu = GameObject.Find("CardPanel");
         if (rootMenu != null && spawnedCard == false)
         {
+            FindObjectOfType<GameManeger>().winText.SetActive(false);
             rootMenu.SetActive(true);
             var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
             this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
             GetComponent<SpriteRenderer>().enabled = true;
             arm.SetActive(true);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             FindObjectOfType<CardSelect>().playerLost = this.gameObject;
-            FindObjectOfType<CardSelect>().ChangeCards();
-            FindObjectOfType<GameManeger>().winText.SetActive(false);
+            FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
             spawnedCard = true;
+            FindObjectOfType<GameManeger>().ResetLevel(playerInt);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

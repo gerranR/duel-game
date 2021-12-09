@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpsLeft > 0 && jumped == false)
+        if (context.performed && jumpsLeft > 0 && jumped == false && canMove)
         {
             if (wallJumpCheck)
             {

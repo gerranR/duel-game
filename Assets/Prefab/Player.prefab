@@ -789,8 +789,8 @@ MonoBehaviour:
   fireRate: 0.5
   reloadTime: 2
   SwordDur: 0.5
-  bulletDmg: 50
-  swordDmg: 50
+  bulletDmg: 20
+  swordDmg: 30
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
@@ -837,7 +837,7 @@ MonoBehaviour:
   canTakeDmg: 0
   spawnedCard: 0
   someoneWon: 0
-  CardPanelPrefab: {fileID: 7917358812272968815, guid: acbdd891521543943a36bd76cc7b59fb, type: 3}
+  CardPanelPrefab: {fileID: 864647149291479614, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
   deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
   arm: {fileID: 5170228455174681603}
   knockbackForce: 0

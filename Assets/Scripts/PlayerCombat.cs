@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
@@ -10,16 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites;
     public int ammo, maxAmmo;
 
-    public List<GameObject> ammoList = new List<GameObject>();
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (ammoList.Count != maxAmmo)
-        {
-            ammoList.Add(Instantiate(ammoSprites, ammoPanels.transform));
-        }
-    }
+    public Slider ammoSlider;
 
     public void Gun(InputAction.CallbackContext callback)
     {
@@ -28,7 +20,8 @@ public class PlayerCombat : MonoBehaviour
             if (callback.performed && canShoot & ammo > 0 && reloading == false)
             {
                 ammo--;
-                ammoList[ammo].SetActive(false);
+                ammoSlider.maxValue = maxAmmo;
+                ammoSlider.value = ammo;
                 GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
                 bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
@@ -79,10 +72,7 @@ public class PlayerCombat : MonoBehaviour
     {
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
-        for (int i = 0; i < ammoList.Count; i++)
-        {
-            ammoList[i].SetActive(true);
-        }
+        ammoSlider.value = ammo;
         reloading = false;
     }
 

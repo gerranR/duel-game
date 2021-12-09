@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.EventSystems;
@@ -10,7 +11,8 @@ public class PlayerManeger : MonoBehaviour
 {
     public int nextPlayerNum;
     public bool playerFull, player1Ready, player2Ready;
-    public GameObject firstButton, ammoPlayer1, ammoPlayer2;
+    public GameObject firstButton;
+    public Slider ammoPlayer1, ammoPlayer2;
     private GameObject player1, player2;
     public PlayerInputManager playerInputManager;
     public TextMeshProUGUI player1ReadyText, player2ReadyText;
@@ -44,12 +46,12 @@ public class PlayerManeger : MonoBehaviour
         if (player.playerIndex == 0)
         {
             player1 = player.gameObject;
-            player1.GetComponent<PlayerCombat>().ammoPanels = ammoPlayer1;
+            player1.GetComponent<PlayerCombat>().ammoSlider = ammoPlayer1;
         }
         else
         {
             player2 = player.gameObject;
-            player2.GetComponent<PlayerCombat>().ammoPanels = ammoPlayer2;
+            player2.GetComponent<PlayerCombat>().ammoSlider = ammoPlayer2;
         }
         playerCountCheck();
         nextPlayerNum++;
