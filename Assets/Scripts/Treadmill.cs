@@ -5,7 +5,7 @@ using UnityEngine;
 public class Treadmill : MonoBehaviour
 {
     public float force;
-    public bool rightOrLeft;
+    public bool right;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -13,7 +13,7 @@ public class Treadmill : MonoBehaviour
             collision.gameObject.GetComponent<PlayerMovement>().TurnMovement(false);
         }
 
-        if (rightOrLeft)
+        if (right)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
         }
