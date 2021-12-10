@@ -56,7 +56,7 @@ MonoBehaviour:
   - {x: -0.20771301, y: 3.42, z: 0}
   m_ShapePathHash: 1845781589
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41250
+  m_InstanceId: 26610
 --- !u!1 &241709675
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   - {x: -0.2823404, y: -1.6799998, z: 0}
   m_ShapePathHash: -1901185547
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41266
+  m_InstanceId: 26626
 --- !u!1 &505332937
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
   - {x: -0.15796137, y: 6.42, z: 0}
   m_ShapePathHash: 2021278645
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41286
+  m_InstanceId: 26646
 --- !u!1 &1156221888
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
   - {x: -0.6840847, y: 2.3999996, z: 0}
   m_ShapePathHash: 1717092873
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41294
+  m_InstanceId: 26654
 --- !u!1 &1305580477
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
   - {x: -0.20398152, y: 3.42, z: 0}
   m_ShapePathHash: -826003531
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41302
+  m_InstanceId: 26662
 --- !u!114 &6263595375436855731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   - {x: -0.26990247, y: 0.52, z: 0}
   m_ShapePathHash: 430002157
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41316
+  m_InstanceId: 26678
 --- !u!1 &1811817421788651455
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +654,37 @@ MonoBehaviour:
   - {x: -0.26990247, y: 0.52, z: 0}
   m_ShapePathHash: 430002157
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41318
+  m_InstanceId: 26680
+--- !u!1 &1846283936959926869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6797527643870316182}
+  m_Layer: 0
+  m_Name: Spawn1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6797527643870316182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846283936959926869}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.44, y: -5.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7720310943281724819}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7720310942785661464
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +828,8 @@ Transform:
   - {fileID: 972556782588861835}
   - {fileID: 6376283204837961904}
   - {fileID: 8374471904261288315}
+  - {fileID: 6797527643870316182}
+  - {fileID: 7400884757654257231}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4427,7 +4459,7 @@ MonoBehaviour:
   - {x: -0.26990247, y: 0.52, z: 0}
   m_ShapePathHash: 430002157
   m_Mesh: {fileID: 0}
-  m_InstanceId: 41378
+  m_InstanceId: 26742
 --- !u!1 &7720310943418428636
 GameObject:
   m_ObjectHideFlags: 0
@@ -6450,6 +6482,36 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &8123993877692059163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7400884757654257231}
+  m_Layer: 0
+  m_Name: Spawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7400884757654257231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123993877692059163}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.33, y: -5.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7720310943281724819}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &120528123
 PrefabInstance:
   m_ObjectHideFlags: 0
