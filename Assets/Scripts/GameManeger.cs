@@ -29,7 +29,7 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(curLvl, playPos.position, playPos.rotation);
     }
 
-    public void ResetLevel(int playerWin)
+    public void ResetLevel(int playerWin, bool cardSelect)
     {
 
         if (player1Wins == 5 || player2Wins == 5)
@@ -56,11 +56,18 @@ public class GameManeger : MonoBehaviour
          }
         else
         {
-            Destroy(curLvlObj);
-            int newLvl = Random.Range(0, levels.Length);
-            curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
-            resetPlayers();
-            curLvl = levels[newLvl];
+            if (cardSelect)
+            {
+                Invoke("ChangeLVL", 1f);
+            }
+            else
+            {
+                Destroy(curLvlObj);
+                int newLvl = Random.Range(0, levels.Length);
+                curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
+                resetPlayers();
+                curLvl = levels[newLvl];
+            }
         }
         if (playerWin == 0)
         {
@@ -72,6 +79,15 @@ public class GameManeger : MonoBehaviour
             player2Wins++;
             player2WinCounter[player2Wins].SetActive(true);
         }
+    }
+
+    public void ChangeLVL()
+    {
+        Destroy(curLvlObj);
+        int newLvl = Random.Range(0, levels.Length);
+        curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
+        resetPlayers();
+        curLvl = levels[newLvl];
     }
 
     public void MainMenu()

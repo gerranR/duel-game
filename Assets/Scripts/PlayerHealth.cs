@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
             FindObjectOfType<CardSelect>().playerLost = this.gameObject;
             FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
             spawnedCard = true;
-            FindObjectOfType<GameManeger>().ResetLevel(playerInt);
+            FindObjectOfType<GameManeger>().ResetLevel(playerInt, true);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

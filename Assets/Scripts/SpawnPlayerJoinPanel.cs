@@ -29,11 +29,11 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         if (GetComponent<PlayerInput>().playerIndex == 0)
         { 
-            FindObjectOfType<GameManeger>().ResetLevel  (3);
+            FindObjectOfType<GameManeger>().ResetLevel  (3, false);
         }
         else
         { 
-            FindObjectOfType<GameManeger>().ResetLevel(3);
+            FindObjectOfType<GameManeger>().ResetLevel(3,false);
         }
         var playerText = menu.transform.Find("PlayerText");
         if (input.gameObject.GetComponent<PlayerHealth>().playerInt == 0)

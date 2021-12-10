@@ -71,7 +71,6 @@ public class CardSelect : MonoBehaviour
     {
         if (canPress)
         {
-
             playerLost.GetComponent<PlayerCombat>().fireRate += card[buttonPressed].fireRate;
             playerLost.GetComponent<PlayerCombat>().maxAmmo += card[buttonPressed].maxAmmo;
             playerLost.GetComponent<PlayerHealth>().maxHealth += card[buttonPressed].maxHP;
