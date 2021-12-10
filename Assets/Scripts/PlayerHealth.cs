@@ -51,8 +51,8 @@ public class PlayerHealth : MonoBehaviour
             {
                 if (someoneWon == false)
                 {
-                    canTakeDmg = false;
                     FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
+                    FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = false;
                     arm.SetActive(false);
                     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     GetComponent<SpriteRenderer>().enabled = false;

@@ -8,23 +8,40 @@ public class Treadmill : MonoBehaviour
     public bool right;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerMovement>().TurnMovement(false);
+
+            if (right)
+            {
+                collision.transform.GetComponent<PlayerMovement>().resistance = force;
+            }
+            else
+                collision.transform.GetComponent<PlayerMovement>().resistance = -force;
+
         }
 
-        if (right)
+        if (collision.gameObject.tag != "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
+            if (right)
+            {
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
+            }
+            else
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0), ForceMode2D.Impulse);
         }
-        else
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0), ForceMode2D.Impulse);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
-            StartCoroutine(turnPlayerMove(collision.gameObject));
+        if (collision.gameObject.tag == "Player")
+        {
+            if (right)
+            {
+                collision.transform.GetComponent<PlayerMovement>().resistance = force;
+            }
+            else
+                collision.transform.GetComponent<PlayerMovement>().resistance = -force;
+        }
     }
 
 
