@@ -784,6 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8158659325111626674}
+  isFlipped: 0
 --- !u!1 &5561805405074484526
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +903,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 953d5ba7006c46546bdf4fbda5db5e1a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1299,6 +1300,8 @@ MonoBehaviour:
   resistance: 1
   wallResistance: 10
   rigidbody2d: {fileID: 8158659325111626672}
+  jumpsLeft: 0
+  lorRWall: 0
   jumpsMax: 1
   maxAmmo: 0
   groundCheckObj: {fileID: 8158659326616708953}
