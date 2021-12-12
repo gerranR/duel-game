@@ -19,8 +19,7 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;
 
-    public AudioSource playerAudioSource;
-    public AudioClip DeathClip;
+    public AudioSource playerDeathAudioSource;
 
     private void Awake()
     {
@@ -54,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 if (someoneWon == false)
                 {
+                    playerDeathAudioSource.Play();
                     FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
                     FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = false;
                     arm.SetActive(false);

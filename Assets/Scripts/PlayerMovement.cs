@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove = false, jumped;
     private float inputX;
 
+    public AudioSource Footsteps;
+
     public Animator playerAnimator;
 
     private void Awake()
@@ -44,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             if (inputX != 0)
             {
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
-                playerAnimator.SetFloat("Speed", rigidbody2d.velocity.x);
+                playerAnimator.SetFloat("Speed", speed);
 
                 if(inputX > 0)
                 {
@@ -182,5 +184,10 @@ public class PlayerMovement : MonoBehaviour
     {
         FindObjectOfType<PlayerInputManager>().EnableJoining();
         Destroy(gameObject);
+    }
+
+    public void playWalkingSounds()
+    {
+        Footsteps.Play();
     }
 }
