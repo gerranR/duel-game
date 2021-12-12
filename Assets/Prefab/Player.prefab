@@ -1348,6 +1348,7 @@ MonoBehaviour:
   meleeAudio: {fileID: 1706853022906209224}
   reloadAudio: {fileID: 505956977919862396}
   ammoSlider: {fileID: 0}
+  playerAim: {fileID: 1769898636578601178}
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

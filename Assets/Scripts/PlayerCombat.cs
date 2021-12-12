@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
+    public Animator playerAim;
 
     public void Gun(InputAction.CallbackContext callback)
     {
@@ -48,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (callback.performed && swordUsed == false)
             {
+                playerAim.SetTrigger("Melee");
                 meleeAudio.Play();
                 swordCol.GetComponent<Collider2D>().enabled = true;
                 swordUsed = true;

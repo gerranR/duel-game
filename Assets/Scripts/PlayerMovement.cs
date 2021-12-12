@@ -77,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (wallJumpCheck)
             {
+                playerAnimator.SetBool("Hanging", false);
+                playerAnimator.SetBool("Jump", true);
                 jumpsLeft--;
                 TurnMovement(false);
                 if(lorRWall == 0)
@@ -88,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
                     rigidbody2d.velocity = new Vector2(-2.5f, jumpForce);
                 }
                 StartCoroutine(WallJumpTimer());
-                
+
                 wallJumpCheck = false;
             }
             else 
@@ -143,12 +145,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, wallLayer))
         {
+            playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
             lorRWall = 0;
         }
         else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, wallLayer))
         {
+            playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
             lorRWall = 1;
@@ -160,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Wall")
         {
+            playerAnimator.SetBool("Hanging", false);
             wallJumpCheck = false;
         }
     }
