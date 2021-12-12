@@ -17,7 +17,10 @@ public class PlayerHealth : MonoBehaviour
     public bool spawnedCard, someoneWon;
     public GameObject CardPanelPrefab, deathPart, arm;
     public float knockbackForce, knockbackCount, knockBackLenght;
-    ContactPoint2D[] contactPoints; 
+    ContactPoint2D[] contactPoints;
+
+    public AudioSource playerAudioSource;
+    public AudioClip DeathClip;
 
     private void Awake()
     {

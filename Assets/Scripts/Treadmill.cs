@@ -10,24 +10,16 @@ public class Treadmill : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
-            if (right)
-            {
-                collision.transform.GetComponent<PlayerMovement>().resistance = force;
-            }
-            else
-                collision.transform.GetComponent<PlayerMovement>().resistance = -force;
-
+            collision.gameObject.GetComponent<PlayerMovement>().TurnMovement(false);
         }
 
-        if (collision.gameObject.tag != "Player")
+        if (right)
         {
-            if (right)
-            {
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
-            }
-            else
-                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0), ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
+        }
+        else
+        { 
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0), ForceMode2D.Impulse);
         }
     }
 
@@ -35,12 +27,7 @@ public class Treadmill : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (right)
-            {
-                collision.transform.GetComponent<PlayerMovement>().resistance = force;
-            }
-            else
-                collision.transform.GetComponent<PlayerMovement>().resistance = -force;
+            StartCoroutine(turnPlayerMove(collision.gameObject));
         }
     }
 
