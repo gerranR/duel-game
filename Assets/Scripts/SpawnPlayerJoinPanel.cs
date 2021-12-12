@@ -12,13 +12,25 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
     public GameObject playerJoinPrefab;
     public PlayerInput input;
     private GameObject menu;
+    public RuntimeAnimatorController player1Controller, player2Controller;
 
     private void Awake()
     {
         var rootMenu = GameObject.Find("PlayerJoinPanel");
         if(rootMenu != null)
         {
-            menu = Instantiate(playerJoinPrefab, rootMenu.transform);
+            if(GetComponent<PlayerHealth>().playerInt == 0)
+            { 
+                menu = Instantiate(playerJoinPrefab, GameObject.Find("SpawnPosPlayer1").transform);
+                menu.GetComponent<Animator>().runtimeAnimatorController = player1Controller;
+                FindObjectOfType<GameManeger>().pannelAnimator1 = menu.GetComponent<Animator>();
+            }
+            else
+            {
+                menu = Instantiate(playerJoinPrefab, GameObject.Find("SpawnPosPlayer2").transform);
+                menu.GetComponent<Animator>().runtimeAnimatorController = player2Controller;
+                FindObjectOfType<GameManeger>().pannelAnimator2 = menu.GetComponent<Animator>();
+            }
             menu.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { SceneManager.LoadScene(0); });
             StartCoroutine(changeText());
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();

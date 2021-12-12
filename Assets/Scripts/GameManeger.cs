@@ -21,6 +21,7 @@ public class GameManeger : MonoBehaviour
     public GameObject firstSelectWinScreen;
     public TextMeshProUGUI winScreentext, roundWinText;
     public InputSystemUIInputModule baseEventSystem1, baseEventSystem2;
+    public Animator pannelAnimator1, pannelAnimator2;
 
     private void Awake()
     {
@@ -170,6 +171,8 @@ public class GameManeger : MonoBehaviour
 
     public void startGame()
     {
+        pannelAnimator1.SetTrigger("Leave");
+        pannelAnimator2.SetTrigger("Leave");
         Invoke("StartGameDelay", 2);
     }
 

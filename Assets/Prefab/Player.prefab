@@ -1611,6 +1611,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerJoinPrefab: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
   input: {fileID: 830256192}
+  player1Controller: {fileID: 9100000, guid: 7c08f9283912b0d44a9abe8fddb0cee1, type: 2}
+  player2Controller: {fileID: 9100000, guid: b5e9a3986cd48a444a5c1b709cc975d6, type: 2}
 --- !u!1 &8158659326616708953
 GameObject:
   m_ObjectHideFlags: 0
