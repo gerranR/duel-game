@@ -170,6 +170,11 @@ public class GameManeger : MonoBehaviour
 
     public void startGame()
     {
+        Invoke("StartGameDelay", 2);
+    }
+
+    public void StartGameDelay()
+    {
         if (!gameStarted && player2 != null)
         {
             spawnPos1 = curLvl.transform.Find("Spawn1");
