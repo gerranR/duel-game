@@ -49,10 +49,10 @@ public class GameManeger : MonoBehaviour
                 menu.transform.Find("MainMenu").GetComponent<Button>().onClick.AddListener(delegate { this.MainMenu(); });
                 if (player1Wins == 5)
                 {
-                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 2 Wom";
+                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 2 Won";
                 }
                 else
-                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 1 wom";
+                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 1 won";
             }
          }
         else

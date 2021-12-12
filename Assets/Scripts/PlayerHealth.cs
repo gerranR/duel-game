@@ -69,9 +69,9 @@ public class PlayerHealth : MonoBehaviour
                     GetComponent<PlayerMovement>().TurnMovement(false);
                     FindObjectOfType<GameManeger>().winText.SetActive(true);
                     if(playerInt == 1)
-                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 1 has wom";
+                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 1 has won";
                     else
-                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 2 has wom";
+                        FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 2 has won";
                     StartCoroutine(deathTime());
                 }
             }
