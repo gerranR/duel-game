@@ -171,8 +171,11 @@ public class GameManeger : MonoBehaviour
 
     public void startGame()
     {
-        pannelAnimator1.SetTrigger("Leave");
-        pannelAnimator2.SetTrigger("Leave");
+        if (pannelAnimator2 != null)
+        {
+            pannelAnimator1.SetTrigger("Leave");
+            pannelAnimator2.SetTrigger("Leave");
+        }
         Invoke("StartGameDelay", 2);
     }
 
