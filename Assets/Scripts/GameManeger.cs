@@ -136,7 +136,7 @@ public class GameManeger : MonoBehaviour
 
     private void winScreenActive()
     {
-        Destroy(menu);
+        Destroy(menu); 
         player1.GetComponent<PlayerMovement>().TurnMovement(true);
         player2.GetComponent<PlayerMovement>().TurnMovement(true);
         player1.GetComponent<PlayerCombat>().canAttack = true;
@@ -176,6 +176,11 @@ public class GameManeger : MonoBehaviour
             pannelAnimator1.SetTrigger("Leave");
             pannelAnimator2.SetTrigger("Leave");
         }
+
+        spawnPos1 = curLvl.transform.Find("Spawn1");
+        player1.transform.position = spawnPos1.position;
+        spawnPos2 = curLvl.transform.Find("Spawn2");
+        player2.transform.position = spawnPos2.position;
         Invoke("StartGameDelay", 2);
     }
 
@@ -183,16 +188,12 @@ public class GameManeger : MonoBehaviour
     {
         if (!gameStarted && player2 != null)
         {
-            spawnPos1 = curLvl.transform.Find("Spawn1");
-            player1.transform.position = spawnPos1.position;
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player1.GetComponent<PlayerCombat>().CanAttack(true);
             player1.GetComponent<PlayerCombat>().canShoot = true;
             player1.GetComponent<PlayerMovement>().TurnMovement(true);
             player1.GetComponent<PlayerHealth>().canTakeDmg = true;
-            spawnPos2 = curLvl.transform.Find("Spawn2");
-            player2.transform.position = spawnPos2.position;
             player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
             player2.GetComponent<PlayerCombat>().ammo = player2.GetComponent<PlayerCombat>().maxAmmo;
             player2.GetComponent<PlayerCombat>().CanAttack(true);

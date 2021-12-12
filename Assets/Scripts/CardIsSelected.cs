@@ -15,4 +15,9 @@ public class CardIsSelected : MonoBehaviour
     {
         border.SetActive(false);
     }
+    
+    public void CardSelect()
+    {
+
+    }
 }
