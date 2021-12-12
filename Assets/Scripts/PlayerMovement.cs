@@ -48,13 +48,16 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
                 playerAnimator.SetFloat("Speed", speed);
 
-                if(inputX > 0)
+                if (wallJumpCheck == false)
                 {
-                    GetComponent<SpriteRenderer>().flipX = false;
-                }
-                else if(inputX < 0)
-                {
-                    GetComponent<SpriteRenderer>().flipX = true;
+                    if (inputX > 0)
+                    {
+                        GetComponent<SpriteRenderer>().flipX = false;
+                    }
+                    else if (inputX < 0)
+                    {
+                        GetComponent<SpriteRenderer>().flipX = true;
+                    }
                 }
             }
             else
@@ -145,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, wallLayer))
         {
+            GetComponent<SpriteRenderer>().flipX = false;
             playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
@@ -152,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, wallLayer))
         {
+            GetComponent<SpriteRenderer>().flipX = true;
             playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
