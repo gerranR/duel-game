@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
                 if (someoneWon == false)
                 {
                     GetComponent<Animator>().SetFloat("Speed", 0);
-                    GetComponent<Animator>().SetBool("Grounded", false);
+                    GetComponent<Animator>().SetBool("Grounded", true);
                     playerDeathAudioSource.Play();
                     FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
                     FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = false;
