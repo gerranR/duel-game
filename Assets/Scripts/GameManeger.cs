@@ -72,13 +72,13 @@ public class GameManeger : MonoBehaviour
         }
         if (playerWin == 0)
         {
-            player1Wins++;
             player1WinCounter[player1Wins].SetActive(true);
+            player1Wins++;
         }
         if (playerWin == 1)
         {
-            player2Wins++;
             player2WinCounter[player2Wins].SetActive(true);
+            player2Wins++;
         }
     }
 

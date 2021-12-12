@@ -1520,8 +1520,8 @@ MonoBehaviour:
   rangeResistance: 0
   maxAmmo: 5
   maxJump: 1
-  player1Wins: -1
-  player2Wins: -1
+  player1Wins: 0
+  player2Wins: 0
   levels:
   - {fileID: 8141789510755487800, guid: a2d4ac6f430ffb94fbf55b99e69c7209, type: 3}
   - {fileID: 7720310943281724818, guid: 5c9dcd51ae9eb7b4d917258a8e7a3baa, type: 3}
