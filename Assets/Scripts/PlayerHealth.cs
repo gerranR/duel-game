@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
     public bool spawnedCard, someoneWon;
-    public GameObject CardPanelPrefab, deathPart, arm;
+    public GameObject CardPanelPrefab, deathPart, arm, hair;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;
 
@@ -57,6 +57,8 @@ public class PlayerHealth : MonoBehaviour
                     FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
                     FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = false;
                     arm.SetActive(false);
+                    hpSlider.gameObject.SetActive(false);
+                    hair.SetActive(false);
                     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
                     GetComponent<SpriteRenderer>().enabled = false;
                     GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
@@ -85,6 +87,8 @@ public class PlayerHealth : MonoBehaviour
             EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
             GetComponent<SpriteRenderer>().enabled = true;
             arm.SetActive(true);
+            hpSlider.gameObject.SetActive(true);
+            hair.SetActive(true);
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             FindObjectOfType<CardSelect>().playerLost = this.gameObject;
             FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SpawnPlayerJoinPanel : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
         if(rootMenu != null)
         {
             menu = Instantiate(playerJoinPrefab, rootMenu.transform);
-            menu.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { rootMenu.SetActive(false); });
+            menu.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { SceneManager.LoadScene(0); });
             StartCoroutine(changeText());
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
         }

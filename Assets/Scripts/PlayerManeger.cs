@@ -10,7 +10,7 @@ using TMPro;
 public class PlayerManeger : MonoBehaviour
 {
     public int nextPlayerNum;
-    public bool playerFull, player1Ready, player2Ready;
+    public bool playerFull, player1Ready, player2Ready, gameStarted;
     public GameObject firstButton;
     public Slider ammoPlayer1, ammoPlayer2;
     private GameObject player1, player2;
@@ -28,9 +28,10 @@ public class PlayerManeger : MonoBehaviour
             EnableJoining();
         }
 
-        if(player1Ready && player2Ready)
+        if(player1Ready && player2Ready && gameStarted == false)
         {
             FindObjectOfType<GameManeger>().startGame();
+            gameStarted = true;
         }
     }
 
