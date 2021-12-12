@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites;
     public int ammo, maxAmmo;
 
+    public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
 
     public void Gun(InputAction.CallbackContext callback)
@@ -19,6 +20,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (callback.performed && canShoot & ammo > 0 && reloading == false)
             {
+                ShootAudio.Play();
                 ammo--;
                 ammoSlider.maxValue = maxAmmo;
                 ammoSlider.value = ammo;
@@ -46,6 +48,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (callback.performed && swordUsed == false)
             {
+                meleeAudio.Play();
                 swordCol.GetComponent<Collider2D>().enabled = true;
                 swordUsed = true;
                 StartCoroutine(SwordTimer());
@@ -70,6 +73,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ReloadTimer()
     {
+        reloadAudio.Play();
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
         ammoSlider.value = ammo;

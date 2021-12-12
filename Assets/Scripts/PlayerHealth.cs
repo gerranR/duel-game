@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;
 
-    public AudioSource playerDeathAudioSource;
+    public AudioSource playerDeathAudioSource, hitAudio;
 
     private void Awake()
     {
@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
         if (canTakeDmg)
         {
             health -= dmg;
+            hitAudio.Play();
             if (health <= 0.00001)
             {
                 if (someoneWon == false)
