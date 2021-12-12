@@ -131,6 +131,12 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
+        Invoke("winScreenActive", 0.1f);
+    }
+
+    private void winScreenActive()
+    {
+        Destroy(menu);
         player1.GetComponent<PlayerMovement>().TurnMovement(true);
         player2.GetComponent<PlayerMovement>().TurnMovement(true);
         player1.GetComponent<PlayerCombat>().canAttack = true;
@@ -139,12 +145,6 @@ public class GameManeger : MonoBehaviour
         player2.GetComponent<PlayerHealth>().someoneWon = false;
         player1.GetComponent<PlayerHealth>().canTakeDmg = true;
         player2.GetComponent<PlayerHealth>().canTakeDmg = true;
-        Invoke("winScreenActive", 0.1f);
-    }
-
-    private void winScreenActive()
-    {
-        Destroy(menu);
     }
 
     public void resetPlayers()
