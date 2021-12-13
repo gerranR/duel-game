@@ -81,24 +81,25 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator deathTime()
     {
         yield return new WaitForSeconds(3f);
-        var rootMenu = GameObject.Find("CardPanel");
-        if (rootMenu != null && spawnedCard == false)
-        {
-            FindObjectOfType<GameManeger>().winText.SetActive(false);
-            rootMenu.SetActive(true);
-            var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
-            this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
-            EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
-            GetComponent<SpriteRenderer>().enabled = true;
-            arm.SetActive(true);
-            hpSlider.gameObject.SetActive(true);
-            hair.SetActive(true);
-            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-            FindObjectOfType<CardSelect>().playerLost = this.gameObject;
-            FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
-            spawnedCard = true;
-            FindObjectOfType<GameManeger>().ResetLevel(playerInt, true);
-        }
+
+            var rootMenu = GameObject.Find("CardPanel");
+            if (rootMenu != null && spawnedCard == false)
+            {
+                FindObjectOfType<GameManeger>().winText.SetActive(false);
+                rootMenu.SetActive(true);
+                var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
+                this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+                EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
+                GetComponent<SpriteRenderer>().enabled = true;
+                arm.SetActive(true);
+                hpSlider.gameObject.SetActive(true);
+                hair.SetActive(true);
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                FindObjectOfType<CardSelect>().playerLost = this.gameObject;
+                FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
+                spawnedCard = true;
+                FindObjectOfType<GameManeger>().ResetLevel(playerInt, true, menu);
+            }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

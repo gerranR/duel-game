@@ -30,7 +30,7 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(curLvl, playPos.position, playPos.rotation);
     }
 
-    public void ResetLevel(int playerWin, bool cardSelect)
+    public void ResetLevel(int playerWin, bool cardSelect, GameObject curCardPanel)
     {
 
         if (player1Wins == 5 || player2Wins == 5)
@@ -38,6 +38,7 @@ public class GameManeger : MonoBehaviour
             var rootMenu = GameObject.Find("WinPanel");
             if (rootMenu != null)
             {
+                Destroy(curCardPanel);
                 player1.GetComponent<PlayerHealth>().someoneWon = true;
                 player2.GetComponent<PlayerHealth>().someoneWon = true;
                 rootMenu.SetActive(true);
