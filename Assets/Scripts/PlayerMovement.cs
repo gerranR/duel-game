@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpsLeft > 0 && jumped == false && canMove)
+        if (context.performed && jumpsLeft != 0 && jumped == false && canMove)
         {
             if (wallJumpCheck)
             {
@@ -107,7 +107,6 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
                 playerAnimator.SetTrigger("Jump");
                 playerAnimator.SetBool("Grounded", false);
-                jumpsLeft--;
                 StartCoroutine(JumpTimer());
             }
         }
@@ -127,7 +126,9 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator JumpTimer()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.5f);
+        if(wallJumpCheck == false)
+            jumpsLeft--;
         jumped = false;
     }
 
