@@ -33,7 +33,7 @@ public class GameManeger : MonoBehaviour
     public void ResetLevel(int playerWin, bool cardSelect, GameObject curCardPanel)
     {
 
-        if (player1Wins == 5 || player2Wins == 5)
+        if (player1Wins == 4 || player2Wins == 4)
         {
             var rootMenu = GameObject.Find("WinPanel");
             if (rootMenu != null)
