@@ -101,6 +101,8 @@ public class GameManeger : MonoBehaviour
     {
         player1Wins = 0;
         player2Wins = 0;
+        player1.GetComponent<PlayerHealth>().spawnedCard = false;
+        player2.GetComponent<PlayerHealth>().spawnedCard = false;
         for (int i = 0; i < player1WinCounter.Length; i++)
         {
             player1WinCounter[i].SetActive(false);
