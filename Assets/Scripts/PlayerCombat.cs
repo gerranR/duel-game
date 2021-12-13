@@ -53,6 +53,7 @@ public class PlayerCombat : MonoBehaviour
                 meleeAudio.Play();
                 swordCol.GetComponent<Collider2D>().enabled = true;
                 swordUsed = true;
+                print("test1");
                 StartCoroutine(SwordTimer());
             }
         }
@@ -82,14 +83,16 @@ public class PlayerCombat : MonoBehaviour
         reloading = false;
     }
 
-    IEnumerator ShootTimer()
+     public IEnumerator ShootTimer()
     {
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
     IEnumerator SwordTimer()
     {
+        print("test2");
         yield return new WaitForSeconds(fireRate);
+        print("test3");
         swordCol.GetComponent<Collider2D>().enabled = false;
         swordUsed = false;
     }

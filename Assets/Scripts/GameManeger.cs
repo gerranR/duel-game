@@ -41,6 +41,10 @@ public class GameManeger : MonoBehaviour
                 Destroy(curCardPanel);
                 player1.GetComponent<PlayerHealth>().someoneWon = true;
                 player2.GetComponent<PlayerHealth>().someoneWon = true;
+                player1.GetComponent<PlayerCombat>().swordCol.GetComponent<Collider2D>().enabled = false;
+                player1.GetComponent<PlayerCombat>().swordUsed = false;
+                player2.GetComponent<PlayerCombat>().swordCol.GetComponent<Collider2D>().enabled = false;
+                player2.GetComponent<PlayerCombat>().swordUsed = false;
                 rootMenu.SetActive(true);
                 menu = Instantiate(winScreen, rootMenu.transform);
                 player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();

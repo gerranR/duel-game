@@ -1510,7 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38732cf8c82dd5f4da7569a92f113754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 500
+  fireRate: 0.5
   maxHP: 100
   meleeDmg: 50
   rangeDmg: 50
