@@ -11,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
-    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm;
+    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair;
     public bool hasKnockback, wallJumpCheck;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = false, jumped;
     private float inputX;
+    public GameObject armPos1, armPos2, hairPos1, hairPos2;
 
     public AudioSource Footsteps;
 
@@ -53,10 +54,14 @@ public class PlayerMovement : MonoBehaviour
                     if (inputX > 0)
                     {
                         GetComponent<SpriteRenderer>().flipX = false;
+                        arm.transform.position = armPos1.transform.position;
+                        hair.transform.position = hairPos1.transform.position;
                     }
                     else if (inputX < 0)
                     {
                         GetComponent<SpriteRenderer>().flipX = true;
+                        arm.transform.position = armPos2.transform.position;
+                        hair.transform.position = hairPos2.transform.position;
                     }
                 }
             }
@@ -81,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             if (wallJumpCheck)
             {
                 playerAnimator.SetBool("Hanging", false);
-                playerAnimator.SetBool("Jump", true);
+                playerAnimator.SetTrigger("Jump");
                 jumpsLeft--;
                 TurnMovement(false);
                 if(lorRWall == 0)
@@ -100,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 jumped = true;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
-                playerAnimator.SetBool("Jump", true);
+                playerAnimator.SetTrigger("Jump");
                 playerAnimator.SetBool("Grounded", false);
                 jumpsLeft--;
                 StartCoroutine(JumpTimer());
@@ -124,7 +129,6 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         jumped = false;
-        playerAnimator.SetBool("Jump", false);
     }
 
     void GroundCheck()
@@ -149,6 +153,8 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapCircle(wallCheckObjR.transform.position , groundCheckRadius, wallLayer))
         {
             GetComponent<SpriteRenderer>().flipX = false;
+            arm.transform.position = armPos1.transform.position;
+            hair.transform.position = hairPos1.transform.position;
             playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
@@ -157,6 +163,8 @@ public class PlayerMovement : MonoBehaviour
         else if (Physics2D.OverlapCircle(wallCheckObjL.transform.position , groundCheckRadius, wallLayer))
         {
             GetComponent<SpriteRenderer>().flipX = true;
+            arm.transform.position = armPos2.transform.position;
+            hair.transform.position = hairPos2.transform.position;
             playerAnimator.SetBool("Hanging", true);
             jumpsLeft = jumpsMax;
             wallJumpCheck = true;
