@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &345029331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 345029332}
+  m_Layer: 0
+  m_Name: Saw1Pos2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &345029332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345029331}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -8.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8141789510755487801}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473795724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,6 +4834,36 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &970703872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970703873}
+  m_Layer: 0
+  m_Name: Saw1Pos1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970703873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 970703872}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.62, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8141789510755487801}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1266145894
 GameObject:
   m_ObjectHideFlags: 0
@@ -9848,7 +9908,7 @@ MonoBehaviour:
   - {x: -0.66499996, y: 0.9549999, z: 0}
   m_ShapePathHash: -1368194635
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23810
+  m_InstanceId: -10338
 --- !u!1 &8141789510029503682
 GameObject:
   m_ObjectHideFlags: 0
@@ -10528,7 +10588,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: -1658177937
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23820
+  m_InstanceId: -10296
 --- !u!1 &8141789510434073277
 GameObject:
   m_ObjectHideFlags: 0
@@ -11602,7 +11662,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.004999995, z: 0}
   m_ShapePathHash: -1964335121
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23844
+  m_InstanceId: -10314
 --- !u!1 &8141789510498693328
 GameObject:
   m_ObjectHideFlags: 0
@@ -11661,7 +11721,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: -1883576544
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23850
+  m_InstanceId: -10326
 --- !u!1 &8141789510510769922
 GameObject:
   m_ObjectHideFlags: 0
@@ -11718,7 +11778,7 @@ MonoBehaviour:
   - {x: -0.50249994, y: 0.5079999, z: 0}
   m_ShapePathHash: 237763885
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23856
+  m_InstanceId: -10332
 --- !u!1 &8141789510667010422
 GameObject:
   m_ObjectHideFlags: 0
@@ -11816,6 +11876,8 @@ Transform:
   - {fileID: 2398131221967270287}
   - {fileID: 5297608677971674265}
   - {fileID: 8402558682115358286}
+  - {fileID: 970703873}
+  - {fileID: 345029332}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11875,7 +11937,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23870
+  m_InstanceId: -10284
 --- !u!1 &8141789510819781901
 GameObject:
   m_ObjectHideFlags: 0
@@ -13627,7 +13689,7 @@ MonoBehaviour:
   - {x: -0.48000002, y: 0, z: 0}
   m_ShapePathHash: 1228779247
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23900
+  m_InstanceId: -10302
 --- !u!1 &8141789511149562337
 GameObject:
   m_ObjectHideFlags: 0
@@ -13687,7 +13749,7 @@ MonoBehaviour:
   - {x: -0.4949999, y: 0.004999995, z: 0}
   m_ShapePathHash: 278953663
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23906
+  m_InstanceId: -10308
 --- !u!1 &8141789511226159999
 GameObject:
   m_ObjectHideFlags: 0
@@ -13744,7 +13806,7 @@ MonoBehaviour:
   - {x: -0.66499996, y: 0.9549999, z: 0}
   m_ShapePathHash: -1368194635
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23910
+  m_InstanceId: -10344
 --- !u!1 &8141789511366985650
 GameObject:
   m_ObjectHideFlags: 0
@@ -13847,7 +13909,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23920
+  m_InstanceId: -10290
 --- !u!1 &8141789511594657571
 GameObject:
   m_ObjectHideFlags: 0
@@ -13959,7 +14021,7 @@ MonoBehaviour:
   - {x: -0.5, y: 0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 23936
+  m_InstanceId: -10320
 --- !u!1 &9113925603638490302
 GameObject:
   m_ObjectHideFlags: 0
@@ -14839,6 +14901,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141789510755487801}
     m_Modifications:
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: pos1
+      value: 
+      objectReference: {fileID: 970703872}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: pos2
+      value: 
+      objectReference: {fileID: 345029331}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: moving
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: checkpoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: checkpoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 970703872}
+    - target: {fileID: -7197340945869846767, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
+      propertyPath: checkpoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 345029331}
     - target: {fileID: 3938231113467779372, guid: 0559d6e19f5679446b5e79743b2625b0, type: 3}
       propertyPath: m_Name
       value: SawBlade

@@ -181,6 +181,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1000
   knockbackForce: 15
+  moveSpeed: 0
+  moving: 0
+  pos1: {fileID: 0}
+  pos2: {fileID: 0}
 --- !u!58 &7414706310029366745
 CircleCollider2D:
   m_ObjectHideFlags: 0
