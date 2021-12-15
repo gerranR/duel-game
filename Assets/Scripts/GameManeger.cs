@@ -137,14 +137,14 @@ public class GameManeger : MonoBehaviour
         Destroy(curLvlObj);
         int newLvl = Random.Range(0, levels.Length);
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
-        resetPlayers();
         curLvl = levels[newLvl];
         Invoke("winScreenActive", 1f);
     }
 
     private void winScreenActive()
     {
-        Destroy(menu); 
+        Destroy(menu);
+        resetPlayers();
         player1.GetComponent<PlayerMovement>().TurnMovement(true);
         player2.GetComponent<PlayerMovement>().TurnMovement(true);
         player1.GetComponent<PlayerCombat>().canAttack = true;
@@ -185,6 +185,7 @@ public class GameManeger : MonoBehaviour
             pannelAnimator2.SetTrigger("Leave");
         }
 
+        playerSelectScreen.GetComponent<Animator>().SetTrigger("Leave");
         spawnPos1 = curLvl.transform.Find("Spawn1");
         player1.transform.position = spawnPos1.position;
         spawnPos2 = curLvl.transform.Find("Spawn2");
