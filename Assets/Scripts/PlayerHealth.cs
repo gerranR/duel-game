@@ -90,15 +90,16 @@ public class PlayerHealth : MonoBehaviour
                 var menu = Instantiate(CardPanelPrefab, rootMenu.transform);
                 this.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
                 EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
+                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+                FindObjectOfType<CardSelect>().playerLost = this.gameObject;
+                FindObjectOfType<GameManeger>().ResetLevel(playerInt, true, menu);
+                FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
+                spawnedCard = true;
+                yield return new WaitForSeconds(2f);
                 GetComponent<SpriteRenderer>().enabled = true;
                 arm.SetActive(true);
                 hpSlider.gameObject.SetActive(true);
                 hair.SetActive(true);
-                GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-                FindObjectOfType<CardSelect>().playerLost = this.gameObject;
-                FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
-                spawnedCard = true;
-                FindObjectOfType<GameManeger>().ResetLevel(playerInt, true, menu);
             }
     }
     private void OnTriggerEnter2D(Collider2D collision)

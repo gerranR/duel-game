@@ -32,8 +32,17 @@ public class GameManeger : MonoBehaviour
 
     public void ResetLevel(int playerWin, bool cardSelect, GameObject curCardPanel)
     {
-
-        if (player1Wins == 4 || player2Wins == 4)
+        if (playerWin == 0)
+        {
+            player1WinCounter[player1Wins].SetActive(true);
+            player1Wins++;
+        }
+        if (playerWin == 1)
+        {
+            player2WinCounter[player2Wins].SetActive(true);
+            player2Wins++;
+        }
+        if (player1Wins == 5 || player2Wins == 5)
         {
             var rootMenu = GameObject.Find("WinPanel");
             if (rootMenu != null)
@@ -47,10 +56,11 @@ public class GameManeger : MonoBehaviour
                 player2.GetComponent<PlayerCombat>().swordUsed = false;
                 rootMenu.SetActive(true);
                 menu = Instantiate(winScreen, rootMenu.transform);
-                player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+               // player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
                 EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
                 print(menu.transform.Find("Rematch").name);
                 menu.transform.Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
+                print(menu.transform.Find("Rematch").GetComponent<Button>().onClick);
                 menu.transform.Find("MainMenu").GetComponent<Button>().onClick.AddListener(delegate { this.MainMenu(); });
                 if (player1Wins == 5)
                 {
@@ -75,16 +85,7 @@ public class GameManeger : MonoBehaviour
                 curLvl = levels[newLvl];
             }
         }
-        if (playerWin == 0)
-        {
-            player1WinCounter[player1Wins].SetActive(true);
-            player1Wins++;
-        }
-        if (playerWin == 1)
-        {
-            player2WinCounter[player2Wins].SetActive(true);
-            player2Wins++;
-        }
+
     }
 
     public void ChangeLVL()
@@ -138,7 +139,7 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
-        Invoke("winScreenActive", 0.1f);
+        Invoke("winScreenActive", 1f);
     }
 
     private void winScreenActive()

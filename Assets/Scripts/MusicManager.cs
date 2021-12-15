@@ -12,6 +12,14 @@ public class MusicManager : MonoBehaviour
         StartRandomMusic();
     }
 
+    void Update()
+    {
+        if(!musicSource.isPlaying)
+        {
+            StartRandomMusic();
+        }
+    }
+
     public void StartRandomMusic()
     {
         var curClip = Random.Range(0, bgMusic.Length);

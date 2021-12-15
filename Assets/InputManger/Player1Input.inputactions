@@ -747,6 +747,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d95148c7-c44d-443e-beb7-66c6dc947b9f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & mouse",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ff84cf80-22dc-4803-adb2-288a6ccc3516",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
