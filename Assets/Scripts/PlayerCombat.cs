@@ -13,7 +13,7 @@ public class PlayerCombat : MonoBehaviour
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
-    public Animator playerAim;
+    public Animator playerAim, armAnim;
 
     public void Gun(InputAction.CallbackContext callback)
     {
@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (callback.performed && canShoot & ammo > 0 && reloading == false)
             {
+                armAnim.SetTrigger("Shooting");
                 ShootAudio.Play();
                 ammo--;
                 ammoSlider.maxValue = maxAmmo;

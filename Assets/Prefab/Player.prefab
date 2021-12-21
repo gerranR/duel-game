@@ -597,7 +597,7 @@ Animator:
   m_GameObject: {fileID: 4281826308076609887}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f4063d387171128449d690c4af344b24, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1421,6 +1421,7 @@ MonoBehaviour:
   reloadAudio: {fileID: 505956977919862396}
   ammoSlider: {fileID: 0}
   playerAim: {fileID: 1769898636578601178}
+  armAnim: {fileID: 4037699265553990844}
 --- !u!70 &2243354704031253348
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class GameManeger : MonoBehaviour
                 player2.GetComponent<PlayerCombat>().swordUsed = false;
                 rootMenu.SetActive(true);
                 menu = Instantiate(winScreen, rootMenu.transform);
-               // player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+                //player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
                 EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
                 print(menu.transform.Find("Rematch").name);
                 menu.transform.Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
