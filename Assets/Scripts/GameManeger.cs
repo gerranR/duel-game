@@ -22,6 +22,7 @@ public class GameManeger : MonoBehaviour
     public TextMeshProUGUI winScreentext, roundWinText;
     public InputSystemUIInputModule baseEventSystem1, baseEventSystem2;
     public Animator pannelAnimator1, pannelAnimator2;
+    public GameObject countdown;
 
     private void Awake()
     {
@@ -138,13 +139,32 @@ public class GameManeger : MonoBehaviour
         int newLvl = Random.Range(0, levels.Length);
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         curLvl = levels[newLvl];
-        Invoke("winScreenActive", 1f);
+        StartCoroutine(winScreenActive());
     }
 
-    private void winScreenActive()
+    IEnumerator winScreenActive()
     {
+        yield return new WaitForSeconds(1f);
         Destroy(menu);
         resetPlayers();
+        spawnPos1 = curLvl.transform.Find("Spawn1");
+        player1.transform.position = spawnPos1.position;
+        spawnPos2 = curLvl.transform.Find("Spawn2");
+        player2.transform.position = spawnPos2.position;
+        countdown.SetActive(true);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
+        yield return new WaitForSeconds(1f);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "2";
+        yield return new WaitForSeconds(1f);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "1";
+        yield return new WaitForSeconds(1f);
+        countdown.GetComponentInChildren<TextMeshProUGUI>().text = "fight";
+        yield return new WaitForSeconds(.5f);
+        countdown.SetActive(false);
+        player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
+        player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+        player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
+        player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
         player1.GetComponent<PlayerMovement>().TurnMovement(true);
         player2.GetComponent<PlayerMovement>().TurnMovement(true);
         player1.GetComponent<PlayerCombat>().canAttack = true;
@@ -190,13 +210,25 @@ public class GameManeger : MonoBehaviour
         player1.transform.position = spawnPos1.position;
         spawnPos2 = curLvl.transform.Find("Spawn2");
         player2.transform.position = spawnPos2.position;
-        Invoke("StartGameDelay", 2);
+        StartCoroutine(StartGameDelay());
     }
 
-    public void StartGameDelay()
+    IEnumerator StartGameDelay()
     {
         if (!gameStarted && player2 != null)
         {
+            yield return new WaitForSeconds(2f);
+            countdown.SetActive(true);
+            countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
+            yield return new WaitForSeconds(1f);
+            countdown.GetComponentInChildren<TextMeshProUGUI>().text = "2";
+            yield return new WaitForSeconds(1f);
+            countdown.GetComponentInChildren<TextMeshProUGUI>().text = "1";
+            yield return new WaitForSeconds(1f);
+            countdown.GetComponentInChildren<TextMeshProUGUI>().text = "fight";
+            yield return new WaitForSeconds(.5f);
+            countdown.SetActive(false);
+
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player1.GetComponent<PlayerCombat>().CanAttack(true);
