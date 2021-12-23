@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 700
   resistance: 10
+  force: 4
   right: 0
 --- !u!61 &1812110953965892930
 BoxCollider2D:

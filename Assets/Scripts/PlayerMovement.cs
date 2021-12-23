@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair;
-    public bool hasKnockback, wallJumpCheck;
+    public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = false, jumped;
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             if (inputX != 0)
             {
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
+                isMoving = true;
                 playerAnimator.SetFloat("Speed", speed);
 
                 if (wallJumpCheck == false)
@@ -67,7 +68,17 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+                isMoving = false;
+                if(isOnTreadmil)
+                {
+
+                }
+                else
+                {
+                    rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
+                }
+                
+                
                 playerAnimator.SetFloat("Speed", 0);
             }
         }
