@@ -11,7 +11,7 @@ public class FallThroughFloor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerMovement>())
+        if (collision.gameObject.tag == "Player")
         {
             foreach (GameObject side in sides)
             {
