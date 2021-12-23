@@ -4,37 +4,46 @@ using UnityEngine;
 
 public class Treadmill : MonoBehaviour
 {
-    public float force;
+    public float speed, resistance;
     public bool right;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionStay2D(Collision2D collision)
     {
+    
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<PlayerMovement>().TurnMovement(false);
+            if(collision.gameObject.GetComponent<SpriteRenderer>().flipX == false)
+            {
+                if(right)
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().speed = speed;
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().resistance = resistance;
+                }
+            }
+            else
+            {   
+                if (!right)
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().speed = speed;
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().resistance = resistance;
+                }
+            }
         }
 
-        if (right)
-        {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0), ForceMode2D.Impulse);
-        }
-        else
-        { 
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0), ForceMode2D.Impulse);
-        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(turnPlayerMove(collision.gameObject));
+            collision.gameObject.GetComponent<PlayerMovement>().speed = collision.gameObject.GetComponent<PlayerMovement>().walkspeed;
+            collision.gameObject.GetComponent<PlayerMovement>().resistance = 1;
         }
-    }
-
-
-    IEnumerator turnPlayerMove(GameObject player)
-    {
-        yield return new WaitForSeconds(.5f);
-        player.GetComponent<PlayerMovement>().TurnMovement(true);
     }
 }

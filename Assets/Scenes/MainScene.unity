@@ -1523,11 +1523,7 @@ MonoBehaviour:
   player1Wins: 0
   player2Wins: 0
   levels:
-  - {fileID: 8141789510755487800, guid: a2d4ac6f430ffb94fbf55b99e69c7209, type: 3}
-  - {fileID: 7720310943281724818, guid: 5c9dcd51ae9eb7b4d917258a8e7a3baa, type: 3}
-  - {fileID: 3031197991284265920, guid: 56d50e179759a2440bc718a1a1809341, type: 3}
-  - {fileID: 742397342188974371, guid: 4a94fa75e2b8b494296daa4b822c791f, type: 3}
-  - {fileID: 8922297292632870358, guid: 2df1ff87c16380444964fd776d1f4dce, type: 3}
+  - {fileID: 9075945387014765245, guid: cb6710568f1f5644fa7c34aa49a6ad1f, type: 3}
   player1WinCounter:
   - {fileID: 1908673238}
   - {fileID: 864884747}

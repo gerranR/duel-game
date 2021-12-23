@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float groundCheckRadius, bulletSpeed, raycastDist;
-    public float speed, jumpForce, resistance, wallResistance;
+    public float speed, walkspeed, jumpForce, resistance, wallResistance;
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;

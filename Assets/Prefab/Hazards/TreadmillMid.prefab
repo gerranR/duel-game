@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 815137417355752751}
   - component: {fileID: -2895398994619905233}
   - component: {fileID: 1971746629165033503}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreadmillMid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a71b096ba9c0754490db1766fc910d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
+  speed: 700
+  resistance: 10
   right: 0
 --- !u!61 &1971746629165033503
 BoxCollider2D:
