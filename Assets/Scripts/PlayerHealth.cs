@@ -95,7 +95,7 @@ public class PlayerHealth : MonoBehaviour
                 FindObjectOfType<GameManeger>().ResetLevel(playerInt, true, menu);
                 FindObjectOfType<CardSelect>().ChangeCards(playerInt + 1);
                 spawnedCard = true;
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(.5f);
                 GetComponent<SpriteRenderer>().enabled = true;
                 arm.SetActive(true);
                 hpSlider.gameObject.SetActive(true);

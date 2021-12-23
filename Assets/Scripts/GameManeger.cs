@@ -84,6 +84,12 @@ public class GameManeger : MonoBehaviour
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];
+        spawnPos1 = curLvl.transform.Find("Spawn1");
+        player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        player1.transform.position = spawnPos1.position;
+        spawnPos2 = curLvl.transform.Find("Spawn2");
+        player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        player2.transform.position = spawnPos2.position;
     }
 
     public void MainMenu()
@@ -127,20 +133,24 @@ public class GameManeger : MonoBehaviour
         int newLvl = Random.Range(0, levels.Length);
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         curLvl = levels[newLvl];
-        StartCoroutine(winScreenActive());
-    }
-
-    IEnumerator winScreenActive()
-    {
-        yield return new WaitForSeconds(1f);
-        Destroy(menu);
-        resetPlayers();
         spawnPos1 = curLvl.transform.Find("Spawn1");
         player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player1.transform.position = spawnPos1.position;
         spawnPos2 = curLvl.transform.Find("Spawn2");
         player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player2.transform.position = spawnPos2.position;
+        StartCoroutine(winScreenActive());
+    }
+
+    IEnumerator winScreenActive()
+    {
+        player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
+        player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+        player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
+        player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+        yield return new WaitForSeconds(1f);
+        Destroy(menu);
+        resetPlayers();
         countdown.SetActive(true);
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
         yield return new WaitForSeconds(1f);
@@ -151,10 +161,7 @@ public class GameManeger : MonoBehaviour
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = "fight";
         yield return new WaitForSeconds(.5f);
         countdown.SetActive(false);
-        player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
-        player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
-        player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
-        player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+
         player1.GetComponent<PlayerMovement>().TurnMovement(true);
         player2.GetComponent<PlayerMovement>().TurnMovement(true);
         player1.GetComponent<PlayerCombat>().canAttack = true;
@@ -169,17 +176,11 @@ public class GameManeger : MonoBehaviour
     {
         if (player2 != null)
         {
-            spawnPos1 = curLvl.transform.Find("Spawn1");
-            player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            player1.transform.position = spawnPos1.position;
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player1.GetComponent<PlayerCombat>().CanAttack(false);
             player1.GetComponent<PlayerHealth>().canTakeDmg = false;
             player1.GetComponent<PlayerMovement>().TurnMovement(false);
-            spawnPos2 = curLvl.transform.Find("Spawn2");
-            player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            player2.transform.position = spawnPos2.position;
             player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
             player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player2.GetComponent<PlayerCombat>().CanAttack(false);
@@ -206,13 +207,11 @@ public class GameManeger : MonoBehaviour
     {
         if (!gameStarted && player2 != null)
         {
-            yield return new WaitForSeconds(2f);
-            spawnPos1 = curLvl.transform.Find("Spawn1");
-            player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            player1.transform.position = spawnPos1.position;
-            spawnPos2 = curLvl.transform.Find("Spawn2");
-            player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            player2.transform.position = spawnPos2.position;
+            player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
+            player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
+            player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
+            player2.GetComponent<PlayerCombat>().ammo = player2.GetComponent<PlayerCombat>().maxAmmo;
+            yield return new WaitForSeconds(2f);    
             countdown.SetActive(true);
             countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
             yield return new WaitForSeconds(1f);
@@ -223,15 +222,11 @@ public class GameManeger : MonoBehaviour
             countdown.GetComponentInChildren<TextMeshProUGUI>().text = "fight";
             yield return new WaitForSeconds(.5f);
             countdown.SetActive(false);
-
-            player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
-            player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
             player1.GetComponent<PlayerCombat>().CanAttack(true);
             player1.GetComponent<PlayerCombat>().canShoot = true;
             player1.GetComponent<PlayerMovement>().TurnMovement(true);
             player1.GetComponent<PlayerHealth>().canTakeDmg = true;
-            player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
-            player2.GetComponent<PlayerCombat>().ammo = player2.GetComponent<PlayerCombat>().maxAmmo;
+
             player2.GetComponent<PlayerCombat>().CanAttack(true);
             player2.GetComponent<PlayerCombat>().canShoot = true;
             player2.GetComponent<PlayerMovement>().TurnMovement(true);
