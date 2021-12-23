@@ -88,8 +88,11 @@ public class GameManeger : MonoBehaviour
         player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player1.transform.position = spawnPos1.position;
         spawnPos2 = curLvl.transform.Find("Spawn2");
-        player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-        player2.transform.position = spawnPos2.position;
+        if(player2 != null)
+        {
+            player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            player2.transform.position = spawnPos2.position;
+        }
     }
 
     public void MainMenu()
