@@ -57,7 +57,6 @@ public class GameManeger : MonoBehaviour
                 player2.GetComponent<PlayerCombat>().swordUsed = false;
                 rootMenu.SetActive(true);
                 menu = Instantiate(winScreen, rootMenu.transform);
-                //player1.GetComponent<PlayerInput>().uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
                 EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
                 print(menu.transform.Find("Rematch").name);
                 menu.transform.Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
@@ -73,18 +72,7 @@ public class GameManeger : MonoBehaviour
          }
         else
         {
-            if (cardSelect)
-            {
-                Invoke("ChangeLVL", 1f);
-            }
-            else
-            {
-                Destroy(curLvlObj);
-                int newLvl = Random.Range(0, levels.Length);
-                curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
-                resetPlayers();
-                curLvl = levels[newLvl];
-            }
+            Invoke("ChangeLVL", 1f);
         }
 
     }
@@ -148,8 +136,10 @@ public class GameManeger : MonoBehaviour
         Destroy(menu);
         resetPlayers();
         spawnPos1 = curLvl.transform.Find("Spawn1");
+        player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player1.transform.position = spawnPos1.position;
         spawnPos2 = curLvl.transform.Find("Spawn2");
+        player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         player2.transform.position = spawnPos2.position;
         countdown.SetActive(true);
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
@@ -180,6 +170,7 @@ public class GameManeger : MonoBehaviour
         if (player2 != null)
         {
             spawnPos1 = curLvl.transform.Find("Spawn1");
+            player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             player1.transform.position = spawnPos1.position;
             player1.GetComponent<PlayerHealth>().health = player1.GetComponent<PlayerHealth>().maxHealth;
             player1.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
@@ -187,6 +178,7 @@ public class GameManeger : MonoBehaviour
             player1.GetComponent<PlayerHealth>().canTakeDmg = false;
             player1.GetComponent<PlayerMovement>().TurnMovement(false);
             spawnPos2 = curLvl.transform.Find("Spawn2");
+            player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             player2.transform.position = spawnPos2.position;
             player2.GetComponent<PlayerHealth>().health = player2.GetComponent<PlayerHealth>().maxHealth;
             player2.GetComponent<PlayerCombat>().ammo = player1.GetComponent<PlayerCombat>().maxAmmo;
@@ -206,10 +198,7 @@ public class GameManeger : MonoBehaviour
         }
 
         playerSelectScreen.GetComponent<Animator>().SetTrigger("Leave");
-        spawnPos1 = curLvl.transform.Find("Spawn1");
-        player1.transform.position = spawnPos1.position;
-        spawnPos2 = curLvl.transform.Find("Spawn2");
-        player2.transform.position = spawnPos2.position;
+
         StartCoroutine(StartGameDelay());
     }
 
@@ -218,6 +207,12 @@ public class GameManeger : MonoBehaviour
         if (!gameStarted && player2 != null)
         {
             yield return new WaitForSeconds(2f);
+            spawnPos1 = curLvl.transform.Find("Spawn1");
+            player1.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            player1.transform.position = spawnPos1.position;
+            spawnPos2 = curLvl.transform.Find("Spawn2");
+            player2.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            player2.transform.position = spawnPos2.position;
             countdown.SetActive(true);
             countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
             yield return new WaitForSeconds(1f);
