@@ -8,7 +8,7 @@ public class PlayerCombat : MonoBehaviour
 {
     public bool canShoot = true, reloading, swordUsed, canAttack = false;
     public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg;
-    public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites;
+    public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites, muzzleflash;
     public int ammo, maxAmmo;
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
@@ -54,7 +54,6 @@ public class PlayerCombat : MonoBehaviour
                 meleeAudio.Play();
                 swordCol.GetComponent<Collider2D>().enabled = true;
                 swordUsed = true;
-                print("test1");
                 StartCoroutine(SwordTimer());
             }
         }
@@ -66,7 +65,6 @@ public class PlayerCombat : MonoBehaviour
         {
             if (callback.performed && reloading == false)
             {
-                print("Reload");
                 reloading = true;
                 StartCoroutine(ReloadTimer());
             }
@@ -86,6 +84,9 @@ public class PlayerCombat : MonoBehaviour
 
      public IEnumerator ShootTimer()
     {
+        muzzleflash.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        muzzleflash.SetActive(false);
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
     }
