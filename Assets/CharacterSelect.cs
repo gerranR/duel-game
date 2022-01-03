@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Animations;
 
 public class CharacterSelect : MonoBehaviour
@@ -10,6 +11,7 @@ public class CharacterSelect : MonoBehaviour
     public PlayerVariant[] playerVariants;
     private GameObject armPos1Object, armPos2Object, armPivotObject;
     public Vector3 armPos1, armPos2, foxArmPos1, foxArmPos2;
+    public Image characterSpriteImage;
     // Start is called before the first frame update
 
     [System.Serializable]
@@ -17,12 +19,12 @@ public class CharacterSelect : MonoBehaviour
     {
         public RuntimeAnimatorController playerAnimControl, armAnimControl;
         public bool foxType;
+        public Sprite CharacterSprite;
     }
 
     void Start()
     {
         ChosenPlayer = 0;
-
     }
 
     // Update is called once per frame
@@ -58,24 +60,25 @@ public class CharacterSelect : MonoBehaviour
 
     public void ChoosePlayer()
     {
+        characterSpriteImage.sprite = playerVariants[ChosenPlayer].CharacterSprite;
         armPivotObject = playerAnim.gameObject.transform.Find("ArmPivot").gameObject;
         armPos1Object = playerAnim.gameObject.transform.Find("ArmPos1").gameObject;
         armPos2Object = playerAnim.gameObject.transform.Find("ArmPos2").gameObject;
 
         playerAnim.runtimeAnimatorController = playerVariants[ChosenPlayer].playerAnimControl;
         armAnim.runtimeAnimatorController = playerVariants[ChosenPlayer].armAnimControl;
-        //if (playerVariants[ChosenPlayer].foxType)
-        //{
-        //    armPivotObject.transform.localPosition = foxArmPos1;
-        //    armPos1Object.transform.localPosition = foxArmPos1;
-        //    armPos2Object.transform.localPosition = foxArmPos2;
-        //}
-        //else
-        //{
-        //    armPivotObject.transform.localPosition = armPos1;
-        //    armPos1Object.transform.localPosition = armPos1;
-        //    armPos2Object.transform.localPosition = armPos2;
-        //}
+        if (playerVariants[ChosenPlayer].foxType)
+        {
+            armPivotObject.transform.localPosition = foxArmPos1;
+            armPos1Object.transform.localPosition = foxArmPos1;
+            armPos2Object.transform.localPosition = foxArmPos2;
+        }
+        else
+        {
+            armPivotObject.transform.localPosition = armPos1;
+            armPos1Object.transform.localPosition = armPos1;
+            armPos2Object.transform.localPosition = armPos2;
+        }
     }
 
 }
