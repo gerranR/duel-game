@@ -12,23 +12,34 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
     public GameObject playerJoinPrefab;
     public PlayerInput input;
     private GameObject menu;
+    public Animator playerAnimator, armAnimator;
     public RuntimeAnimatorController player1Controller, player2Controller;
 
     private void Awake()
     {
         var rootMenu = GameObject.Find("PlayerJoinPanel");
-        if(rootMenu != null)
+        playerAnimator = gameObject.GetComponent<PlayerCombat>().playerAim;
+        armAnimator = gameObject.GetComponent<PlayerCombat>().armAnim;
+        if (rootMenu != null)
         {
             if(GetComponent<PlayerHealth>().playerInt == 0)
             { 
                 menu = Instantiate(playerJoinPrefab, GameObject.Find("SpawnPosPlayer1").transform);
                 menu.GetComponent<Animator>().runtimeAnimatorController = player1Controller;
+                //character select
+                menu.GetComponentInChildren<CharacterSelect>().playerAnim = playerAnimator;
+                menu.GetComponentInChildren<CharacterSelect>().armAnim = armAnimator;
+
                 FindObjectOfType<GameManeger>().pannelAnimator1 = menu.GetComponent<Animator>();
             }
             else
             {
                 menu = Instantiate(playerJoinPrefab, GameObject.Find("SpawnPosPlayer2").transform);
                 menu.GetComponent<Animator>().runtimeAnimatorController = player2Controller;
+                //character select
+                menu.GetComponentInChildren<CharacterSelect>().playerAnim = playerAnimator;
+                menu.GetComponentInChildren<CharacterSelect>().armAnim = armAnimator;
+
                 FindObjectOfType<GameManeger>().pannelAnimator2 = menu.GetComponent<Animator>();
             }
             menu.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { SceneManager.LoadScene(0); });
