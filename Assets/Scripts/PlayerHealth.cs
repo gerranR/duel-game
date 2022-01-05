@@ -10,14 +10,15 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce;
+    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce, knockbackAdd, PoisonDmg, poisonTime;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
-    public bool spawnedCard, someoneWon;
+    public bool spawnedCard, someoneWon, poisoned;
     public GameObject CardPanelPrefab, deathPart, arm, hair;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;
+    private float PoisonTimer, maxPoisonTimer;
 
     public AudioSource playerDeathAudioSource, hitAudio;
 
@@ -42,6 +43,10 @@ public class PlayerHealth : MonoBehaviour
     {
         hpSlider.value = health;
         hpSlider.maxValue = maxHealth;
+        if(poisoned)
+        {
+            Poisoned(poisonTime, PoisonDmg);
+        }
     }
 
     public void DoDmg(float dmg)
@@ -68,13 +73,29 @@ public class PlayerHealth : MonoBehaviour
                     GameObject deathPartical = Instantiate(deathPart, this.gameObject.transform);
                     GetComponent<PlayerMovement>().TurnMovement(false);
                     FindObjectOfType<GameManeger>().winText.SetActive(true);
-                    if(playerInt == 1)
+                    if (playerInt == 1)
                         FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 1 has won";
                     else
                         FindObjectOfType<GameManeger>().winText.GetComponent<TextMeshProUGUI>().text = "player 2 has won";
                     StartCoroutine(deathTime());
                 }
             }
+        }
+    }
+
+    public void Poisoned(float poisonTime, float PoisonDmg)
+    {
+        maxPoisonTimer += Time.deltaTime;
+        PoisonTimer += Time.deltaTime;
+        if(PoisonTimer >= 1)
+        {
+            hitAudio.Play();
+            health -= PoisonDmg;
+            PoisonTimer = 0;
+        }
+        if(maxPoisonTimer >= poisonTime)
+        {
+            poisoned = false;
         }
     }
 
@@ -114,7 +135,7 @@ public class PlayerHealth : MonoBehaviour
     {
         this.GetComponent<PlayerMovement>().hasKnockback = true;
         Vector2 direction = other.transform.position - transform.position;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + - direction.x * knockbackForce, GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + - direction.x * (knockbackForce * knockbackAdd), GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
         StartCoroutine(NoKnockback());
     }
 

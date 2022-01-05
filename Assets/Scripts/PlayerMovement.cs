@@ -7,12 +7,12 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float groundCheckRadius, bulletSpeed, raycastDist;
-    public float speed, walkspeed, jumpForce, resistance, wallResistance;
+    public float speed, walkspeed, jumpForce, resistance, wallResistance, jetPackTime;
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair;
-    public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil;
+    public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil, hasJetPack;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = false, jumped;
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
                 playerAnimator.SetTrigger("Jump");
                 playerAnimator.SetBool("Grounded", false);
-                StartCoroutine(JumpTimer());
+                    StartCoroutine(JumpTimer());
             }
         }
         if (context.canceled && hasKnockback == false)

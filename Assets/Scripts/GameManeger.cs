@@ -81,6 +81,11 @@ public class GameManeger : MonoBehaviour
     {
         Destroy(curLvlObj);
         int newLvl = Random.Range(0, levels.Length);
+        if(levels[newLvl] == curLvl)
+        {
+            ChangeLVL();
+            return;
+        }
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
         resetPlayers();
         curLvl = levels[newLvl];

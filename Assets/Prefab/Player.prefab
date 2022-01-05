@@ -1447,6 +1447,7 @@ MonoBehaviour:
   jumpForce: 17
   resistance: 1
   wallResistance: 10
+  jetPackTime: 0
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsLeft: 0
   lorRWall: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   wallJumpCheck: 0
   isMoving: 0
   isOnTreadmil: 0
+  hasJetPack: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1490,11 +1492,19 @@ MonoBehaviour:
   reloading: 0
   swordUsed: 0
   canAttack: 0
+  burst: 0
+  isShooting: 0
+  poison: 0
+  hasShotgun: 0
   fireRate: 0.5
   reloadTime: 2
   SwordDur: 0.5
   bulletDmg: 20
   swordDmg: 30
+  poisonDmg: 0
+  poisonTime: 0
+  shotgunShots: 0
+  shotgunSpread: 45
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
@@ -1503,6 +1513,8 @@ MonoBehaviour:
   muzzleflash: {fileID: 5456443320619772012}
   ammo: 5
   maxAmmo: 5
+  burstNum: 0
+  burstMax: 0
   ShootAudio: {fileID: 4433769942588931730}
   meleeAudio: {fileID: 1706853022906209224}
   reloadAudio: {fileID: 505956977919862396}
@@ -1543,10 +1555,14 @@ MonoBehaviour:
   rangeResist: 0
   meleeResist: 0
   borderKnockbackForce: 25
+  knockbackAdd: 0
+  PoisonDmg: 0
+  poisonTime: 0
   hpSlider: {fileID: 2679557470016982729}
   canTakeDmg: 0
   spawnedCard: 0
   someoneWon: 0
+  poisoned: 0
   CardPanelPrefab: {fileID: 864647149291479614, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
   deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
   arm: {fileID: 5170228455174681603}
@@ -1601,7 +1617,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7648513523987580004}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: Gun
+        m_MethodName: GunInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

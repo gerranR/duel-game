@@ -16,13 +16,21 @@ MonoBehaviour:
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
-  rangeDmg: 0
+  rangeDmg: -10
   speed: 0
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 5
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: 
-  discription: 
+  burst: 0
+  poison: 0
+  shotgun: 1
+  titel: shotgun
+  discription: otgun

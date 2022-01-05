@@ -21,8 +21,9 @@ MonoBehaviour:
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0.2
   maxAmmo: 0
   maxJump: 0
   halfHPDubbelDmg: 0
-  titel: 
-  discription: 
+  titel: knockback
+  discription: 20% more knockback

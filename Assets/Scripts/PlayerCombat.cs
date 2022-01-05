@@ -6,20 +6,60 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public bool canShoot = true, reloading, swordUsed, canAttack = false;
-    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg;
+    public bool canShoot = true, reloading, swordUsed, canAttack = false, burst, isShooting, poison, hasShotgun;
+    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread;
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites, muzzleflash;
-    public int ammo, maxAmmo;
+    public int ammo, maxAmmo, burstNum, burstMax;
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
     public Animator playerAim, armAnim;
 
-    public void Gun(InputAction.CallbackContext callback)
+    public void GunInput(InputAction.CallbackContext callback)
+    {
+        if(callback.performed && isShooting == false && canAttack)
+        {
+            isShooting = true;
+            print("Shoot");
+            Gun();
+        }
+    }
+
+    public void Gun()
     {
         if (canAttack)
         {
-            if (callback.performed && canShoot & ammo > 0 && reloading == false)
+            if(hasShotgun && canShoot & ammo > 0 && reloading == false)
+            {
+                armAnim.SetTrigger("Shooting");
+                ShootAudio.Play();
+                ammo--;
+                ammoSlider.maxValue = maxAmmo;
+                ammoSlider.value = ammo;
+                for (int i = 0; i < shotgunShots; i++)
+                {
+                    Quaternion spread = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(Random.Range(-shotgunSpread, shotgunSpread), Random.Range(-shotgunSpread, shotgunSpread), 0f));
+
+                    GameObject bulletInstance = Instantiate(bullet, gun.transform.position, (gun.transform.rotation * spread));
+                    bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
+                    bulletInstance.GetComponent<Bullet>().poison = poison;
+                    bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
+                    bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
+                    bulletInstance.GetComponent<Bullet>().player = this.gameObject;
+                    
+                }
+                if(burst)
+                {
+                    StartCoroutine(burstTimer());
+                }
+                else
+                {
+                    canShoot = false;
+                    StartCoroutine(ShootTimer());
+                }
+
+            }
+            else if (canShoot & ammo > 0 && reloading == false)
             {
                 armAnim.SetTrigger("Shooting");
                 ShootAudio.Play();
@@ -28,12 +68,23 @@ public class PlayerCombat : MonoBehaviour
                 ammoSlider.value = ammo;
                 GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
                 bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
+                bulletInstance.GetComponent<Bullet>().poison = poison;
+                bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
+                bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
-                canShoot = false;
-                StartCoroutine(ShootTimer());
+
+                if (burst)
+                {
+                    StartCoroutine(burstTimer());
+                }
+                else
+                {
+                    canShoot = false;
+                    StartCoroutine(ShootTimer());
+                }
             }
 
-            else if(callback.performed && canShoot && ammo == 0 && reloading == false)
+            else if (canShoot && ammo == 0 && reloading == false)
             {
                 print("Reload");
                 reloading = true;
@@ -79,6 +130,8 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         ammo = maxAmmo;
         ammoSlider.value = ammo;
+        isShooting = false;
+        burstNum = 0;
         reloading = false;
     }
 
@@ -89,6 +142,28 @@ public class PlayerCombat : MonoBehaviour
         muzzleflash.SetActive(false);
         yield return new WaitForSeconds(fireRate);
         canShoot = true;
+        isShooting = false;
+    }
+    public IEnumerator burstTimer()
+    {
+        print("burts");
+
+        muzzleflash.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        muzzleflash.SetActive(false);
+        burstNum++;
+        if(burstNum<burstMax)
+        {
+            Gun();
+        }
+        else
+        {
+            canShoot = false;
+            burstNum = 0;
+        }
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
+        isShooting = false;
     }
     IEnumerator SwordTimer()
     {

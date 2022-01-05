@@ -6,12 +6,13 @@ public class Bullet : MonoBehaviour
 {
 
     public Rigidbody2D rigidbody2d;
-    public float bulletSpeed, dmg, knockbackForce;
+    public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime;
     public GameObject player;
+    public bool poison, shotgun;
     // Start is called before the first frame update
     void Start()
     {
-         rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
+        rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
     }
 
 
@@ -23,6 +24,13 @@ public class Bullet : MonoBehaviour
             {
                 collision.GetComponent<PlayerHealth>().DoDmg(dmg - collision.GetComponent<PlayerHealth>().rangeResist);
                 collision.GetComponent<PlayerHealth>().Knockback(this.gameObject, knockbackForce);
+
+                if(poison)
+                {
+                    collision.GetComponent<PlayerHealth>().poisoned = poison;
+                    collision.GetComponent<PlayerHealth>().PoisonDmg = poisonDmg;
+                    collision.GetComponent<PlayerHealth>().poisonTime = poisonTime;
+                }
                 Destroy(gameObject);
             }
         }

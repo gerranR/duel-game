@@ -82,6 +82,22 @@ public class CardSelect : MonoBehaviour
             playerLost.GetComponent<PlayerMovement>().jumpsMax += card[buttonPressed].maxJump;
             GetComponent<GameManeger>().gameStarted = false;
             GetComponent<GameManeger>().startGame();
+            if(card[buttonPressed].burst)
+            {
+                playerLost.GetComponent<PlayerCombat>().burst = true;
+                playerLost.GetComponent<PlayerCombat>().burstMax += card[buttonPressed].burstNum;
+            }
+            if (card[buttonPressed].poison)
+            {
+                playerLost.GetComponent<PlayerCombat>().poison = true;
+                playerLost.GetComponent<PlayerCombat>().poisonDmg += card[buttonPressed].poisonDmg;
+                playerLost.GetComponent<PlayerCombat>().poisonTime += card[buttonPressed].poisonTime;
+            }
+            if (card[buttonPressed].shotgun)
+            {
+                playerLost.GetComponent<PlayerCombat>().hasShotgun = true;
+                playerLost.GetComponent<PlayerCombat>().shotgunShots += card[buttonPressed].shotgunShots;
+            }
             if (card[buttonPressed].halfHPDubbelDmg)
             {
                 playerLost.GetComponent<PlayerHealth>().maxHealth = playerLost.GetComponent<PlayerHealth>().maxHealth / 2;
@@ -91,11 +107,13 @@ public class CardSelect : MonoBehaviour
             if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
             {
                 player1Cards.Add(card[buttonPressed]);
+                player2.GetComponent<PlayerHealth>().knockbackAdd += card[buttonPressed].knaockback;
                 player1.GetComponent<PlayerHealth>().canTakeDmg = true;
             }
             else
             {
                 player2Cards.Add(card[buttonPressed]);
+                player1.GetComponent<PlayerHealth>().knockbackAdd += card[buttonPressed].knaockback;
                 player2.GetComponent<PlayerHealth>().canTakeDmg = true;
             }
             playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
