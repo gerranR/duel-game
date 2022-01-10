@@ -6,9 +6,9 @@ using UnityEngine;
 public class Cards : ScriptableObject
 {
     public GameObject cardImage;
-    public float fireRate, maxHP, meleeDmg, rangeDmg, speed, meleeRange, meleeResistance, rangeResistance, knaockback, poisonTime, poisonDmg, shotgunShots;
+    public float fireRate, maxHP, meleeDmg, rangeDmg, speed, meleeRange, meleeResistance, rangeResistance, knaockback, poisonTime, poisonDmg, shotgunShots, fireDmg, fireTime, bulletBounces;
     public int maxAmmo, maxJump, burstNum;
-    public bool halfHPDubbelDmg, burst, poison, shotgun, lifeSteal, bomb, trampoline, reflect;
+    public bool halfHPDubbelDmg, burst, poison, shotgun, lifeSteal, bomb, trampoline, reflect, fire, slowzone;
     public string titel, discription;
     public float lifeStealAmount, bulletReflectSpeed;
 }

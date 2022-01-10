@@ -6,14 +6,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public bool canShoot = true, reloading, swordUsed, canAttack = false, burst, isShooting, poison, hasShotgun, bombOnHit, trampolineOnhit;
-    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread, numOfBulletBounce;
+    public bool canShoot = true, reloading, swordUsed, canAttack = false, burst, isShooting, poison, fire, hasShotgun, bombOnHit, trampolineOnhit, slowzoneOnHit;
+    public float fireRate, reloadTime, chargeTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread, numOfBulletBounce, fireDmg, fireTime;
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites, muzzleflash;
     public int ammo, maxAmmo, burstNum, burstMax;
+    public bool hasChargeBullet, ischarging;
+    private Vector3 bulletScale;
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
     public Animator playerAim, armAnim;
+
+
+    private void Update()
+    {
+        if(hasChargeBullet && ischarging)
+        {
+            chargeTime += Time.deltaTime;
+        }
+    }
 
     public void GunInput(InputAction.CallbackContext callback)
     {
@@ -23,13 +34,126 @@ public class PlayerCombat : MonoBehaviour
             print("Shoot");
             Gun();
         }
+
+        if(callback.canceled && hasChargeBullet)
+        {
+
+            if (hasShotgun && canShoot & ammo > 0 && reloading == false)
+            {
+                ischarging = false;
+                armAnim.SetTrigger("Shooting");
+                ShootAudio.Play();
+                ammo--;
+                ammoSlider.maxValue = maxAmmo;
+                ammoSlider.value = ammo;
+                for (int i = 0; i < shotgunShots; i++)
+                {
+                    Quaternion spread = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(Random.Range(-shotgunSpread, shotgunSpread), Random.Range(-shotgunSpread, shotgunSpread), 0f));
+
+                    GameObject bulletInstance = Instantiate(bullet, gun.transform.position, (gun.transform.rotation * spread));
+
+                    bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
+                    bulletInstance.GetComponent<Bullet>().poison = poison;
+                    bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
+                    bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
+                    bulletInstance.GetComponent<Bullet>().fire = fire;
+                    bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
+                    bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
+                    bulletInstance.GetComponent<Bullet>().player = this.gameObject;
+                    if (chargeTime >= 5)
+                    {
+                        bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
+                        bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 2f;
+                    }
+                    else if (chargeTime >= 3)
+                    {
+                        bulletScale = new Vector3(0.15f, 0.15f, 0.15f);
+                        bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.5f;
+                    }
+                    else if (chargeTime >= 1)
+                    {
+                        bulletScale = new Vector3(0.12f, 0.12f, 0.12f);
+                        bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.2f;
+                    }
+                    bulletInstance.transform.localScale = bulletScale;
+
+                }
+                if (burst)
+                {
+                    StartCoroutine(burstTimer());
+                }
+                else
+                {
+                    canShoot = false;
+                    StartCoroutine(ShootTimer());
+                }
+
+            }
+            else if (canShoot & ammo > 0 && reloading == false)
+            {
+                armAnim.SetTrigger("Shooting");
+                ShootAudio.Play();
+                ammo--;
+                ammoSlider.maxValue = maxAmmo;
+                ammoSlider.value = ammo;
+                GameObject bulletInstance = Instantiate(bullet, gun.transform.position, gun.transform.rotation);
+                bulletInstance.GetComponent<Bullet>().dmg = bulletDmg;
+                bulletInstance.GetComponent<Bullet>().poison = poison;
+                bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
+                bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
+                bulletInstance.GetComponent<Bullet>().fire = fire;
+                bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
+                bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
+                bulletInstance.GetComponent<Bullet>().player = this.gameObject;
+                bulletInstance.GetComponent<Bullet>().numOfBounces = numOfBulletBounce;
+                if (chargeTime >= 5)
+                {
+                    bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 2f;
+                }
+                else if (chargeTime >= 3)
+                {
+                    bulletScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.5f;
+                }
+                else if (chargeTime >= 1)
+                {
+                    bulletScale = new Vector3(0.12f, 0.12f, 0.12f);
+                    bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.2f;
+                }
+                bulletInstance.transform.localScale = bulletScale;
+
+                if (burst)
+                {
+                    StartCoroutine(burstTimer());
+                }
+                else
+                {
+                    canShoot = false;
+                    StartCoroutine(ShootTimer());
+                }
+            }
+
+            else if (canShoot && ammo == 0 && reloading == false)
+            {
+                print("Reload");
+                reloading = true;
+                StartCoroutine(ReloadTimer());
+            }
+        }
     }
 
     public void Gun()
     {
         if (canAttack)
         {
-            if(hasShotgun && canShoot & ammo > 0 && reloading == false)
+            if(hasChargeBullet)
+            {
+                bulletScale = new Vector3(.1f, .1f, 1);
+                chargeTime = 0f;
+                ischarging = true;
+            }
+            else if(hasShotgun && canShoot & ammo > 0 && reloading == false)
             {
                 armAnim.SetTrigger("Shooting");
                 ShootAudio.Play();
@@ -45,6 +169,9 @@ public class PlayerCombat : MonoBehaviour
                     bulletInstance.GetComponent<Bullet>().poison = poison;
                     bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
                     bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
+                    bulletInstance.GetComponent<Bullet>().fire = fire;
+                    bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
+                    bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                     bulletInstance.GetComponent<Bullet>().player = this.gameObject;
                     
                 }
@@ -71,6 +198,9 @@ public class PlayerCombat : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().poison = poison;
                 bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
                 bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
+                bulletInstance.GetComponent<Bullet>().fire = fire;
+                bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
+                bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
                 bulletInstance.GetComponent<Bullet>().numOfBounces = numOfBulletBounce;
 

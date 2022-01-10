@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float groundCheckRadius, bulletSpeed, raycastDist;
-    public float speed, walkspeed, jumpForce, resistance, wallResistance, jetPackTime;
+    public float speed, walkspeed, jumpForce, resistance, wallResistance, jetPackTime, slowzoneSpeed;
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
@@ -192,6 +192,12 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.SetBool("Hanging", false);
             wallJumpCheck = false;
         }
+
+        if (collision.gameObject.tag == "SlowZone")
+        {
+            speed = walkspeed;
+        }
+
     }
 
     public void TurnMovement(bool canMovement)
@@ -219,5 +225,13 @@ public class PlayerMovement : MonoBehaviour
     public void playWalkingSounds()
     {
         Footsteps.Play();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "SlowZone")
+        {
+            speed = slowzoneSpeed;
+        }
     }
 }

@@ -78,6 +78,7 @@ public class CardSelect : MonoBehaviour
             playerLost.GetComponent<PlayerHealth>().rangeResist += card[buttonPressed].rangeResistance;
             playerLost.GetComponent<PlayerCombat>().swordDmg += card[buttonPressed].meleeDmg;
             playerLost.GetComponent<PlayerCombat>().bulletDmg += card[buttonPressed].rangeDmg;
+            playerLost.GetComponent<PlayerCombat>().numOfBulletBounce += card[buttonPressed].bulletBounces;
             playerLost.GetComponent<PlayerMovement>().speed += card[buttonPressed].speed;
             playerLost.GetComponent<PlayerMovement>().jumpsMax += card[buttonPressed].maxJump;
             GetComponent<GameManeger>().gameStarted = false;
@@ -92,6 +93,12 @@ public class CardSelect : MonoBehaviour
                 playerLost.GetComponent<PlayerCombat>().poison = true;
                 playerLost.GetComponent<PlayerCombat>().poisonDmg += card[buttonPressed].poisonDmg;
                 playerLost.GetComponent<PlayerCombat>().poisonTime += card[buttonPressed].poisonTime;
+            }
+            if (card[buttonPressed].fire)
+            {
+                playerLost.GetComponent<PlayerCombat>().fire = true;
+                playerLost.GetComponent<PlayerCombat>().fireDmg += card[buttonPressed].fireDmg;
+                playerLost.GetComponent<PlayerCombat>().fireTime += card[buttonPressed].fireTime;
             }
             if (card[buttonPressed].shotgun)
             {
@@ -112,6 +119,10 @@ public class CardSelect : MonoBehaviour
             if (card[buttonPressed].bomb)
             {
                 playerLost.GetComponent<PlayerCombat>().bombOnHit = true;
+            }
+            if (card[buttonPressed].slowzone)
+            {
+                playerLost.GetComponent<PlayerCombat>().slowzoneOnHit = true;
             }
             if (card[buttonPressed].trampoline)
             {

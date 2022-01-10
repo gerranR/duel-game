@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
-  m_Name: MiddelCard5
+  m_Name: MiddelCard7
   m_EditorClassIdentifier: 
   cardImage: {fileID: 3878784665472385860, guid: c8959f53d5181ba42b7398b857d9be1d, type: 3}
   fireRate: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
   poisonTime: 0
   poisonDmg: 0
   shotgunShots: 0
-  fireDmg: 2
-  fireTime: 5
-  bulletBounces: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 2
   maxAmmo: 0
   maxJump: 0
   burstNum: 0
@@ -39,8 +39,8 @@ MonoBehaviour:
   bomb: 0
   trampoline: 0
   reflect: 0
-  fire: 1
-  titel: fire
-  discription: fire
+  fire: 0
+  titel: bouncy bullets
+  discription: bullet bounce
   lifeStealAmount: 0
   bulletReflectSpeed: 0

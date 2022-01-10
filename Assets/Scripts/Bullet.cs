@@ -6,13 +6,20 @@ public class Bullet : MonoBehaviour
 {
 
     public Rigidbody2D rigidbody2d;
-    public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime, numOfBounces, bounceForce;
-    public GameObject player, bomb, trampoline;
-    public bool poison, shotgun;
+    public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime, fireDmg, fireTime, numOfBounces, bounceForce;
+    public GameObject player, bomb, trampoline, slowZone;
+    public bool poison, fire, shotgun;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
+    }
+    private void Update()
+    {
+        if(player.GetComponent<PlayerHealth>().someoneWon)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -27,6 +34,10 @@ public class Bullet : MonoBehaviour
             if (player.GetComponent<PlayerCombat>().trampolineOnhit)
             {
                 Instantiate(trampoline, transform.position, trampoline.transform.rotation);
+            }
+            if (player.GetComponent<PlayerCombat>().slowzoneOnHit)
+            {
+                Instantiate(slowZone, transform.position, transform.rotation);
             }
             if (numOfBounces == 0)
             {
@@ -55,6 +66,12 @@ public class Bullet : MonoBehaviour
                     collision.gameObject.GetComponent<PlayerHealth>().poisoned = poison;
                     collision.gameObject.GetComponent<PlayerHealth>().PoisonDmg = poisonDmg;
                     collision.gameObject.GetComponent<PlayerHealth>().poisonTime = poisonTime;
+                }
+                if (fire)
+                {
+                    collision.gameObject.GetComponent<PlayerHealth>().fire = fire;
+                    collision.gameObject.GetComponent<PlayerHealth>().fireDmg = fireDmg;
+                    collision.gameObject.GetComponent<PlayerHealth>().fireTime = fireTime;
                 }
                 Destroy(gameObject);
             }

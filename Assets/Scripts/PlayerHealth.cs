@@ -10,15 +10,15 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce, knockbackAdd, PoisonDmg, poisonTime, lifeStealAmount, bulletReturnSpeed;
+    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce, knockbackAdd, PoisonDmg, poisonTime, fireDmg, fireTime, lifeStealAmount, bulletReturnSpeed;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
-    public bool spawnedCard, someoneWon, poisoned, hasLifeSteal, bulletReflect;
+    public bool spawnedCard, someoneWon, poisoned, fire, hasLifeSteal, bulletReflect;
     public GameObject CardPanelPrefab, deathPart, arm, hair;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;
-    private float PoisonTimer, maxPoisonTimer;
+    private float PoisonTimer, maxPoisonTimer, fireTimer, maxFireTimer;
 
     public AudioSource playerDeathAudioSource, hitAudio;
 
@@ -46,6 +46,10 @@ public class PlayerHealth : MonoBehaviour
         if(poisoned)
         {
             Poisoned(poisonTime, PoisonDmg);
+        }
+        if (fire)
+        {
+            Burning(fireTime, fireDmg);
         }
     }
 
@@ -96,6 +100,21 @@ public class PlayerHealth : MonoBehaviour
         if(maxPoisonTimer >= poisonTime)
         {
             poisoned = false;
+        }
+    }
+    public void Burning(float fireTime, float fireDmg)
+    {
+        maxFireTimer += Time.deltaTime;
+        fireTimer += Time.deltaTime;
+        if(fireTimer >= 1)
+        {
+            hitAudio.Play();
+            health -= fireDmg;
+            fireTimer = 0;
+        }
+        if(maxFireTimer >= fireTimer)
+        {
+            fire = false;
         }
     }
 

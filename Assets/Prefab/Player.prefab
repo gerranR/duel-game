@@ -1448,6 +1448,7 @@ MonoBehaviour:
   resistance: 1
   wallResistance: 10
   jetPackTime: 0
+  slowzoneSpeed: 300
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsLeft: 0
   lorRWall: 0
@@ -1495,9 +1496,11 @@ MonoBehaviour:
   burst: 0
   isShooting: 0
   poison: 0
+  fire: 0
   hasShotgun: 0
   bombOnHit: 0
   trampolineOnhit: 0
+  slowzoneOnHit: 1
   fireRate: 0.5
   reloadTime: 2
   SwordDur: 0.5
@@ -1507,7 +1510,9 @@ MonoBehaviour:
   poisonTime: 0
   shotgunShots: 0
   shotgunSpread: 45
-  numOfBulletBounce: 10
+  numOfBulletBounce: 1
+  fireDmg: 0
+  fireTime: 0
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
@@ -1518,6 +1523,8 @@ MonoBehaviour:
   maxAmmo: 5
   burstNum: 0
   burstMax: 0
+  hasChargeBullet: 1
+  ischarging: 0
   ShootAudio: {fileID: 4433769942588931730}
   meleeAudio: {fileID: 1706853022906209224}
   reloadAudio: {fileID: 505956977919862396}
@@ -1561,6 +1568,8 @@ MonoBehaviour:
   knockbackAdd: 0
   PoisonDmg: 0
   poisonTime: 0
+  fireDmg: 0
+  fireTime: 0
   lifeStealAmount: 0
   bulletReturnSpeed: 0
   hpSlider: {fileID: 2679557470016982729}
@@ -1568,6 +1577,7 @@ MonoBehaviour:
   spawnedCard: 0
   someoneWon: 0
   poisoned: 0
+  fire: 0
   hasLifeSteal: 0
   bulletReflect: 0
   CardPanelPrefab: {fileID: 864647149291479614, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
