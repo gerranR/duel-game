@@ -104,6 +104,24 @@ public class CardSelect : MonoBehaviour
                 playerLost.GetComponent<PlayerCombat>().swordDmg += playerLost.GetComponent<PlayerCombat>().swordDmg;
                 playerLost.GetComponent<PlayerCombat>().bulletDmg += playerLost.GetComponent<PlayerCombat>().bulletDmg;
             }
+            if (card[buttonPressed].lifeSteal)
+            {
+                playerLost.GetComponent<PlayerHealth>().hasLifeSteal = true;
+                playerLost.GetComponent<PlayerHealth>().lifeStealAmount += card[buttonPressed].lifeStealAmount;
+            }
+            if (card[buttonPressed].bomb)
+            {
+                playerLost.GetComponent<PlayerCombat>().bombOnHit = true;
+            }
+            if (card[buttonPressed].trampoline)
+            {
+                playerLost.GetComponent<PlayerCombat>().trampolineOnhit = true;
+            }
+            if (card[buttonPressed].reflect)
+            {
+                playerLost.GetComponent<PlayerHealth>().bulletReflect = true;
+                playerLost.GetComponent<PlayerHealth>().bulletReturnSpeed += card[buttonPressed].bulletReflectSpeed;
+            }
             if (playerLost.GetComponent<PlayerInput>().playerIndex == 0)
             {
                 player1Cards.Add(card[buttonPressed]);

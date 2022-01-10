@@ -10,11 +10,11 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     public int playerInt;
-    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce, knockbackAdd, PoisonDmg, poisonTime;
+    public float health, maxHealth, rangeResist, meleeResist, borderKnockbackForce, knockbackAdd, PoisonDmg, poisonTime, lifeStealAmount, bulletReturnSpeed;
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
-    public bool spawnedCard, someoneWon, poisoned;
+    public bool spawnedCard, someoneWon, poisoned, hasLifeSteal, bulletReflect;
     public GameObject CardPanelPrefab, deathPart, arm, hair;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;

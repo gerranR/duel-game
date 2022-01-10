@@ -1496,6 +1496,8 @@ MonoBehaviour:
   isShooting: 0
   poison: 0
   hasShotgun: 0
+  bombOnHit: 0
+  trampolineOnhit: 0
   fireRate: 0.5
   reloadTime: 2
   SwordDur: 0.5
@@ -1505,6 +1507,7 @@ MonoBehaviour:
   poisonTime: 0
   shotgunShots: 0
   shotgunSpread: 45
+  numOfBulletBounce: 10
   gun: {fileID: 2782793807638392246}
   bullet: {fileID: 6226105285951264362, guid: beca61bb37b7e3640bbc3ead12dc43b9, type: 3}
   swordCol: {fileID: 2782793807638392246}
@@ -1558,11 +1561,15 @@ MonoBehaviour:
   knockbackAdd: 0
   PoisonDmg: 0
   poisonTime: 0
+  lifeStealAmount: 0
+  bulletReturnSpeed: 0
   hpSlider: {fileID: 2679557470016982729}
   canTakeDmg: 0
   spawnedCard: 0
   someoneWon: 0
   poisoned: 0
+  hasLifeSteal: 0
+  bulletReflect: 0
   CardPanelPrefab: {fileID: 864647149291479614, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
   deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
   arm: {fileID: 5170228455174681603}
@@ -1787,6 +1794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerJoinPrefab: {fileID: 6485739008708323367, guid: 2972190527d55ce40ac8ddfdd035031d, type: 3}
   input: {fileID: 830256192}
+  playerAnimator: {fileID: 0}
+  armAnimator: {fileID: 0}
   player1Controller: {fileID: 9100000, guid: 7c08f9283912b0d44a9abe8fddb0cee1, type: 2}
   player2Controller: {fileID: 9100000, guid: b5e9a3986cd48a444a5c1b709cc975d6, type: 2}
 --- !u!1 &8158659326616708953

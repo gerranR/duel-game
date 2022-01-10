@@ -21,8 +21,18 @@ MonoBehaviour:
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: 
-  discription: 
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 1
+  titel: LifeSteal
+  discription: blocking bullets heals you
+  lifeStealAmount: 20

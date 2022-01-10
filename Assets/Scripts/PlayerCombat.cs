@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public bool canShoot = true, reloading, swordUsed, canAttack = false, burst, isShooting, poison, hasShotgun;
-    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread;
+    public bool canShoot = true, reloading, swordUsed, canAttack = false, burst, isShooting, poison, hasShotgun, bombOnHit, trampolineOnhit;
+    public float fireRate, reloadTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread, numOfBulletBounce;
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites, muzzleflash;
     public int ammo, maxAmmo, burstNum, burstMax;
 
@@ -72,6 +72,7 @@ public class PlayerCombat : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().poisonDmg = poisonDmg;
                 bulletInstance.GetComponent<Bullet>().poisonTime = poisonTime;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
+                bulletInstance.GetComponent<Bullet>().numOfBounces = numOfBulletBounce;
 
                 if (burst)
                 {
