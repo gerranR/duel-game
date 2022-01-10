@@ -1352,7 +1352,7 @@ MonoBehaviour:
     foxType: 1
     CharacterSprite: {fileID: -8138744622891516345, guid: ade7c6045db6c814baf11a9999dab58d, type: 3}
   - playerAnimControl: {fileID: 9100000, guid: c3dc81e9428b437449523eb243632a8c, type: 2}
-    armAnimControl: {fileID: 9100000, guid: 9a3b02a6942ad5242b2971b61f76af11, type: 2}
+    armAnimControl: {fileID: 9100000, guid: a99f192013aaec14ab9f2bc97c96ede2, type: 2}
     foxType: 0
     CharacterSprite: {fileID: 5151427726164046001, guid: b88da4c65b706de4b9bbd29a554d7bc5, type: 3}
   - playerAnimControl: {fileID: 9100000, guid: 9b20771cafeccc141a80cd2093dacd5b, type: 2}
