@@ -1351,6 +1351,14 @@ MonoBehaviour:
     armAnimControl: {fileID: 9100000, guid: 9a3b02a6942ad5242b2971b61f76af11, type: 2}
     foxType: 1
     CharacterSprite: {fileID: -8138744622891516345, guid: ade7c6045db6c814baf11a9999dab58d, type: 3}
+  - playerAnimControl: {fileID: 9100000, guid: c3dc81e9428b437449523eb243632a8c, type: 2}
+    armAnimControl: {fileID: 9100000, guid: 9a3b02a6942ad5242b2971b61f76af11, type: 2}
+    foxType: 0
+    CharacterSprite: {fileID: 5151427726164046001, guid: b88da4c65b706de4b9bbd29a554d7bc5, type: 3}
+  - playerAnimControl: {fileID: 9100000, guid: 9b20771cafeccc141a80cd2093dacd5b, type: 2}
+    armAnimControl: {fileID: 9100000, guid: 4439dcd2f98c53d4597088db68936d55, type: 2}
+    foxType: 1
+    CharacterSprite: {fileID: -8138744622891516345, guid: 5ad8d702e9d960744be21bf92891a45b, type: 3}
   armPos1: {x: 0.247, y: 0.562, z: 0}
   armPos2: {x: -0.1877, y: 0.562, z: 0}
   foxArmPos1: {x: 0.189, y: 0.5619998, z: 0}
