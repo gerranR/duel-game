@@ -9693,6 +9693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5231326017601780651}
+  - component: {fileID: 3110391611814353121}
   m_Layer: 0
   m_Name: Crate1BreakParticle
   m_TagString: Untagged
@@ -9719,6 +9720,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3110391611814353121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258423246711704348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59c52a95d36ae74a9341ec5da1df814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 4878387738924643052}
+  - {fileID: 696500209451672515}
+  - {fileID: 4187096693731844803}
+  - {fileID: 1855031665}
 --- !u!1 &4262935990276953391
 GameObject:
   m_ObjectHideFlags: 0

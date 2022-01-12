@@ -5,6 +5,7 @@ using UnityEngine;
 public class KnockbackObj : MonoBehaviour
 {
     private float hp;
+    public GameObject fx, fxPrefab;
     public void GetKncokback(GameObject other, float knockbackForce, float dmg)
     {
         Vector2 direction = other.transform.position - transform.position;
@@ -12,6 +13,8 @@ public class KnockbackObj : MonoBehaviour
         hp -= dmg;
         if(hp < 0.00001)
         {
+            fx = Instantiate(fxPrefab, transform.position, transform.rotation);
+            //fx.GetComponent<CrateParticles>().Play();
             Destroy(gameObject);
         }
     }
@@ -20,6 +23,8 @@ public class KnockbackObj : MonoBehaviour
     {
         if (collision.gameObject.tag == "WorldBorderRight" || collision.gameObject.tag == "WorldBorderLeft" || collision.gameObject.tag == "WorldBorderDown" || collision.gameObject.tag == "WorldBorderUp")
         {
+            fx = Instantiate(fxPrefab, transform.position, transform.rotation);
+            //fx.GetComponent<CrateParticles>().Play();
             Destroy(gameObject);
         }
     }
