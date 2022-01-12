@@ -9215,7 +9215,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controls menu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5154545085900574217, guid: 0141de1decf846c42bb3d9b765e18bb2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0141de1decf846c42bb3d9b765e18bb2, type: 3}
 --- !u!224 &1893986152214514829 stripped
 RectTransform:
