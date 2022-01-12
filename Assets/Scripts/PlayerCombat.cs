@@ -10,8 +10,9 @@ public class PlayerCombat : MonoBehaviour
     public float fireRate, reloadTime, chargeTime, SwordDur, bulletDmg, swordDmg, poisonDmg, poisonTime, shotgunShots, shotgunSpread, numOfBulletBounce, fireDmg, fireTime;
     public GameObject gun, bullet, swordCol, ammoPanels, ammoSprites, muzzleflash;
     public int ammo, maxAmmo, burstNum, burstMax;
-    public bool hasChargeBullet, ischarging;
+    public bool hasChargeBullet, ischarging, hasReverseControles;
     private Vector3 bulletScale;
+    public float reverseControleTime;
 
     public AudioSource ShootAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
@@ -60,6 +61,8 @@ public class PlayerCombat : MonoBehaviour
                     bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
                     bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                     bulletInstance.GetComponent<Bullet>().player = this.gameObject;
+                    bulletInstance.GetComponent<Bullet>().hasReverseControles = hasReverseControles;
+                    bulletInstance.GetComponent<Bullet>().reverseControleTime = reverseControleTime;
                     if (chargeTime >= 5)
                     {
                         bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -106,6 +109,8 @@ public class PlayerCombat : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
                 bulletInstance.GetComponent<Bullet>().numOfBounces = numOfBulletBounce;
+                bulletInstance.GetComponent<Bullet>().hasReverseControles = hasReverseControles;
+                bulletInstance.GetComponent<Bullet>().reverseControleTime = reverseControleTime;
                 if (chargeTime >= 5)
                 {
                     bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -173,7 +178,9 @@ public class PlayerCombat : MonoBehaviour
                     bulletInstance.GetComponent<Bullet>().fireDmg = fireDmg;
                     bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                     bulletInstance.GetComponent<Bullet>().player = this.gameObject;
-                    
+                    bulletInstance.GetComponent<Bullet>().hasReverseControles = hasReverseControles;
+                    bulletInstance.GetComponent<Bullet>().reverseControleTime = reverseControleTime;
+
                 }
                 if(burst)
                 {
@@ -203,6 +210,8 @@ public class PlayerCombat : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().fireTime = fireTime;
                 bulletInstance.GetComponent<Bullet>().player = this.gameObject;
                 bulletInstance.GetComponent<Bullet>().numOfBounces = numOfBulletBounce;
+                bulletInstance.GetComponent<Bullet>().hasReverseControles = hasReverseControles;
+                bulletInstance.GetComponent<Bullet>().reverseControleTime = reverseControleTime;
 
                 if (burst)
                 {

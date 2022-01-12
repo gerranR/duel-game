@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
-  m_Name: MiddelCard9
+  m_Name: MiddelCard10
   m_EditorClassIdentifier: 
   cardImage: {fileID: 3878784665472385860, guid: c8959f53d5181ba42b7398b857d9be1d, type: 3}
   fireRate: 0
@@ -41,9 +41,9 @@ MonoBehaviour:
   reflect: 0
   fire: 0
   slowzone: 0
-  reverseControle: 1
-  titel: ReveseControle
-  discription: Reveses Controles on hit
+  reverseControle: 0
+  titel: 
+  discription: 
   lifeStealAmount: 0
   bulletReflectSpeed: 0
-  reverseControleTime: 10
+  reverseControleTime: 0

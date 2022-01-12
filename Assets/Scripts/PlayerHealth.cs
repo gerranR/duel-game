@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     public Slider hpSlider;
     private GameObject cardScreen, firstButton;
     public bool canTakeDmg = true;
-    public bool spawnedCard, someoneWon, poisoned, fire, hasLifeSteal, bulletReflect;
+    public bool spawnedCard, someoneWon, poisoned, fire, hasLifeSteal, bulletReflect, hasReverseControles;
     public GameObject CardPanelPrefab, deathPart, arm, hair;
     public float knockbackForce, knockbackCount, knockBackLenght;
     ContactPoint2D[] contactPoints;

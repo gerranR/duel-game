@@ -120,6 +120,11 @@ public class CardSelect : MonoBehaviour
             {
                 playerLost.GetComponent<PlayerCombat>().bombOnHit = true;
             }
+            if (card[buttonPressed].reverseControle)
+            {
+                playerLost.GetComponent<PlayerCombat>().hasReverseControles = true;
+                playerLost.GetComponent<PlayerCombat>().reverseControleTime += card[buttonPressed].reverseControleTime;
+            }
             if (card[buttonPressed].slowzone)
             {
                 playerLost.GetComponent<PlayerCombat>().slowzoneOnHit = true;

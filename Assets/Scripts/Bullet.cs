@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour
 {
 
     public Rigidbody2D rigidbody2d;
-    public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime, fireDmg, fireTime, numOfBounces, bounceForce;
+    public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime, fireDmg, fireTime, numOfBounces, bounceForce, reverseControleTime;
     public GameObject player, bomb, trampoline, slowZone;
-    public bool poison, fire, shotgun;
+    public bool poison, fire, shotgun, hasReverseControles;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +72,12 @@ public class Bullet : MonoBehaviour
                     collision.gameObject.GetComponent<PlayerHealth>().fire = fire;
                     collision.gameObject.GetComponent<PlayerHealth>().fireDmg = fireDmg;
                     collision.gameObject.GetComponent<PlayerHealth>().fireTime = fireTime;
+                }
+                if(hasReverseControles)
+                {
+                    collision.gameObject.GetComponent<PlayerMovement>().reverseControles = hasReverseControles;
+                    collision.gameObject.GetComponent<PlayerMovement>().reverseControleTime = reverseControleTime;
+                    StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().ReverseControleBack());
                 }
                 Destroy(gameObject);
             }

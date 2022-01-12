@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float groundCheckRadius, bulletSpeed, raycastDist;
+    public float groundCheckRadius, bulletSpeed, raycastDist, reverseControleTime;
     public float speed, walkspeed, jumpForce, resistance, wallResistance, jetPackTime, slowzoneSpeed;
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
     public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair;
-    public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil, hasJetPack;
+    public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil, hasJetPack, reverseControles;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
     private bool canMove = false, jumped;
@@ -34,6 +34,12 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
     }
 
+    public IEnumerator ReverseControleBack()
+    {
+        yield return new WaitForSeconds(reverseControleTime);
+        reverseControles = false;
+    }
+
     public void move(InputAction.CallbackContext context)
     {
         inputX = context.ReadValue<Vector2>().x;
@@ -44,7 +50,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (canMove && !hasKnockback)
         {
-            if (inputX != 0)
+            if(reverseControles && inputX != 0)
+            {
+                rigidbody2d.velocity = new Vector2(-inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
+                isMoving = true;
+                playerAnimator.SetFloat("Speed", speed);
+
+                if (wallJumpCheck == false)
+                {
+                    if (inputX > 0)
+                    {
+                        GetComponent<SpriteRenderer>().flipX = false;
+                        arm.transform.position = armPos1.transform.position;
+                        hair.transform.position = hairPos1.transform.position;
+                    }
+                    else if (inputX < 0)
+                    {
+                        GetComponent<SpriteRenderer>().flipX = true;
+                        arm.transform.position = armPos2.transform.position;
+                        hair.transform.position = hairPos2.transform.position;
+                    }
+                }
+            }
+            else if (inputX != 0)
             {
                 rigidbody2d.velocity = new Vector2(inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
                 isMoving = true;
@@ -69,11 +97,7 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 isMoving = false;
-                if(isOnTreadmil)
-                {
-
-                }
-                else
+                if(!isOnTreadmil)
                 {
                     rigidbody2d.velocity = new Vector2(0, rigidbody2d.velocity.y);
                 }

@@ -1464,6 +1464,7 @@ MonoBehaviour:
   isMoving: 0
   isOnTreadmil: 0
   hasJetPack: 0
+  reverseControles: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1500,9 +1501,10 @@ MonoBehaviour:
   hasShotgun: 0
   bombOnHit: 0
   trampolineOnhit: 0
-  slowzoneOnHit: 1
+  slowzoneOnHit: 0
   fireRate: 0.5
   reloadTime: 2
+  chargeTime: 0
   SwordDur: 0.5
   bulletDmg: 20
   swordDmg: 30
@@ -1525,6 +1527,7 @@ MonoBehaviour:
   burstMax: 0
   hasChargeBullet: 1
   ischarging: 0
+  hasReverseControles: 0
   ShootAudio: {fileID: 4433769942588931730}
   meleeAudio: {fileID: 1706853022906209224}
   reloadAudio: {fileID: 505956977919862396}
@@ -1580,6 +1583,7 @@ MonoBehaviour:
   fire: 0
   hasLifeSteal: 0
   bulletReflect: 0
+  hasReverseControles: 0
   CardPanelPrefab: {fileID: 864647149291479614, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
   deathPart: {fileID: 7766981899520065369, guid: 13579e20e9dfd5a4a99d9ced8fb10b2d, type: 3}
   arm: {fileID: 5170228455174681603}
