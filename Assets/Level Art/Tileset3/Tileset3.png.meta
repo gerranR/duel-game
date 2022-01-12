@@ -110,6 +110,18 @@ TextureImporter:
   - first:
       213: 9137960808258503557
     second: Tileset3_35
+  - first:
+      213: 5967985476152347989
+    second: Tileset3_36
+  - first:
+      213: -1338930228181531437
+    second: Tileset3_37
+  - first:
+      213: -4401095761308499183
+    second: Tileset3_38
+  - first:
+      213: -3856337004376563878
+    second: Tileset3_39
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -986,6 +998,90 @@ TextureImporter:
       bones: []
       spriteID: 58380bba0fe80de70800000000000000
       internalID: 9137960808258503557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset3_36
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d40cabb2b82d250800000000000000
+      internalID: 5967985476152347989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset3_37
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d4053a2d0a2b6de0800000000000000
+      internalID: -1338930228181531437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset3_38
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 113cabc19ba2ce2c0800000000000000
+      internalID: -4401095761308499183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset3_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5fd0ff1de98b7ac0800000000000000
+      internalID: -3856337004376563878
       vertices: []
       indices: 
       edges: []
