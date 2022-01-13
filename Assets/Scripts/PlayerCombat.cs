@@ -113,17 +113,17 @@ public class PlayerCombat : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().reverseControleTime = reverseControleTime;
                 if (chargeTime >= 5)
                 {
-                    bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    bulletScale = new Vector3(0.3f, 0.3f, 0.3f);
                     bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 2f;
                 }
                 else if (chargeTime >= 3)
                 {
-                    bulletScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    bulletScale = new Vector3(0.2f, 0.2f, 0.2f);
                     bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.5f;
                 }
                 else if (chargeTime >= 1)
                 {
-                    bulletScale = new Vector3(0.12f, 0.12f, 0.12f);
+                    bulletScale = new Vector3(0.15f, 0.15f, 0.15f);
                     bulletInstance.GetComponent<Bullet>().dmg = bulletDmg * 1.2f;
                 }
                 bulletInstance.transform.localScale = bulletScale;

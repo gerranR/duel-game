@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && jumpsLeft != 0 && jumped == false && canMove)
+        if (context.performed && jumpsLeft > 0 && canMove)
         {
             if (wallJumpCheck)
             {
@@ -138,13 +138,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else 
             {
+                jumpsLeft--;
                 jumped = true;
                 rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, jumpForce);
                 playerAnimator.SetTrigger("Jump");
                 playerAnimator.SetBool("Grounded", false);
-                    StartCoroutine(JumpTimer());
+                StartCoroutine(JumpTimer());
             }
         }
+       
         if (context.canceled && hasKnockback == false)
         {
             if (rigidbody2d.velocity.y >= -1)
@@ -161,9 +163,10 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator JumpTimer()
     {
-        yield return new WaitForSeconds(0.5f);
-        if(wallJumpCheck == false)
-            jumpsLeft--;
+        yield return new WaitForSeconds(1f);
+        if (jumpsLeft < 0)
+            jumpsLeft = 0;
+           
         jumped = false;
     }
 
@@ -173,13 +176,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(transform.position, -Vector2.up, Color.green);
         if (hit.transform != null)
         {
-            if (hit.transform.tag == "Ground" || hit.transform.tag == "BreakableObj" && jumped == false)
+            if ((hit.transform.tag == "Ground" || hit.transform.tag == "BreakableObj") && jumped == false)
             {
                 playerAnimator.SetBool("Grounded", true);
                 wallJumpCheck = false;
                 jumpsLeft = jumpsMax;
-                hit = new RaycastHit2D();
+                
             }
+            hit = new RaycastHit2D();
         }
 
     }

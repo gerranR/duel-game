@@ -1442,6 +1442,7 @@ MonoBehaviour:
   groundCheckRadius: 0.3
   bulletSpeed: 500
   raycastDist: 1.1
+  reverseControleTime: 0
   speed: 500
   walkspeed: 500
   jumpForce: 17
@@ -1452,7 +1453,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsLeft: 0
   lorRWall: 0
-  jumpsMax: 1
+  jumpsMax: 2
   maxAmmo: 0
   groundCheckObj: {fileID: 8158659326616708953}
   wallCheckObjR: {fileID: 8158659326681326739}
@@ -1525,9 +1526,10 @@ MonoBehaviour:
   maxAmmo: 5
   burstNum: 0
   burstMax: 0
-  hasChargeBullet: 1
+  hasChargeBullet: 0
   ischarging: 0
   hasReverseControles: 0
+  reverseControleTime: 0
   ShootAudio: {fileID: 4433769942588931730}
   meleeAudio: {fileID: 1706853022906209224}
   reloadAudio: {fileID: 505956977919862396}

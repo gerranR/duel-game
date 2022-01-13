@@ -12,7 +12,8 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
+            rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
+
     }
     private void Update()
     {
@@ -24,6 +25,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.tag == "WorldBorderRight" || collision.gameObject.tag == "WorldBorderLeft" || collision.gameObject.tag == "WorldBorderDown" || collision.gameObject.tag == "WorldBorderUp")
+        {
+            Destroy(gameObject);
+        }
         if (collision.gameObject.layer == 3 || collision.gameObject.layer == 6)
         {
             numOfBounces--;

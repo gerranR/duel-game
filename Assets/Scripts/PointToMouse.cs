@@ -28,17 +28,31 @@ public class PointToMouse : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
             }
 
-            if (rotationZ < -90 || rotationZ > 90)
+            if (-rotationZ > 90 || rotationZ > 90)
             {
-                if (player.transform.eulerAngles.y == 0)
+                print("true");
+                if (transform.localScale.y == 1)
                 {
-                    transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
+                    transform.localScale = new Vector3(1, -1, 1);
                 }
-                else if (player.transform.eulerAngles.y == 180)
-                {
-                    transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
-                }
+
             }
+            else if (transform.localScale.y == -1)
+            {
+                print("true2");
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            //if (rotationZ < -90 || rotationZ > 90)
+            //{
+            //    if (player.transform.eulerAngles.y == 0)
+            //    {
+            //        transform.localRotation = Quaternion.Euler(180, 0, -rotationZ);
+            //    }
+            //    else if (player.transform.eulerAngles.y == 180)
+            //    {
+            //        transform.localRotation = Quaternion.Euler(180, 180, -rotationZ);
+            //    }
+            //}
         }
         else
         {
