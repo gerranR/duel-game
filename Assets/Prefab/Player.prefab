@@ -1453,7 +1453,7 @@ MonoBehaviour:
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsLeft: 0
   lorRWall: 0
-  jumpsMax: 2
+  jumpsMax: 1
   maxAmmo: 0
   groundCheckObj: {fileID: 8158659326616708953}
   wallCheckObjR: {fileID: 8158659326681326739}
