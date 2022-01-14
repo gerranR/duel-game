@@ -58,16 +58,14 @@ public class GameManeger : MonoBehaviour
                 rootMenu.SetActive(true);
                 menu = Instantiate(winScreen, rootMenu.transform);
                 EventSystem.current = FindObjectOfType<MultiplayerEventSystem>();
-                print(menu.transform.Find("Rematch").name);
-                menu.transform.Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
-                print(menu.transform.Find("Rematch").GetComponent<Button>().onClick);
-                menu.transform.Find("MainMenu").GetComponent<Button>().onClick.AddListener(delegate { this.MainMenu(); });
+                menu.transform.GetChild(0).Find("Rematch").GetComponent<Button>().onClick.AddListener(delegate { this.Rematch(); });
+                menu.transform.GetChild(0).transform.Find("MainMenu").GetComponent<Button>().onClick.AddListener(delegate { this.MainMenu(); });
                 if (player1Wins == 5)
                 {
-                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 2 Won";
+                    menu.transform.GetChild(0).transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 2 Won";
                 }
                 else
-                    menu.transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 1 won";
+                    menu.transform.GetChild(0).transform.Find("WinText").GetComponent<TextMeshProUGUI>().text = "player 1 won";
             }
          }
         else
