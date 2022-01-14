@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 3938231113467779375}
   - component: {fileID: -7197340945869846767}
   - component: {fileID: 7414706310029366745}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SawBlade
   m_TagString: Saw
   m_Icon: {fileID: 0}
@@ -183,8 +183,7 @@ MonoBehaviour:
   knockbackForce: 15
   moveSpeed: 0
   moving: 0
-  pos1: {fileID: 0}
-  pos2: {fileID: 0}
+  checkpoints: []
 --- !u!58 &7414706310029366745
 CircleCollider2D:
   m_ObjectHideFlags: 0

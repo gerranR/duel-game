@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7882924801746456946}
   - component: {fileID: 1013521006016574509}
   - component: {fileID: 962682602547190448}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AxePole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4651358630271519877}
   - component: {fileID: 2907887400252248786}
   - component: {fileID: 3402052360094706215}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AxeHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4252716742082595476}
   - component: {fileID: 9212835542239883643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiantAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
