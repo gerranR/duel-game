@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator JumpTimer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.2f);
         if (jumpsLeft < 0)
             jumpsLeft = 0;
            
