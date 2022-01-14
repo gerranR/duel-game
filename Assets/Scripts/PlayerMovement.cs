@@ -34,10 +34,16 @@ public class PlayerMovement : MonoBehaviour
         GroundCheck();
     }
 
+    public void StartCountdownReverseControles()
+    {
+        StartCoroutine(ReverseControleBack());
+    }
+
     public IEnumerator ReverseControleBack()
     {
         yield return new WaitForSeconds(reverseControleTime);
         reverseControles = false;
+        print(reverseControles);
     }
 
     public void move(InputAction.CallbackContext context)

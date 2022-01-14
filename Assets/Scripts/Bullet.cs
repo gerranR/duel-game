@@ -82,7 +82,7 @@ public class Bullet : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<PlayerMovement>().reverseControles = hasReverseControles;
                     collision.gameObject.GetComponent<PlayerMovement>().reverseControleTime = reverseControleTime;
-                    StartCoroutine(collision.gameObject.GetComponent<PlayerMovement>().ReverseControleBack());
+                    collision.gameObject.GetComponent<PlayerMovement>().StartCountdownReverseControles();
                 }
                 Destroy(gameObject);
             }

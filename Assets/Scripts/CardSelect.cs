@@ -23,15 +23,15 @@ public class CardSelect : MonoBehaviour
 
             if (r <= 2)
             {
-                card[i] = cardRarety3[Random.Range(0, cardRarety3.Length)];
+                card[i] = cardRarety3[Random.Range(0, cardRarety3.Length-1)];
             }
             else if (r <=5)
             {
-                card[i] = cardRarety2[Random.Range(0, cardRarety2.Length)];
+                card[i] = cardRarety2[Random.Range(0, cardRarety2.Length-1)];
             }
             else
             {
-                card[i] = cardRarety1[Random.Range(0, cardRarety1.Length)];
+                card[i] = cardRarety1[Random.Range(0, cardRarety1.Length-1)];
             }
         }
 
