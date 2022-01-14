@@ -1621,12 +1621,12 @@ MonoBehaviour:
   discription4: {fileID: 0}
   discription5: {fileID: 0}
   cardRarety1:
-  - {fileID: 11400000, guid: 09d2e094b74bd7e4dbf79f4d13beacee, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 0e567124add02ce4b82477abd36fdfc4, type: 2}
   - {fileID: 11400000, guid: a0ed83a051177a748b17ddd6e02baa20, type: 2}
   - {fileID: 11400000, guid: a648bc85dd9b85f40808228c27c5f158, type: 2}
   - {fileID: 11400000, guid: 2df186da77926284db701a0e9268e695, type: 2}
-  - {fileID: 11400000, guid: 6776a7d5f31c944439ea4a49314db58b, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 98fed32dacfd3ef4e8bf7473060b732f, type: 2}
   - {fileID: 11400000, guid: af764dbfb9cbba942be6ab0fb2bb2931, type: 2}
   - {fileID: 11400000, guid: 7823a6119fcc07a49a39917728b71e02, type: 2}
@@ -1638,6 +1638,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7ba030ddb94ba124095f12932e2457f1, type: 2}
   - {fileID: 11400000, guid: d56491ef3ea7f6246abbd48eabb23708, type: 2}
   - {fileID: 11400000, guid: 117e69ab4f2e7cd4a9a0ff85c764336a, type: 2}
+  - {fileID: 11400000, guid: fb2bb10a87f12cf42ad0f0f91d1f0981, type: 2}
+  - {fileID: 11400000, guid: e384ee98f666bf744ae1fa822ffaa944, type: 2}
+  - {fileID: 11400000, guid: 7d8ae23e54a1f414fbf3fd3e21ceb42d, type: 2}
   cardRarety3:
   - {fileID: 11400000, guid: 80b5370dd17d26e48be17f8c57640fd7, type: 2}
   - {fileID: 11400000, guid: ad472bd5a33ea144c924e964e3a1b557, type: 2}
