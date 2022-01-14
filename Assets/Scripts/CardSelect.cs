@@ -21,11 +21,11 @@ public class CardSelect : MonoBehaviour
         {
             float r = Random.Range(0, 10);
 
-            if (r == 0)
+            if (r <= 2)
             {
                 card[i] = cardRarety3[Random.Range(0, cardRarety3.Length)];
             }
-            else if (r <=3)
+            else if (r <=5)
             {
                 card[i] = cardRarety2[Random.Range(0, cardRarety2.Length)];
             }
