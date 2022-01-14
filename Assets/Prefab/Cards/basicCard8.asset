@@ -12,17 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: basicCard8
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 7782593987897665494, guid: 98891bf807785194493c6af954bf9daf, type: 3}
+  cardImage: {fileID: 1198910036074562156, guid: eba01518c9965a64090916f88b85113c, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
   rangeDmg: 0
   speed: 0
   meleeRange: 0
-  meleeResistance: 20
-  rangeResistance: 0
+  meleeResistance: 0
+  rangeResistance: 10
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: Metal Skin
-  discription: +20 melee resistance
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 0
+  bomb: 0
+  trampoline: 0
+  reflect: 0
+  fire: 0
+  slowzone: 0
+  reverseControle: 0
+  titel: Resist The Bullets
+  discription: +10 range resistance
+  lifeStealAmount: 0
+  bulletReflectSpeed: 0
+  reverseControleTime: 0

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
-  m_Name: AdvencedCard5
+  m_Name: MediumCard 4
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 3878784665472385860, guid: c8959f53d5181ba42b7398b857d9be1d, type: 3}
+  cardImage: {fileID: 3424187500408585069, guid: 2e317d1115d36c949838c623e2d39613, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
@@ -21,8 +21,29 @@ MonoBehaviour:
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: 
-  discription: 
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 1
+  bomb: 0
+  trampoline: 0
+  reflect: 0
+  fire: 0
+  slowzone: 0
+  reverseControle: 0
+  titel: Vampire
+  discription: blocking bullets heals you
+  lifeStealAmount: 20
+  bulletReflectSpeed: 0
+  reverseControleTime: 0

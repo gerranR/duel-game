@@ -12,17 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: basicCard6
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 235930393741614882, guid: 8a2f3d87ec51fb040b49c5c0d6baf501, type: 3}
+  cardImage: {fileID: 2989189582737938370, guid: 4be77de62f5f7424c857df9b1102e45b, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
   rangeDmg: 0
-  speed: 100
-  meleeRange: 0
+  speed: 0
+  meleeRange: 10
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: fast boy
-  discription: ' +100 speed'
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 0
+  bomb: 0
+  trampoline: 0
+  reflect: 0
+  fire: 0
+  slowzone: 0
+  reverseControle: 0
+  titel: Long Limbs
+  discription: +10 melee range
+  lifeStealAmount: 0
+  bulletReflectSpeed: 0
+  reverseControleTime: 0

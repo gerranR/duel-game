@@ -12,17 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: basicCard3
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 8628787766949216249, guid: 97be35c633e8b554891d91dd4c80fedd, type: 3}
+  cardImage: {fileID: 8671836679833308328, guid: 4e53d85e9ac49134ca5aeba5bd495953, type: 3}
   fireRate: 0
   maxHP: 0
-  meleeDmg: 0
-  rangeDmg: 10
+  meleeDmg: 20
+  rangeDmg: 0
   speed: 0
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
-  titel: Ranged Combatant
-  discription: +10 range dmg
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 0
+  bomb: 0
+  trampoline: 0
+  reflect: 0
+  fire: 0
+  slowzone: 0
+  reverseControle: 0
+  titel: Brawler
+  discription: + 20 melee dmg
+  lifeStealAmount: 0
+  bulletReflectSpeed: 0
+  reverseControleTime: 0

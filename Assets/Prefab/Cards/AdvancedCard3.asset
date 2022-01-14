@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
-  m_Name: MiddelCard9
+  m_Name: AdvancedCard3
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 3878784665472385860, guid: c8959f53d5181ba42b7398b857d9be1d, type: 3}
+  cardImage: {fileID: 3424187500408585069, guid: 2e317d1115d36c949838c623e2d39613, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
@@ -42,8 +42,8 @@ MonoBehaviour:
   fire: 0
   slowzone: 0
   reverseControle: 1
-  titel: ReveseControle
-  discription: Reveses Controles on hit
+  titel: Confusion?
+  discription: Enemy forgets how to walk when shot
   lifeStealAmount: 0
   bulletReflectSpeed: 0
   reverseControleTime: 10
