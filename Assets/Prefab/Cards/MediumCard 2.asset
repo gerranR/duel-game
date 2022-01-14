@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: MediumCard 2
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 3424187500408585069, guid: 2e317d1115d36c949838c623e2d39613, type: 3}
+  cardImage: {fileID: 6687174614002843416, guid: da38493cc8a0e9b41ba42929f8036844, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
