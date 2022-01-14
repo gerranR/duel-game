@@ -43,7 +43,7 @@ MonoBehaviour:
   slowzone: 1
   reverseControle: 0
   titel: Time Bubble
-  discription: create a rift in time and space on your bullet impacts
+  discription: bullets create a rift in time
   lifeStealAmount: 0
   bulletReflectSpeed: 0
   reverseControleTime: 0

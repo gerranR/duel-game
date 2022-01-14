@@ -43,7 +43,7 @@ MonoBehaviour:
   slowzone: 0
   reverseControle: 0
   titel: Glass Cannon
-  discription: Half your damage in return you gain double HP
+  discription: Half your damage and double HP
   lifeStealAmount: 0
   bulletReflectSpeed: 0
   reverseControleTime: 0
