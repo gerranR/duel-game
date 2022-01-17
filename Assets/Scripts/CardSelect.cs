@@ -8,8 +8,9 @@ using TMPro;
 
 public class CardSelect : MonoBehaviour
 {
-    public GameObject player1, player2, playerLost, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5, curentPanel;
-    public TextMeshProUGUI titel1, titel2, titel3, titel4, titel5, discription1, discription2, discription3, discription4, discription5;
+    public GameObject player1, player2, playerLost, curentPanel;
+    public GameObject[] imagePos;
+    public TextMeshProUGUI[] titel, discription;
     public Cards[] cardRarety1, cardRarety2, cardRarety3, cardRarety4;
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
@@ -35,25 +36,13 @@ public class CardSelect : MonoBehaviour
             {
                 card[i] = cardRarety1[Random.Range(0, cardRarety1.Length-1)];
             }
+
+            Instantiate(card[i].cardImage, imagePos[i].transform.position, imagePos[i].transform.rotation, imagePos[i].transform);
+            titel[i].text = card[i].titel;
+            discription[i].text = card[i].discription;
         }
 
-        Instantiate(card[0].cardImage, imagePos1.transform.position, imagePos1.transform.rotation, imagePos1.transform);
-        Instantiate(card[1].cardImage, imagePos2.transform.position, imagePos2.transform.rotation, imagePos2.transform);
-        Instantiate(card[2].cardImage, imagePos3.transform.position, imagePos3.transform.rotation, imagePos3.transform);
-        Instantiate(card[3].cardImage, imagePos4.transform.position, imagePos4.transform.rotation, imagePos4.transform);
-        Instantiate(card[4].cardImage, imagePos5.transform.position, imagePos5.transform.rotation, imagePos5.transform);
-
-        titel1.text = card[0].titel;
-        titel2.text = card[1].titel;
-        titel3.text = card[2].titel;
-        titel4.text = card[3].titel;
-        titel5.text = card[4].titel;
-        discription1.text = card[0].discription;
-        discription2.text = card[1].discription;
-        discription3.text = card[2].discription;
-        discription4.text = card[3].discription;
-        discription5.text = card[4].discription;
-        if(titel1.text != card[0].titel)
+        if(titel[1].text != card[0].titel)
         {
             Destroy(GameObject.Find("CardSelectMenu"));
             playerLost.GetComponent<PlayerHealth>().spawnedCard = false;
@@ -69,7 +58,7 @@ public class CardSelect : MonoBehaviour
         }
     }
 
-    public void changeStats(int buttonPressed)
+    public void ChangeStats(int buttonPressed)
     {
         if (canPress)
         {
