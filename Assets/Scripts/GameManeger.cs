@@ -117,15 +117,38 @@ public class GameManeger : MonoBehaviour
         {
             player2WinCounter[i].SetActive(false);
         }
+
         player1.GetComponent<PlayerCombat>().fireRate = fireRate;
         player1.GetComponent<PlayerCombat>().maxAmmo = maxAmmo;
         player1.GetComponent<PlayerHealth>().maxHealth = maxHP;
-        player1.GetComponent<PlayerHealth>().meleeResist = 0f;
-        player1.GetComponent<PlayerHealth>().rangeResist = 0f;
+        player1.GetComponent<PlayerHealth>().meleeResist = meleeResistance;
+        player1.GetComponent<PlayerHealth>().rangeResist = rangeResistance;
         player1.GetComponent<PlayerCombat>().swordDmg = meleeDmg;
         player1.GetComponent<PlayerCombat>().bulletDmg = rangeDmg;
+        player1.GetComponent<PlayerCombat>().numOfBulletBounce = 0f;
         player1.GetComponent<PlayerMovement>().speed = speed;
         player1.GetComponent<PlayerMovement>().jumpsMax = maxJump;
+        player1.GetComponent<PlayerCombat>().burst = false;
+        player1.GetComponent<PlayerCombat>().burstMax = 0;
+        player1.GetComponent<PlayerCombat>().poison = false; ;
+        player1.GetComponent<PlayerCombat>().poisonDmg = 0f;
+        player1.GetComponent<PlayerCombat>().poisonTime = 0f;
+        player1.GetComponent<PlayerCombat>().fire = false;
+        player1.GetComponent<PlayerCombat>().fireDmg = 0f;
+        player1.GetComponent<PlayerCombat>().fireTime = 0f;
+        player1.GetComponent<PlayerCombat>().hasShotgun = false;
+        player1.GetComponent<PlayerCombat>().shotgunShots = 0f;
+        player1.GetComponent<PlayerHealth>().hasLifeSteal = false;
+        player1.GetComponent<PlayerHealth>().lifeStealAmount = 0f;
+        player1.GetComponent<PlayerCombat>().bombOnHit = false;
+        player1.GetComponent<PlayerCombat>().hasReverseControles = false;
+        player1.GetComponent<PlayerCombat>().reverseControleTime = 0f;
+        player1.GetComponent<PlayerCombat>().slowzoneOnHit = false;
+        player1.GetComponent<PlayerCombat>().trampolineOnhit = false;
+        player1.GetComponent<PlayerHealth>().bulletReflect = false;
+        player1.GetComponent<PlayerHealth>().bulletReturnSpeed = 0f;
+        player1.GetComponent<PlayerHealth>().knockbackAdd = 0f;
+
         player2.GetComponent<PlayerCombat>().fireRate = fireRate;
         player2.GetComponent<PlayerCombat>().maxAmmo = maxAmmo;
         player2.GetComponent<PlayerHealth>().maxHealth = maxHP;
@@ -133,8 +156,30 @@ public class GameManeger : MonoBehaviour
         player2.GetComponent<PlayerHealth>().rangeResist = rangeResistance;
         player2.GetComponent<PlayerCombat>().swordDmg = meleeDmg;
         player2.GetComponent<PlayerCombat>().bulletDmg = rangeDmg;
+        player2.GetComponent<PlayerCombat>().numOfBulletBounce = 0f;
         player2.GetComponent<PlayerMovement>().speed = speed;
         player2.GetComponent<PlayerMovement>().jumpsMax = maxJump;
+        player2.GetComponent<PlayerCombat>().burst = false;
+        player2.GetComponent<PlayerCombat>().burstMax = 0;
+        player2.GetComponent<PlayerCombat>().poison = false; ;
+        player2.GetComponent<PlayerCombat>().poisonDmg = 0f;
+        player2.GetComponent<PlayerCombat>().poisonTime = 0f;
+        player2.GetComponent<PlayerCombat>().fire = false;
+        player2.GetComponent<PlayerCombat>().fireDmg = 0f;
+        player2.GetComponent<PlayerCombat>().fireTime = 0f;
+        player2.GetComponent<PlayerCombat>().hasShotgun = false;
+        player2.GetComponent<PlayerCombat>().shotgunShots = 0f;
+        player2.GetComponent<PlayerHealth>().hasLifeSteal = false;
+        player2.GetComponent<PlayerHealth>().lifeStealAmount = 0f;
+        player2.GetComponent<PlayerCombat>().bombOnHit = false;
+        player2.GetComponent<PlayerCombat>().hasReverseControles = false;
+        player2.GetComponent<PlayerCombat>().reverseControleTime = 0f;
+        player2.GetComponent<PlayerCombat>().slowzoneOnHit = false;
+        player2.GetComponent<PlayerCombat>().trampolineOnhit = false;
+        player2.GetComponent<PlayerHealth>().bulletReflect = false;
+        player2.GetComponent<PlayerHealth>().bulletReturnSpeed = 0f;
+        player2.GetComponent<PlayerHealth>().knockbackAdd = 0f;
+
         Destroy(curLvlObj);
         int newLvl = Random.Range(0, levels.Length);
         curLvlObj = Instantiate(levels[newLvl], playPos.position, playPos.rotation);
