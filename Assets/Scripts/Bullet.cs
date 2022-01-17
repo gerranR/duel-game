@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
             {
                 Instantiate(bomb, transform.position, transform.rotation);
             }
-            if (player.GetComponent<PlayerCombat>().trampolineOnhit)
+            if (player.GetComponent<PlayerCombat>().trampolineOnhit && collision.gameObject.layer == 3)
             {
                 Instantiate(trampoline, transform.position, trampoline.transform.rotation);
             }
