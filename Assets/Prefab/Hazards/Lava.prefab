@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8198164785378637412}
   - component: {fileID: 8198164785378637415}
   - component: {fileID: 107523080857839186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Lava
   m_TagString: WorldBorderDown
   m_Icon: {fileID: 0}
