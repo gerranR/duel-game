@@ -44,10 +44,7 @@ public class Bullet : MonoBehaviour
             {
                 Instantiate(slowZone, transform.position, transform.rotation);
             }
-            if (numOfBounces == 0)
-            {
-                Destroy(gameObject);
-            }
+
             else
             {
                 Vector3 dir = collision.transform.position - transform.position;
@@ -115,6 +112,10 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
             }
 
+        }
+        if (numOfBounces == 0)
+        {
+            Destroy(gameObject);
         }
 
     }

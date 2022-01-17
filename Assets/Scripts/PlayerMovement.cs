@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(reverseControleTime);
         reverseControles = false;
-        print(reverseControles);
     }
 
     public void move(InputAction.CallbackContext context)

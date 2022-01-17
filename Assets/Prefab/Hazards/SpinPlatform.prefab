@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20071922}
   - component: {fileID: 20071923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 220313114}
   - component: {fileID: 220313115}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256925362}
   - component: {fileID: 256925363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260154724}
   - component: {fileID: 260154725}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 547761328}
   - component: {fileID: 547761329}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 801288983}
   - component: {fileID: 801288984}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946956289}
   - component: {fileID: 946956290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338981386}
   - component: {fileID: 1338981387}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1402774862}
   - component: {fileID: 1402774863}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -748,7 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1407873931}
   - component: {fileID: 1407873932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -830,7 +830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3773203452585818024}
   - component: {fileID: 7264437097899579433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600785340472510880}
   - component: {fileID: 7387872451882799602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -994,7 +994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4949130657490649274}
   - component: {fileID: 6454900695644541916}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1076,7 +1076,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4258934728890439933}
   - component: {fileID: 3390993911332932182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5839991654490372314}
   - component: {fileID: 8841547056349156316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 4818505993043181908}
   - component: {fileID: 2805128184014535107}
   - component: {fileID: 2979135852577543320}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: SpinPlatform
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1388,7 +1388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8460671757818933639}
   - component: {fileID: 8460671757818933638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1470,7 +1470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8460671758180314974}
   - component: {fileID: 8460671758180314973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpinPlatform_2 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
