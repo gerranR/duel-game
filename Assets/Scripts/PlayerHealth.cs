@@ -154,7 +154,8 @@ public class PlayerHealth : MonoBehaviour
     {
         this.GetComponent<PlayerMovement>().hasKnockback = true;
         Vector2 direction = other.transform.position - transform.position;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + - direction.x * (knockbackForce * knockbackAdd), GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
+        GetComponent<Rigidbody2D>().AddRelativeForce(-direction * knockbackForce);
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x + - direction.x * (knockbackForce * knockbackAdd), GetComponent<Rigidbody2D>().velocity.y + -direction.y * knockbackForce);
         StartCoroutine(NoKnockback());
     }
 

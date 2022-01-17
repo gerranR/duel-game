@@ -1449,7 +1449,7 @@ MonoBehaviour:
   resistance: 1
   wallResistance: 10
   jetPackTime: 0
-  slowzoneSpeed: 300
+  slowzoneSpeed: 200
   rigidbody2d: {fileID: 8158659325111626672}
   jumpsLeft: 0
   lorRWall: 0
