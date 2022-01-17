@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         jumpsLeft = jumpsMax;
+        playerAnimator.SetBool("Hanging", false);
     }
 
     private void FixedUpdate()
