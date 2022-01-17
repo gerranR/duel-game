@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419587759404524517}
   - component: {fileID: 5087378471760676158}
+  - component: {fileID: 4922273882745593883}
   m_Layer: 0
   m_Name: SlowZone
   m_TagString: SlowZone
@@ -41,9 +42,22 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!114 &4922273882745593883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161108598785784208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a36818da2b875fb4d96ae4592b9971b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
