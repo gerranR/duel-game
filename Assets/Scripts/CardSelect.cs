@@ -10,10 +10,12 @@ public class CardSelect : MonoBehaviour
 {
     public GameObject player1, player2, playerLost, imagePos1, imagePos2, imagePos3, imagePos4, imagePos5, curentPanel;
     public TextMeshProUGUI titel1, titel2, titel3, titel4, titel5, discription1, discription2, discription3, discription4, discription5;
-    public Cards[] cardRarety1, cardRarety2, cardRarety3;
+    public Cards[] cardRarety1, cardRarety2, cardRarety3, cardRarety4;
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
     private bool canPress = true;
+
+//ee
 
     public void ChangeCards(int playerWon)
     {
