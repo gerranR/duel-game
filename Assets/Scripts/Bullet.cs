@@ -13,7 +13,6 @@ public class Bullet : MonoBehaviour
     void Start()
     {
             rigidbody2d.AddRelativeForce(new Vector2(bulletSpeed, rigidbody2d.velocity.y));
-
     }
     private void Update()
     {
