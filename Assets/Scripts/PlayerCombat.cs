@@ -161,7 +161,7 @@ public class PlayerCombat : MonoBehaviour
             else if(hasShotgun && canShoot & ammo > 0 && reloading == false)
             {
                 armAnim.SetTrigger("Shooting");
-                ShootAudio.Play();
+                shotgunAudio.Play();
                 ammo--;
                 ammoSlider.maxValue = maxAmmo;
                 ammoSlider.value = ammo;
