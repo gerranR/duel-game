@@ -9694,6 +9694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5231326017601780651}
   - component: {fileID: 3110391611814353121}
+  - component: {fileID: 307280808290775820}
   m_Layer: 0
   m_Name: Crate1BreakParticle
   m_TagString: Untagged
@@ -9737,6 +9738,18 @@ MonoBehaviour:
   - {fileID: 696500209451672515}
   - {fileID: 4187096693731844803}
   - {fileID: 1855031665}
+--- !u!114 &307280808290775820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258423246711704348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0bd76dafc93b44d99da0f3aba256aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4262935990276953391
 GameObject:
   m_ObjectHideFlags: 0

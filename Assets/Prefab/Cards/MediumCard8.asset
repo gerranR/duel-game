@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf27236339b5184494985a2e777f00a, type: 3}
   m_Name: MediumCard8
   m_EditorClassIdentifier: 
-  cardImage: {fileID: 2072072791518865993, guid: 4b78974f2a3989b40be566bdeb48872b, type: 3}
+  cardImage: {fileID: 542589142883800335, guid: 37ce21c3bcf49e34b8bbe14b9d111f7f, type: 3}
   fireRate: 0
   maxHP: 0
   meleeDmg: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   fireTime: 0
   bulletBounces: 0
   maxAmmo: 0
-  maxJump: 1
+  maxJump: 0
   burstNum: 0
   halfHPDubbelDmg: 0
   burst: 0
