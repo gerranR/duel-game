@@ -7,6 +7,7 @@ public class bomb : MonoBehaviour
     public Collider2D collider;
     public float dmg, knockbackForce, countdown;
     public GameObject explosion;
+    public AudioSource explosionSound;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class bomb : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         GetComponent<SpriteRenderer>().enabled = false;
         Instantiate(explosion, transform);
+        explosionSound.Play();
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

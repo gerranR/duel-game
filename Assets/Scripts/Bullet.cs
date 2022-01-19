@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed, dmg, knockbackForce, poisonDmg, poisonTime, fireDmg, fireTime, numOfBounces, bounceForce, reverseControleTime;
     public GameObject player, bomb, trampoline, slowZone;
     public bool poison, fire, shotgun, hasReverseControles;
+
+    public AudioSource bulletBounceSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.layer == 3 || collision.gameObject.layer == 6)
         {
             numOfBounces--;
+            bulletBounceSound.Play();
             if (player.GetComponent<PlayerCombat>().bombOnHit)
             {
                 Instantiate(bomb, transform.position, transform.rotation);
