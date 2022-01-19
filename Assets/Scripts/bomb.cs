@@ -19,7 +19,7 @@ public class bomb : MonoBehaviour
         yield return new WaitForSeconds(countdown);
         collider.enabled = true;
         yield return new WaitForSeconds(.5f);
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
         Instantiate(explosion, transform);
         explosionSound.Play();
         yield return new WaitForSeconds(1f);
