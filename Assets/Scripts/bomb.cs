@@ -6,6 +6,7 @@ public class bomb : MonoBehaviour
 {
     public Collider2D collider;
     public float dmg, knockbackForce, countdown;
+    public GameObject explosion;
 
     void Start()
     {
@@ -17,6 +18,9 @@ public class bomb : MonoBehaviour
         yield return new WaitForSeconds(countdown);
         collider.enabled = true;
         yield return new WaitForSeconds(.5f);
+        GetComponent<SpriteRenderer>().enabled = false;
+        Instantiate(explosion, transform);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 

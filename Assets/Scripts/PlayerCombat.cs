@@ -14,7 +14,7 @@ public class PlayerCombat : MonoBehaviour
     private Vector3 bulletScale;
     public float reverseControleTime;
 
-    public AudioSource ShootAudio, meleeAudio, reloadAudio;
+    public AudioSource ShootAudio, shotgunAudio, meleeAudio, reloadAudio;
     public Slider ammoSlider;
     public Animator playerAim, armAnim;
 
@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 ischarging = false;
                 armAnim.SetTrigger("Shooting");
-                ShootAudio.Play();
+                shotgunAudio.Play();
                 ammo--;
                 ammoSlider.maxValue = maxAmmo;
                 ammoSlider.value = ammo;

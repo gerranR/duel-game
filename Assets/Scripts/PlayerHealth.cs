@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     ContactPoint2D[] contactPoints;
     private float PoisonTimer, maxPoisonTimer, fireTimer, maxFireTimer;
 
-    public ParticleSystem healPart, poisonPart, knockbackPart;
+    public ParticleSystem healPart, poisonPart, knockbackPart, firePart;
     public AudioSource playerDeathAudioSource, hitAudio;
 
     private void Awake()
@@ -65,6 +65,15 @@ public class PlayerHealth : MonoBehaviour
             {
                 if (someoneWon == false)
                 {
+
+                    FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().firePart.Stop();
+                    FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().firePart.Stop();
+                    FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().fire = false;
+                    FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().fire = false;
+                    FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().poisonPart.Stop();
+                    FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().poisonPart.Stop();
+                    FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().poisoned = false;
+                    FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().poisoned = false;
                     GetComponent<Animator>().SetFloat("Speed", 0);
                     GetComponent<Animator>().SetBool("Grounded", true);
                     GetComponent<Animator>().SetBool("Jump", false);
@@ -116,9 +125,14 @@ public class PlayerHealth : MonoBehaviour
             hitAudio.Play();
             health -= fireDmg;
             fireTimer = 0;
+            if(!firePart.isPlaying)
+            {
+                firePart.Play();
+            }
         }
         if(maxFireTimer >= fireTimer)
         {
+            firePart.Stop();
             fire = false;
         }
     }
