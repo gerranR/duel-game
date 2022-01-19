@@ -9,6 +9,7 @@ public class FallThroughDoor : MonoBehaviour
     public float targetRot;
     private float startRot;
     private bool moving;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,8 @@ public class FallThroughDoor : MonoBehaviour
 
     public void TriggerFloor()
     {
-            if (targetRot > 180f)
+        audioSource.Play();
+        if (targetRot > 180f)
             {
                 if (transform.rotation.eulerAngles.z > targetRot)
                 {
@@ -43,5 +45,6 @@ public class FallThroughDoor : MonoBehaviour
             {
                 transform.Rotate(0, 0, speed * Time.deltaTime);
             }
+
     }
 }

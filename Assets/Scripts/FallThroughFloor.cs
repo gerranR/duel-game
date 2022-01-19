@@ -7,8 +7,6 @@ public class FallThroughFloor : MonoBehaviour
     public float speed, delay;
     public GameObject[] sides;
     public LayerMask playermask;
-
-    public AudioSource audioSource;
     // Start is called before the first frame update
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -17,7 +15,6 @@ public class FallThroughFloor : MonoBehaviour
         {
             foreach (GameObject side in sides)
             {
-                audioSource.Play();
                 side.GetComponent<FallThroughDoor>().triggered = true;
             }
         }
