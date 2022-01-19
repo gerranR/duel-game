@@ -133,6 +133,7 @@ MonoBehaviour:
   delay: 1
   triggered: 1
   targetRot: 90
+  audioSource: {fileID: 3346134760818857190}
 --- !u!61 &8281381999445877385
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -374,6 +375,7 @@ MonoBehaviour:
   delay: 1
   triggered: 1
   targetRot: 270
+  audioSource: {fileID: 3346134760818857190}
 --- !u!61 &7325793691633439032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -537,7 +539,6 @@ MonoBehaviour:
   playermask:
     serializedVersion: 2
     m_Bits: 0
-  audioSource: {fileID: 3346134760818857190}
 --- !u!61 &527182869951607161
 BoxCollider2D:
   m_ObjectHideFlags: 0
