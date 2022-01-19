@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     }
     private void Update()
     {
-        if(player.GetComponent<PlayerHealth>().someoneWon)
+        if(FindObjectOfType<CardSelect>().cardsOnScreen)
         {
             Destroy(gameObject);
         }

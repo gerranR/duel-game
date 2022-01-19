@@ -15,6 +15,7 @@ public class CardSelect : MonoBehaviour
     public Cards[] card;
     public List<Cards> player1Cards, player2Cards;
     private bool canPress = true;
+    public bool cardsOnScreen;
 
 //ee
 
@@ -56,6 +57,7 @@ public class CardSelect : MonoBehaviour
         {
             GameObject.Find("PlayerChooseCard").GetComponent<TextMeshProUGUI>().text = "Player 2";
         }
+        cardsOnScreen = true;
     }
 
     public void ChangeStats(int buttonPressed)
@@ -242,6 +244,7 @@ public class CardSelect : MonoBehaviour
             canPress = false;
             curentPanel.GetComponent<Animator>().SetTrigger("leaveCard");
             Invoke("buttonDelay", 2f);
+            cardsOnScreen = false;  
         }
     }
 
