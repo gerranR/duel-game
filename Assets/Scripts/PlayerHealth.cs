@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     ContactPoint2D[] contactPoints;
     private float PoisonTimer, maxPoisonTimer, fireTimer, maxFireTimer;
 
+    public ParticleSystem healPart, poisonPart, knockbackPart;
     public AudioSource playerDeathAudioSource, hitAudio;
 
     private void Awake()
@@ -58,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
         if (canTakeDmg)
         {
             health -= dmg;
+            knockbackPart.Play();
             hitAudio.Play();
             if (health <= 0.00001)
             {
@@ -96,9 +98,12 @@ public class PlayerHealth : MonoBehaviour
             hitAudio.Play();
             health -= PoisonDmg;
             PoisonTimer = 0;
+            if(!poisonPart.isPlaying)
+                poisonPart.Play();
         }
         if(maxPoisonTimer >= poisonTime)
         {
+            poisonPart.Stop();
             poisoned = false;
         }
     }

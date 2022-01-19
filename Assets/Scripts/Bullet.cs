@@ -98,6 +98,7 @@ public class Bullet : MonoBehaviour
         {
             if (collision.gameObject.GetComponentInParent<PlayerHealth>().hasLifeSteal)
             {
+                collision.gameObject.GetComponentInParent<PlayerHealth>().healPart.Play();
                 collision.gameObject.GetComponentInParent<PlayerHealth>().health += collision.gameObject.GetComponentInParent<PlayerHealth>().lifeStealAmount;
             }
             if (collision.gameObject.GetComponentInParent<PlayerHealth>().bulletReflect)
