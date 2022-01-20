@@ -14235,10 +14235,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings Menu
       objectReference: {fileID: 0}
-    - target: {fileID: 8653830013062455423, guid: 9ff120c1f97bbc34d8bf94dbae32c73e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ff120c1f97bbc34d8bf94dbae32c73e, type: 3}
 --- !u!4 &7006503432959853332
@@ -14408,23 +14404,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6576179641344690793, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7862703924293361110, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7862703924558672208, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7862703924629584757, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7862703925101968775, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dafbd68c77c6f24a8cdddda3f761220, type: 3}
@@ -15736,11 +15732,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 785731552646624981, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 785731553092406936, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3974812843625093202, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_RootOrder
@@ -15790,21 +15786,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound Settings
       objectReference: {fileID: 0}
+    - target: {fileID: 6992275038911101704, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8493917340575516292, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8493917341256412237, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8493917341541234182, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8493917341654463985, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f54f621479e894eadd0dbf6167e509, type: 3}
