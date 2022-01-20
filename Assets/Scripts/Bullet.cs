@@ -40,8 +40,12 @@ public class Bullet : MonoBehaviour
                 Instantiate(bomb, transform.position, transform.rotation);
             }
             if (player.GetComponent<PlayerCombat>().trampolineOnhit && collision.gameObject.layer == 3)
-            {
-                Instantiate(trampoline, transform.position, trampoline.transform.rotation);
+            { 
+                Vector3 diffrence = collision.contacts[0].normal;
+                diffrence.Normalize();
+                float rotationZ = Mathf.Atan2(diffrence.y, diffrence.x) * Mathf.Rad2Deg;
+                Quaternion rotation = Quaternion.Euler(0f, 0f, rotationZ - 90);
+                Instantiate(trampoline, transform.position, rotation);
             }
             if (player.GetComponent<PlayerCombat>().slowzoneOnHit)
             {
