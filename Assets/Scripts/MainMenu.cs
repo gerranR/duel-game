@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject SwapPanel;
+    public GameObject SwapPanel, music;
     public void StartGame(GameObject button)
     {
+        DontDestroyOnLoad(music);
         SwapPanel.GetComponent<Animator>().SetTrigger("StartGame");
 
     }
