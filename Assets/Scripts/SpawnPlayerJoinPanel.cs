@@ -29,7 +29,7 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
                 //character select
                 menu.GetComponentInChildren<CharacterSelect>().playerAnim = playerAnimator;
                 menu.GetComponentInChildren<CharacterSelect>().armAnim = armAnimator;
-
+                GameObject.Find("StartLayout").transform.Find("Player1").gameObject.SetActive(false);
                 FindObjectOfType<GameManeger>().pannelAnimator1 = menu.GetComponent<Animator>();
             }
             else
@@ -39,7 +39,7 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
                 //character select
                 menu.GetComponentInChildren<CharacterSelect>().playerAnim = playerAnimator;
                 menu.GetComponentInChildren<CharacterSelect>().armAnim = armAnimator;
-
+                GameObject.Find("StartLayout").transform.Find("Player2").gameObject.SetActive(false);
                 FindObjectOfType<GameManeger>().pannelAnimator2 = menu.GetComponent<Animator>();
             }
             menu.transform.Find("Back").GetComponent<Button>().onClick.AddListener(delegate { SceneManager.LoadScene(0); });
