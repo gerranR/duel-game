@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject MainSettingsPanel, soundSettings, videoSettings;
+    public GameObject mainSettingsPanel, soundSettings, videoSettings, mainMenuPanel;
     public void OpenSettings()
     {
-        MainSettingsPanel.SetActive(true);
+        mainSettingsPanel.SetActive(true);
+        mainMenuPanel.SetActive(false);
         soundSettings.SetActive(false);
-        videoSettings.SetActive(false);
+        videoSettings.SetActive(true);
     }
     public void CloseSettings()
     {
         soundSettings.SetActive(false);
         videoSettings.SetActive(false);
-        MainSettingsPanel.SetActive(false);
+        mainSettingsPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 }
