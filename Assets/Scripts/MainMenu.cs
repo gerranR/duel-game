@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame()
     {
+        Invoke("StartGameWait", .5f);
+    }
+
+    public void StartGameWait()
+    {
         SceneManager.LoadScene(1);
     }
     public void Quit()
