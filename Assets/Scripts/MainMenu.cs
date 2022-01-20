@@ -5,14 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame()
+    public GameObject SwapPanel;
+    public void StartGame(GameObject button)
     {
-        Invoke("StartGameWait", .5f);
-    }
+        SwapPanel.GetComponent<Animator>().SetTrigger("StartGame");
 
-    public void StartGameWait()
-    {
-        SceneManager.LoadScene(1);
     }
     public void Quit()
     {
