@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public GameObject player, bomb, trampoline, slowZone;
     public bool poison, fire, shotgun, hasReverseControles;
 
+    public ParticleSystem reflectPart;
     public AudioSource bulletBounceSound;
 
     // Start is called before the first frame update
@@ -111,6 +112,7 @@ public class Bullet : MonoBehaviour
             }
             if (collision.gameObject.GetComponentInParent<PlayerHealth>().bulletReflect)
             {
+                reflectPart.Play();
                 Vector3 dir = collision.transform.position - transform.position;
                 dir = -dir.normalized;
                 GetComponent<Rigidbody2D>().AddForce(dir * collision.gameObject.GetComponentInParent<PlayerHealth>().bulletReturnSpeed);

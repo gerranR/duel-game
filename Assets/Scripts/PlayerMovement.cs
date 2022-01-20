@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject armPos1, armPos2, hairPos1, hairPos2;
 
     public AudioSource Footsteps;
+    public ParticleSystem confusionPart;
 
     public Animator playerAnimator;
 
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator ReverseControleBack()
     {
         yield return new WaitForSeconds(reverseControleTime);
+        confusionPart.Stop();
         reverseControles = false;
     }
 
@@ -58,6 +60,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if(reverseControles && inputX != 0)
             {
+                if(!confusionPart.isPlaying)
+                    confusionPart.Play();
                 rigidbody2d.velocity = new Vector2(-inputX * (speed / resistance) * Time.deltaTime, rigidbody2d.velocity.y);
                 isMoving = true;
                 playerAnimator.SetFloat("Speed", speed);
