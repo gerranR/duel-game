@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6986370452618894478}
   - component: {fileID: 6986370452618894479}
   - component: {fileID: 938313555501971151}
+  - component: {fileID: 2145748089194589634}
   - component: {fileID: 1117180816405362191}
   - component: {fileID: 6208230619387864828}
   m_Layer: 3
@@ -151,6 +152,18 @@ MonoBehaviour:
   knockbackForce: 25
   source: {fileID: 6549767945276212448}
   audioSource: {fileID: 6208230619387864828}
+--- !u!114 &2145748089194589634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6986370452618894476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a719b9c8508fd6f4f996597c3622fca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1117180816405362191
 BoxCollider2D:
   m_ObjectHideFlags: 0
