@@ -988,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 795326997, guid: 0141de1decf846c42bb3d9b765e18bb2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2103589092}
+      objectReference: {fileID: 2103589096}
     - target: {fileID: 795326997, guid: 0141de1decf846c42bb3d9b765e18bb2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2952,7 +2952,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 795326992, guid: 0141de1decf846c42bb3d9b765e18bb2, type: 3}
   m_PrefabInstance: {fileID: 657617642}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &2103589092
+--- !u!82 &2103589096
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8364,7 +8364,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: OpenVideoSettings
+        m_MethodName: OpenSoundSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
