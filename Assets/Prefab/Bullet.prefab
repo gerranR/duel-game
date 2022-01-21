@@ -149,7 +149,7 @@ MonoBehaviour:
   reverseControleTime: 0
   player: {fileID: 0}
   bomb: {fileID: 6447150602284827204, guid: a1bb4f77d1acef749b89c1e75494a743, type: 3}
-  trampoline: {fileID: 6986370452618894476, guid: a3c3a1fd58a5d4b438facd176ccf684b, type: 3}
+  trampoline: {fileID: 7784332691748173585, guid: 1b3e4466b5fe7e14281d92a29ac32865, type: 3}
   slowZone: {fileID: 1161108598785784208, guid: a38b9140a5ae5a74188c2906fc939537, type: 3}
   poison: 0
   fire: 0

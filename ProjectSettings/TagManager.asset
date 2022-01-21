@@ -15,6 +15,7 @@ TagManager:
   - Saw
   - BreakableObj
   - SlowZone
+  - Devtools
   layers:
   - Default
   - TransparentFX

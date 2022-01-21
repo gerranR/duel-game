@@ -44,13 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void openDevTools(InputAction.CallbackContext callback)
     {
-        if (callback.performed)
+        if (callback.performed && GameObject.FindGameObjectWithTag("Devtools") == null)
         {
             var menu = Instantiate(devTools, GameObject.Find("DevToolsScript").transform);
 
             input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
             var cardsHolder = menu.transform.Find("Cards");
-            menu.transform.Find("Back").gameObject.GetComponent<Button>().onClick.AddListener(CloseDevTools);
             menu.transform.Find("Player1").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().ChangePlayer(1); });
             menu.transform.Find("Player2").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().ChangePlayer(2); });
             cardsHolder.transform.Find("Card3").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(0); });
@@ -85,16 +84,20 @@ public class PlayerMovement : MonoBehaviour
             FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
         }
 
+        else if(callback.performed)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Devtools"));
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerMovement>().TurnMovement(true);
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerMovement>().TurnMovement(true);
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerCombat>().canAttack = true;
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerCombat>().canAttack = true;
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = true;
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = true;
+        }
     }
     public void CloseDevTools()
     {
-        Destroy(GameObject.Find("devTools"));
-        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerMovement>().TurnMovement(true);
-        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerMovement>().TurnMovement(true);
-        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerCombat>().canAttack = true;
-        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerCombat>().canAttack = true;
-        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = true;
-        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = true;
+
     }
 
     public void StartCountdownReverseControles()
