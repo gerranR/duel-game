@@ -68,9 +68,6 @@ public class Bullet : MonoBehaviour
                 {
                     Instantiate(bomb, transform.position, transform.rotation);
                 }
-                collision.gameObject.GetComponent<PlayerHealth>().DoDmg(dmg - collision.gameObject.GetComponent<PlayerHealth>().rangeResist);
-                collision.gameObject.GetComponent<PlayerHealth>().Knockback(this.gameObject, knockbackForce);
-
                 if (poison)
                 {
                     collision.gameObject.GetComponent<PlayerHealth>().poisoned = poison;
@@ -79,9 +76,11 @@ public class Bullet : MonoBehaviour
                 }
                 if (fire)
                 {
-                    collision.gameObject.GetComponent<PlayerHealth>().fire = fire;
+                    print("fire");
                     collision.gameObject.GetComponent<PlayerHealth>().fireDmg = fireDmg;
                     collision.gameObject.GetComponent<PlayerHealth>().fireTime = fireTime;
+                    collision.gameObject.GetComponent<PlayerHealth>().fire = fire;
+
                 }
                 if(hasReverseControles)
                 {
@@ -89,6 +88,10 @@ public class Bullet : MonoBehaviour
                     collision.gameObject.GetComponent<PlayerMovement>().reverseControleTime = reverseControleTime;
                     collision.gameObject.GetComponent<PlayerMovement>().StartCountdownReverseControles();
                 }
+                collision.gameObject.GetComponent<PlayerHealth>().DoDmg(dmg - collision.gameObject.GetComponent<PlayerHealth>().rangeResist);
+                collision.gameObject.GetComponent<PlayerHealth>().Knockback(this.gameObject, knockbackForce);
+
+
                 Destroy(gameObject);
             }
         }

@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33302afd07c908a48b32bac432261de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackForce: 25
+  knockbackForce: 20
   source: {fileID: 6549767945276212448}
   audioSource: {fileID: 6208230619387864828}
 --- !u!114 &2145748089194589634

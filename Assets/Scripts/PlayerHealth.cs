@@ -112,6 +112,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if(maxPoisonTimer >= poisonTime)
         {
+            maxPoisonTimer = 0f;
             poisonPart.Stop();
             poisoned = false;
         }
@@ -130,8 +131,9 @@ public class PlayerHealth : MonoBehaviour
                 firePart.Play();
             }
         }
-        if(maxFireTimer >= fireTimer)
+        if(maxFireTimer >= fireTime)
         {
+            maxFireTimer = 0f;
             firePart.Stop();
             fire = false;
         }
