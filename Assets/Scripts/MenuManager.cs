@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject mainSettingsPanel, soundSettings, videoSettings, mainMenuPanel, settingsButton;
+    public GameObject mainSettingsPanel, soundSettings, videoSettings, mainMenuPanel, settingsButton, controlsMenu, mainMenuControlsSwap;
     public void OpenSettings()
     {
         mainSettingsPanel.SetActive(true);
@@ -19,5 +19,17 @@ public class MenuManager : MonoBehaviour
         videoSettings.SetActive(false);
         mainSettingsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    public void OpenControls()
+    {
+        mainMenuControlsSwap.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        mainMenuControlsSwap.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 }
