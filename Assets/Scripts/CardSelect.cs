@@ -250,10 +250,7 @@ public class CardSelect : MonoBehaviour
 
     private void buttonDelay()
     {
-        print(curentPanel);
         Destroy(curentPanel);
-        player1.GetComponent<PlayerCombat>().CanAttack(true);
-        player2.GetComponent<PlayerCombat>().CanAttack(true);
         canPress = true;
     }
 }

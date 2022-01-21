@@ -220,6 +220,13 @@ public class PlayerMovement : MonoBehaviour
             wallJumpCheck = true;
             lorRWall = 1;
         }
+
+        if(collision.gameObject.layer == 9)
+        {
+            playerAnimator.SetBool("Grounded", true);
+            wallJumpCheck = false;
+            jumpsLeft = jumpsMax;
+        }
     }
 
 

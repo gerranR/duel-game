@@ -202,6 +202,9 @@ public class GameManeger : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(menu);
         resetPlayers();
+        FindObjectOfType<CardSelect>().cardsOnScreen = false;
+
+
         countdown.SetActive(true);
         countdown.GetComponentInChildren<TextMeshProUGUI>().text = "3";
         yield return new WaitForSeconds(1f);

@@ -30,7 +30,6 @@ public class PointToMouse : MonoBehaviour
 
             if (-rotationZ > 90 || rotationZ > 90)
             {
-                print("true");
                 if (transform.localScale.y == 1)
                 {
                     transform.localScale = new Vector3(1, -1, 1);
@@ -39,7 +38,6 @@ public class PointToMouse : MonoBehaviour
             }
             else if (transform.localScale.y == -1)
             {
-                print("true2");
                 transform.localScale = new Vector3(1, 1, 1);
             }
             //if (rotationZ < -90 || rotationZ > 90)
@@ -108,10 +106,6 @@ public class PointToMouse : MonoBehaviour
         //}
     }
 
-    private void Update()
-    {
-        print(transform.localScale.y);
-    }
 
     public void MousePos(InputAction.CallbackContext context)
     {

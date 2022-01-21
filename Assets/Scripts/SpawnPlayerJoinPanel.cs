@@ -62,14 +62,12 @@ public class SpawnPlayerJoinPanel : MonoBehaviour
         var playerText = menu.transform.Find("PlayerText");
         if (input.gameObject.GetComponent<PlayerHealth>().playerInt == 0)
         {
-            print("Player1");
             menu.transform.Find("Ready").gameObject.GetComponent<Button>().onClick.AddListener(FindObjectOfType<PlayerManeger>().Player1Ready);   
             FindObjectOfType<PlayerManeger>().player1ReadyText = menu.transform.Find("Ready").Find("ReadyText").GetComponent<TextMeshProUGUI>();   
             playerText.GetComponent<TextMeshProUGUI>().text = "Player 1";
         }
         else
         {
-            print("player2");
             menu.transform.Find("Ready").gameObject.GetComponent<Button>().onClick.AddListener(FindObjectOfType<PlayerManeger>().Player2Ready);
             FindObjectOfType<PlayerManeger>().player2ReadyText = menu.transform.Find("Ready").Find("ReadyText").GetComponent<TextMeshProUGUI>();
             playerText.GetComponent<TextMeshProUGUI>().text = "Player 2";
