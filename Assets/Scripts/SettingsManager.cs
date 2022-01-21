@@ -8,8 +8,10 @@ public class SettingsManager : MonoBehaviour
     public AudioMixer audioMixer;
     public GameObject soundSettings, videoSettings, controlsMenu, MainSettingsPanel;
     public Resolutions[] resolutions;
-    public bool isFullscreen;
+    public bool isFullscreen, playedAudio;
     private int currentRes;
+
+    public AudioSource buttonClickVideo, buttonClickAudio;
 
     [System.Serializable]
     public class Resolutions
@@ -62,6 +64,7 @@ public class SettingsManager : MonoBehaviour
 
     public void ToggleFullscreen(bool check)
     {
+        print("jemama");
         isFullscreen = check;
         Screen.SetResolution(resolutions[currentRes].width, resolutions[currentRes].height, isFullscreen);
     }

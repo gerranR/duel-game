@@ -751,7 +751,7 @@ public class @Player1Input : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""d231cd21-7361-4c1d-8577-8d58dcb9a125"",
                     ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard & mouse"",
                     ""action"": ""Submit"",
