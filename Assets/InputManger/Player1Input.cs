@@ -73,6 +73,14 @@ public class @Player1Input : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenDevTools"",
+                    ""type"": ""Button"",
+                    ""id"": ""a0afd32c-6250-4a66-b070-774cd7f89ddf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -370,6 +378,28 @@ public class @Player1Input : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controler"",
                     ""action"": ""Leave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""540c3800-5490-4808-a97f-402189b4b86c"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & mouse"",
+                    ""action"": ""OpenDevTools"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f88c68d0-d186-47bc-ac4a-890ddb3facbe"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controler"",
+                    ""action"": ""OpenDevTools"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -965,6 +995,7 @@ public class @Player1Input : IInputActionCollection, IDisposable
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_MousePosistion = m_Player.FindAction("MousePosistion", throwIfNotFound: true);
         m_Player_Leave = m_Player.FindAction("Leave", throwIfNotFound: true);
+        m_Player_OpenDevTools = m_Player.FindAction("OpenDevTools", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1033,6 +1064,7 @@ public class @Player1Input : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_MousePosistion;
     private readonly InputAction m_Player_Leave;
+    private readonly InputAction m_Player_OpenDevTools;
     public struct PlayerActions
     {
         private @Player1Input m_Wrapper;
@@ -1044,6 +1076,7 @@ public class @Player1Input : IInputActionCollection, IDisposable
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @MousePosistion => m_Wrapper.m_Player_MousePosistion;
         public InputAction @Leave => m_Wrapper.m_Player_Leave;
+        public InputAction @OpenDevTools => m_Wrapper.m_Player_OpenDevTools;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1074,6 +1107,9 @@ public class @Player1Input : IInputActionCollection, IDisposable
                 @Leave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeave;
                 @Leave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeave;
                 @Leave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeave;
+                @OpenDevTools.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDevTools;
+                @OpenDevTools.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDevTools;
+                @OpenDevTools.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDevTools;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1099,6 +1135,9 @@ public class @Player1Input : IInputActionCollection, IDisposable
                 @Leave.started += instance.OnLeave;
                 @Leave.performed += instance.OnLeave;
                 @Leave.canceled += instance.OnLeave;
+                @OpenDevTools.started += instance.OnOpenDevTools;
+                @OpenDevTools.performed += instance.OnOpenDevTools;
+                @OpenDevTools.canceled += instance.OnOpenDevTools;
             }
         }
     }
@@ -1235,6 +1274,7 @@ public class @Player1Input : IInputActionCollection, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnMousePosistion(InputAction.CallbackContext context);
         void OnLeave(InputAction.CallbackContext context);
+        void OnOpenDevTools(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

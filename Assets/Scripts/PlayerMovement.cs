@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbody2d;
     public int jumpsLeft, lorRWall;
     public int jumpsMax, maxAmmo;
-    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair;
+    public GameObject groundCheckObj, wallCheckObjR, wallCheckObjL, arm, hair, devTools;
     public bool hasKnockback, wallJumpCheck, isMoving, isOnTreadmil, hasJetPack, reverseControles;
     public LayerMask groundLayer, wallLayer;
     public PhysicsMaterial2D playerMat;
@@ -24,8 +26,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator playerAnimator;
 
+    public PlayerInput input;
+
+
     private void Awake()
     {
+        devTools = FindObjectOfType<GameManeger>().DevTools;
         jumpsLeft = jumpsMax;
         playerAnimator.SetBool("Hanging", false);
     }
@@ -34,6 +40,61 @@ public class PlayerMovement : MonoBehaviour
     {
         movement();
         GroundCheck();
+    }
+
+    public void openDevTools(InputAction.CallbackContext callback)
+    {
+        if (callback.performed)
+        {
+            var menu = Instantiate(devTools, GameObject.Find("DevToolsScript").transform);
+
+            input.uiInputModule = menu.GetComponentInChildren<InputSystemUIInputModule>();
+            var cardsHolder = menu.transform.Find("Cards");
+            menu.transform.Find("Back").gameObject.GetComponent<Button>().onClick.AddListener(CloseDevTools);
+            menu.transform.Find("Player1").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().ChangePlayer(1); });
+            menu.transform.Find("Player2").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().ChangePlayer(2); });
+            cardsHolder.transform.Find("Card3").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(0); });
+            cardsHolder.transform.Find("Card4").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(1); });
+            cardsHolder.transform.Find("Card5").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(2); });
+            cardsHolder.transform.Find("Card6").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(3); });
+            cardsHolder.transform.Find("Card7").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(4); });
+            cardsHolder.transform.Find("Card8").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(5); });
+            cardsHolder.transform.Find("Card9").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(6); });
+            cardsHolder.transform.Find("Card10").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(7); });
+            cardsHolder.transform.Find("Card11").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(8); });
+            cardsHolder.transform.Find("Card12").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(9); });
+            cardsHolder.transform.Find("Card13").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(10); });
+            cardsHolder.transform.Find("Card14").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(11); });
+            cardsHolder.transform.Find("Card15").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(12); });
+            cardsHolder.transform.Find("Card16").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(13); });
+            cardsHolder.transform.Find("Card17").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(14); });
+            cardsHolder.transform.Find("Card18").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(15); });
+            cardsHolder.transform.Find("Card19").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(16); });
+            cardsHolder.transform.Find("Card20").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(17); });
+            cardsHolder.transform.Find("Card21").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(18); });
+            cardsHolder.transform.Find("Card22").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(19); });
+            cardsHolder.transform.Find("Card23").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(20); });
+            cardsHolder.transform.Find("Card24").gameObject.GetComponent<Button>().onClick.AddListener(delegate { FindObjectOfType<DevTools>().addCard(21); });
+
+            FindObjectOfType<GameManeger>().pannelAnimator1 = menu.GetComponent<Animator>(); devTools.SetActive(true);
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerMovement>().TurnMovement(false);
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerMovement>().TurnMovement(false);
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerCombat>().canAttack = false;
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerCombat>().canAttack = false;
+            FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = false;
+            FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = false;
+        }
+
+    }
+    public void CloseDevTools()
+    {
+        Destroy(GameObject.Find("devTools"));
+        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerMovement>().TurnMovement(true);
+        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerMovement>().TurnMovement(true);
+        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerCombat>().canAttack = true;
+        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerCombat>().canAttack = true;
+        FindObjectOfType<GameManeger>().player1.GetComponent<PlayerHealth>().canTakeDmg = true;
+        FindObjectOfType<GameManeger>().player2.GetComponent<PlayerHealth>().canTakeDmg = true;
     }
 
     public void StartCountdownReverseControles()

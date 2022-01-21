@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "OpenDevTools",
+                    "type": "Button",
+                    "id": "a0afd32c-6250-4a66-b070-774cd7f89ddf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -357,6 +365,28 @@
                     "processors": "",
                     "groups": "Controler",
                     "action": "Leave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "540c3800-5490-4808-a97f-402189b4b86c",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & mouse",
+                    "action": "OpenDevTools",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f88c68d0-d186-47bc-ac4a-890ddb3facbe",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controler",
+                    "action": "OpenDevTools",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

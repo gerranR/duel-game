@@ -47,11 +47,13 @@ public class PlayerManeger : MonoBehaviour
         if (player.playerIndex == 0)
         {
             player1 = player.gameObject;
+            FindObjectOfType<DevTools>().player1 = player.gameObject;
             player1.GetComponent<PlayerCombat>().ammoSlider = ammoPlayer1;
         }
         else
         {
             player2 = player.gameObject;
+            FindObjectOfType<DevTools>().player2 = player.gameObject;
             player2.GetComponent<PlayerCombat>().ammoSlider = ammoPlayer2;
         }
         playerCountCheck();

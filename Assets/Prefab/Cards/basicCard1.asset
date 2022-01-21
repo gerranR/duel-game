@@ -21,8 +21,29 @@ MonoBehaviour:
   meleeRange: 0
   meleeResistance: 0
   rangeResistance: 0
+  knaockback: 0
+  poisonTime: 0
+  poisonDmg: 0
+  shotgunShots: 0
+  fireDmg: 0
+  fireTime: 0
+  bulletBounces: 0
   maxAmmo: 0
   maxJump: 0
+  burstNum: 0
   halfHPDubbelDmg: 0
+  burst: 0
+  poison: 0
+  shotgun: 0
+  lifeSteal: 0
+  bomb: 0
+  trampoline: 0
+  reflect: 0
+  fire: 0
+  slowzone: 0
+  reverseControle: 0
   titel: Tank Up
   discription: + 50 hp
+  lifeStealAmount: 0
+  bulletReflectSpeed: 0
+  reverseControleTime: 0
