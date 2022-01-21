@@ -28,6 +28,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.layer == 8)
+        {
+            Destroy(gameObject);
+        }
         if(collision.gameObject.tag == "WorldBorderRight" || collision.gameObject.tag == "WorldBorderLeft" || collision.gameObject.tag == "WorldBorderDown" || collision.gameObject.tag == "WorldBorderUp")
         {
             Destroy(gameObject);
@@ -35,6 +39,10 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.layer == 3 || collision.gameObject.layer == 6)
         {
             numOfBounces--;
+            if (numOfBounces <= 0)
+            {
+                Destroy(gameObject);
+            }
             bulletBounceSound.Play();
             if (player.GetComponent<PlayerCombat>().bombOnHit)
             {
@@ -126,10 +134,7 @@ public class Bullet : MonoBehaviour
             }
 
         }
-        if (numOfBounces == 0)
-        {
-            Destroy(gameObject);
-        }
+
 
     }
 }

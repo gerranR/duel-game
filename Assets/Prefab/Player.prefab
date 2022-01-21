@@ -1678,7 +1678,7 @@ MonoBehaviour:
   poisonTime: 0
   shotgunShots: 0
   shotgunSpread: 45
-  numOfBulletBounce: 1
+  numOfBulletBounce: 0
   fireDmg: 0
   fireTime: 0
   gun: {fileID: 2782793807638392246}
