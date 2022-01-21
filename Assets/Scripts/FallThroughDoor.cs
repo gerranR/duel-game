@@ -35,16 +35,23 @@ public class FallThroughDoor : MonoBehaviour
     {
         audioSource.Play();
         if (targetRot > 180f)
+        {
+            if (transform.rotation.eulerAngles.z > targetRot)
             {
-                if (transform.rotation.eulerAngles.z > targetRot)
-                {
-                    transform.Rotate(0, 0, -speed * Time.deltaTime);
-                }
+                transform.Rotate(0, 0, -speed * Time.deltaTime);
             }
-            else if (transform.rotation.eulerAngles.z < targetRot)
+            else
             {
-                transform.Rotate(0, 0, speed * Time.deltaTime);
+                moving = false;
             }
-
+        }
+        else if (transform.rotation.eulerAngles.z < targetRot)
+        {
+            transform.Rotate(0, 0, speed * Time.deltaTime);
+        }
+        else
+        {
+            moving = false;
+        }
     }
 }
